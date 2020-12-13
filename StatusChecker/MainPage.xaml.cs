@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
 
 using StatusChecker.Services;
+using System.Collections.Generic;
 
 namespace StatusChecker
 {
@@ -16,11 +17,17 @@ namespace StatusChecker
         {
             var webRequestService = new WebRequestService();
 
-            var gadgetStatus01 = webRequestService.GetStatus("");
-
-            if (gadgetStatus01 != null)
+            var gadgetConfigs = new Dictionary<string, Label>()
             {
-                _temp_1.Text = $"{ gadgetStatus01.temperature } °C";
+            };
+
+
+            foreach(KeyValuePair<string, Label> gadgetConfig in gadgetConfigs)
+            {
+                var gadgetStatus = webRequestService.GetStatus(gadgetConfig.Key);
+                if (gadgetStatus == null) continue;
+
+                gadgetConfig.Value.Text = $"{ gadgetStatus.temperature } °C";
             }
 
 
