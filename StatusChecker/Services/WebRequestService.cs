@@ -1,9 +1,14 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 using StatusChecker.Models;
+
+
 
 namespace StatusChecker.Services
 {
@@ -17,18 +22,16 @@ namespace StatusChecker.Services
         private string _ipAddress = "";
 
 
-        public string GetTemperatureForIpAddress(string ipAddress)
+        public GadgetStatus GetStatus(string ipAddress)
         {
             _ipAddress = ipAddress;
 
-            WebRequestResponse webRequestResponse = SerializeWebResponse(GetWebResponse());
+            GadgetStatus gadgetStatus = SerializeWebResponse(GetWebResponse());
 
-
-
-            return webRequestResponse != null ? webRequestResponse.Mac : "-";
+            return gadgetStatus ?? null;
         }
 
-        private WebResponse GetWebResponse()
+        private string GetWebResponse()
         {
             var request = WebRequest.Create($"http://{ _ipAddress }{ _statusRequestUrl }");
             request.Credentials = new NetworkCredential(_username, _password);
@@ -39,22 +42,20 @@ namespace StatusChecker.Services
             {
                 var reader = new StreamReader(dataStream);
 
-                string responseFromServer = reader.ReadToEnd();
+                return reader.ReadToEnd();
             }
-
-            return response;
-
         }
 
 
 
-        private WebRequestResponse SerializeWebResponse(WebResponse webResponse)
+        private GadgetStatus SerializeWebResponse(string serverResponse)
         {
-            return new WebRequestResponse
-            {
-                Time = "",
-                Mac = ""
-            };
+            if (serverResponse == null) return null;
+
+            var deserializedResponse = JsonSerializer.Deserialize<GadgetStatus>(serverResponse);
+
+
+            return deserializedResponse;
         }
 
 

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StatusChecker.MainPage">
+             x:Class="StatusChecker.MainPage"
+             BackgroundColor="#212121">
 
     <StackLayout>
         <Frame BackgroundColor="#E6A93F" Padding="30" CornerRadius="0">
 
             <Label Text="Status Checker" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -21,7 +21,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             
-            <Label Grid.Row="0" Grid.Column="0" Text="Temperatur" />
+            <Label Grid.Row="0" Grid.Column="0" Text="Temperatur"/>
             <Label Grid.Row="0" Grid.Column="1" Text="52 °C" x:Name="_temp_1" />
             
             <Label Grid.Row="1" Grid.Column="0" Text="Temperatur" />

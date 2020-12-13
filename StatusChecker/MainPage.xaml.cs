@@ -16,12 +16,13 @@ namespace StatusChecker
         {
             var webRequestService = new WebRequestService();
 
+            var gadgetStatus01 = webRequestService.GetStatus("");
 
-            var random = new Random();
+            if (gadgetStatus01 != null)
+            {
+                _temp_1.Text = $"{ gadgetStatus01.temperature } °C";
+            }
 
-            _temp_1.Text = $"{ webRequestService.GetTemperatureForIpAddress("") } °C";
-            _temp_2.Text = $"{ random.Next(0, 100) } °C";
-            _temp_3.Text = $"{ random.Next(0, 100) } °C";
 
         }
     }
