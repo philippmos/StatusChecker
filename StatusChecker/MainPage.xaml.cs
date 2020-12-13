@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace StatusChecker
 {
@@ -13,6 +7,10 @@ namespace StatusChecker
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }
