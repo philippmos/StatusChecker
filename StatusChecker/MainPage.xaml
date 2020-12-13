@@ -9,7 +9,27 @@
             <Label Text="Status Checker" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
 
-        <Label Text="Temperatur" x:Name="_temperature_248" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Text="Temperatur" />
+            <Label Grid.Row="0" Grid.Column="1" Text="52 °C" x:Name="_temp_1" />
+            
+            <Label Grid.Row="1" Grid.Column="0" Text="Temperatur" />
+            <Label Grid.Row="1" Grid.Column="1" Text="52 °C" x:Name="_temp_2" />
+            
+            <Label Grid.Row="2" Grid.Column="0" Text="Temperatur" />
+            <Label Grid.Row="2" Grid.Column="1" Text="52 °C" x:Name="_temp_3" />
+        </Grid>
 
         <Button Clicked="CheckupButton_Clicked" Text="Status prüfen" />
 
