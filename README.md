@@ -8,7 +8,7 @@ Checks the Status-Page of multiple Shelly IoT-Gadgets based on given IpAddresses
 It displays the Temperature of each Gadget and allows re-checking the status.
 
 ### How to add Gadgets
-In MainPage.xaml.cs add the following Dictionary-Items.
+In *MainPage.xaml.cs* add the following Dictionary-Items.
 These will map the IpAddresses to the Labels for Temperature-Labels
 
 ```cs
