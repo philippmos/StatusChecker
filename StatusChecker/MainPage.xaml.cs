@@ -11,6 +11,7 @@ namespace StatusChecker
 
         void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
         {
+            _temperature_248.Text = "Works!";
         }
     }
 }

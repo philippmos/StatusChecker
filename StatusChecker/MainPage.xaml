@@ -5,9 +5,11 @@
 
     <StackLayout>
         <Frame BackgroundColor="#E6A93F" Padding="30" CornerRadius="0">
+
             <Label Text="Status Checker" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
 
+        <Label Text="Temperatur" x:Name="_temperature_248" />
 
         <Button Clicked="CheckupButton_Clicked" Text="Status prüfen" />
 
