@@ -1,5 +1,8 @@
 # StatusChecker
 
+## Pipelines
+[![Build Status](https://dev.azure.com/philipp-c-moser/StatusChecker/_apis/build/status/philipp-c-moser.StatusChecker?branchName=main)](https://dev.azure.com/philipp-c-moser/StatusChecker/_build/latest?definitionId=51&branchName=main)
+
 ## Technology
  - Xamarin.Forms
 
