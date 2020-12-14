@@ -3,6 +3,7 @@ using Xamarin.Forms;
 
 using StatusChecker.Services;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StatusChecker
 {
@@ -23,6 +24,7 @@ namespace StatusChecker
             {
             };
 
+            ResetStatusLabels(gadgetConfigs.Select(x => x.Value).ToList());
 
             foreach(KeyValuePair<string, Label> gadgetConfig in gadgetConfigs)
             {
