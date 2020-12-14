@@ -27,4 +27,4 @@ This Configuration via Dictionary will be deprecated soon and then moved to an X
 
 ## Screenshots
 
-<img src="./images/screenshot01.png" style="width: 50%;">
+<img src="./images/screenshot02.png" style="width: 50%;">
