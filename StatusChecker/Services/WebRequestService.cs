@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
+using System.Threading.Tasks;
 using StatusChecker.Models;
 
 
@@ -22,21 +22,21 @@ namespace StatusChecker.Services
         private string _ipAddress = "";
 
 
-        public GadgetStatus GetStatus(string ipAddress)
+        public async Task<GadgetStatus> GetStatusAsync(string ipAddress)
         {
             _ipAddress = ipAddress;
 
-            GadgetStatus gadgetStatus = SerializeWebResponse(GetWebResponse());
+            GadgetStatus gadgetStatus = SerializeWebResponse(await GetWebResponseAsync());
 
             return gadgetStatus ?? null;
         }
 
-        private string GetWebResponse()
+        private async Task<string> GetWebResponseAsync()
         {
             var request = WebRequest.Create($"http://{ _ipAddress }{ _statusRequestUrl }");
             request.Credentials = new NetworkCredential(_username, _password);
 
-            WebResponse response = request.GetResponse();
+            WebResponse response = await request.GetResponseAsync();
 
             using (Stream dataStream = response.GetResponseStream())
             {

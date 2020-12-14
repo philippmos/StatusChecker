@@ -13,8 +13,10 @@ namespace StatusChecker
             InitializeComponent();
         }
 
-        void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
+        async void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
         {
+            ToggleActivityIndicator(_checkupIndicator);
+
             var webRequestService = new WebRequestService();
 
             var gadgetConfigs = new Dictionary<string, Label>()
@@ -24,13 +26,21 @@ namespace StatusChecker
 
             foreach(KeyValuePair<string, Label> gadgetConfig in gadgetConfigs)
             {
-                var gadgetStatus = webRequestService.GetStatus(gadgetConfig.Key);
+                var gadgetStatus = await webRequestService.GetStatusAsync(gadgetConfig.Key);
                 if (gadgetStatus == null) continue;
 
                 gadgetConfig.Value.Text = $"{ gadgetStatus.temperature } °C";
             }
 
+            ToggleActivityIndicator(_checkupIndicator);
+        }
 
+
+        void ToggleActivityIndicator(ActivityIndicator activityIndicator)
+        {
+            activityIndicator.IsEnabled = !activityIndicator.IsEnabled;
+            activityIndicator.IsRunning = !activityIndicator.IsRunning;
+            activityIndicator.IsVisible = !activityIndicator.IsVisible;
         }
     }
 }

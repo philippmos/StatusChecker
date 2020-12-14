@@ -39,6 +39,8 @@
 
         <Button Clicked="CheckupButton_Clicked" Text="Status prüfen" />
 
+        <ActivityIndicator IsRunning="False" IsEnabled="False" IsVisible="False"  Color="White" x:Name="_checkupIndicator" />
+
     </StackLayout>
 
 </ContentPage>
