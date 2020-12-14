@@ -3,6 +3,7 @@ using Xamarin.Forms;
 
 using StatusChecker.Services;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StatusChecker
 {
@@ -23,6 +24,7 @@ namespace StatusChecker
             {
             };
 
+            ResetStatusLabels(gadgetConfigs.Select(x => x.Value).ToList());
 
             foreach(KeyValuePair<string, Label> gadgetConfig in gadgetConfigs)
             {
@@ -41,6 +43,14 @@ namespace StatusChecker
             activityIndicator.IsEnabled = !activityIndicator.IsEnabled;
             activityIndicator.IsRunning = !activityIndicator.IsRunning;
             activityIndicator.IsVisible = !activityIndicator.IsVisible;
+        }
+
+        void ResetStatusLabels(List<Label> labelList)
+        {
+            foreach(Label label in labelList)
+            {
+                label.Text = "- °C";
+            }
         }
     }
 }
