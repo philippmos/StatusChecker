@@ -21,7 +21,7 @@ namespace StatusChecker
 
         async void EnableAutoRefreshButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            const int numberOfRuns = 7;
+            const int numberOfRuns = 5;
 
             for(int i = 0; i < numberOfRuns; i++)
             {
