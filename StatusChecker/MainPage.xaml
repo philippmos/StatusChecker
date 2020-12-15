@@ -12,7 +12,7 @@
 
         <Grid Margin="0,10,0,0" Padding="15">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -22,19 +22,19 @@
             </Grid.RowDefinitions>
             
             <Label Grid.Row="0" Grid.Column="0" Text="Temperatur (17)" TextColor="White" />
-            <Label Grid.Row="0" Grid.Column="1" Text="- °C" x:Name="_temp_1" TextColor="White" />
+            <Label Grid.Row="0" Grid.Column="1" Text="- °C" x:Name="_temp_1" TextColor="White" HorizontalTextAlignment="End" />
             
             <Label Grid.Row="1" Grid.Column="0" Text="Temperatur (38)" TextColor="White" />
-            <Label Grid.Row="1" Grid.Column="1" Text="- °C" x:Name="_temp_2" TextColor="White" />
+            <Label Grid.Row="1" Grid.Column="1" Text="- °C" x:Name="_temp_2" TextColor="White" HorizontalTextAlignment="End" />
             
             <Label Grid.Row="2" Grid.Column="0" Text="Temperatur (95)" TextColor="White" />
-            <Label Grid.Row="2" Grid.Column="1" Text="- °C" x:Name="_temp_3" TextColor="White" />
+            <Label Grid.Row="2" Grid.Column="1" Text="- °C" x:Name="_temp_3" TextColor="White" HorizontalTextAlignment="End" />
             
             <Label Grid.Row="3" Grid.Column="0" Text="Temperatur (178)" TextColor="White" />
-            <Label Grid.Row="3" Grid.Column="1" Text="- °C" x:Name="_temp_4" TextColor="White" />
+            <Label Grid.Row="3" Grid.Column="1" Text="- °C" x:Name="_temp_4" TextColor="White" HorizontalTextAlignment="End" />
 
             <Label Grid.Row="4" Grid.Column="0" Text="Temperatur (248)" TextColor="White" />
-            <Label Grid.Row="4" Grid.Column="1" Text="- °C" x:Name="_temp_5" TextColor="White" />
+            <Label Grid.Row="4" Grid.Column="1" Text="- °C" x:Name="_temp_5" TextColor="White" HorizontalTextAlignment="End" />
         </Grid>
 
         <Button Clicked="CheckupButton_Clicked" Text="Status prüfen" />
