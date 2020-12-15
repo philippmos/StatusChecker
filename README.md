@@ -5,6 +5,7 @@
 
 ## Technology
  - Xamarin.Forms
+ - C#
 
 ## Description
 Checks the Status-Page of multiple Shelly IoT-Gadgets based on given IpAddresses.
@@ -30,4 +31,4 @@ This Configuration via Dictionary will be deprecated soon and then moved to an X
 
 ## Screenshots
 
-<img src="./images/screenshot02.png" style="width: 50%;">
+<img src="./images/screenshot03.png" style="width: 50%;">
