@@ -31,7 +31,7 @@ namespace StatusChecker
                 var gadgetStatus = await webRequestService.GetStatusAsync(gadgetConfig.Key);
                 if (gadgetStatus == null) continue;
 
-                gadgetConfig.Value.Text = $"{ gadgetStatus.temperature } °C";
+                gadgetConfig.Value.Text = $"{ gadgetStatus.temperature } °C  ({ gadgetStatus.temperature_status })";
             }
 
             ToggleActivityIndicator(_checkupIndicator);
