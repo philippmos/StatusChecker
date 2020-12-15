@@ -34,6 +34,7 @@ namespace StatusChecker
                 await _pbAutoRefreshIndicator.ProgressTo(1, 20000, Easing.Linear);
             }
 
+            await _pbAutoRefreshIndicator.ProgressTo(0, 250, Easing.BounceOut);
 
             _btnAutoRefresh.Text = "Auto-Refresh aktivieren";
         }
