@@ -14,7 +14,32 @@ namespace StatusChecker
             InitializeComponent();
         }
 
-        async void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
+        void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            RunStatusCheckup();
+        }
+
+        async void EnableAutoRefreshButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            const int numberOfRuns = 5;
+
+            for(int i = 0; i < numberOfRuns; i++)
+            {
+                _btnAutoRefresh.Text = $"Auto-Refresh ({ numberOfRuns - i })";
+
+                await _pbAutoRefreshIndicator.ProgressTo(0, 250, Easing.BounceOut);
+
+                RunStatusCheckup();
+
+                await _pbAutoRefreshIndicator.ProgressTo(1, 20000, Easing.Linear);
+            }
+
+            await _pbAutoRefreshIndicator.ProgressTo(0, 250, Easing.BounceOut);
+
+            _btnAutoRefresh.Text = "Auto-Refresh aktivieren";
+        }
+
+        private async void RunStatusCheckup()
         {
             ToggleActivityIndicator(_checkupIndicator);
 
@@ -26,7 +51,7 @@ namespace StatusChecker
 
             ResetStatusLabels(gadgetConfigs.Select(x => x.Value).ToList());
 
-            foreach(KeyValuePair<string, Label> gadgetConfig in gadgetConfigs)
+            foreach (KeyValuePair<string, Label> gadgetConfig in gadgetConfigs)
             {
                 var gadgetStatus = await webRequestService.GetStatusAsync(gadgetConfig.Key);
                 if (gadgetStatus == null) continue;
