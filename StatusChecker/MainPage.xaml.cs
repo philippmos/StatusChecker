@@ -23,6 +23,8 @@ namespace StatusChecker
         {
             const int numberOfRuns = 5;
 
+            ToggleManualCheckupButton();
+
             for(int i = 0; i < numberOfRuns; i++)
             {
                 _btnAutoRefresh.Text = $"Auto-Refresh ({ numberOfRuns - i })";
@@ -35,6 +37,8 @@ namespace StatusChecker
             }
 
             await _pbAutoRefreshIndicator.ProgressTo(0, 250, Easing.BounceOut);
+
+            ToggleManualCheckupButton();
 
             _btnAutoRefresh.Text = "Auto-Refresh aktivieren";
         }
@@ -68,6 +72,11 @@ namespace StatusChecker
             activityIndicator.IsEnabled = !activityIndicator.IsEnabled;
             activityIndicator.IsRunning = !activityIndicator.IsRunning;
             activityIndicator.IsVisible = !activityIndicator.IsVisible;
+        }
+
+        void ToggleManualCheckupButton()
+        {
+            _btnCheckup.IsEnabled = !_btnCheckup.IsEnabled;
         }
 
         void ResetStatusLabels(List<Label> labelList)
