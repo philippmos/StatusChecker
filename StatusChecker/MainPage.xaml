@@ -37,9 +37,12 @@
             <Label Grid.Row="4" Grid.Column="1" Text="- °C" x:Name="_temp_5" TextColor="White" HorizontalTextAlignment="End" />
         </Grid>
 
-        <Button Clicked="CheckupButton_Clicked" Text="Status prüfen" />
+        <Button Clicked="CheckupButton_Clicked" Text="Status prüfen" x:Name="_btnCheckup" IsEnabled="True"/>
 
-        <ActivityIndicator IsRunning="False" IsEnabled="False" IsVisible="False"  Color="White" x:Name="_checkupIndicator" />
+        <Button Clicked="EnableAutoRefreshButton_Clicked" Text="Auto-Refresh aktivieren" x:Name="_btnAutoRefresh" />
+        <ProgressBar x:Name="_pbAutoRefreshIndicator" Margin="40, 20" Progress="0" ProgressColor="#5e5e5e" />
+
+        <ActivityIndicator IsRunning="False" IsEnabled="False" IsVisible="False" Color="White" x:Name="_checkupIndicator" />
 
     </StackLayout>
 

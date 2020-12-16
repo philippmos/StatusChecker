@@ -1,4 +1,4 @@
-namespace StatusChecker.Models
+﻿namespace StatusChecker.Models
 {
     public class GadgetStatus
     {
