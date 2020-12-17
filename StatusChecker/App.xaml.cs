@@ -11,6 +11,7 @@ namespace StatusChecker
             InitializeComponent();
 
             DependencyService.Register<GadgetDataStore>();
+            DependencyService.Register<WebRequestService>();
 
             MainPage = new Views.MainPage();
         }
