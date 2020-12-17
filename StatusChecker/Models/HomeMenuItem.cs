@@ -2,7 +2,8 @@
 {
     public enum MenuItemType
     {
-        Browse
+        Browse,
+        StatusChecker
     }
     public class HomeMenuItem
     {

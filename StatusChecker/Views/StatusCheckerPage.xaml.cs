@@ -1,15 +1,14 @@
-using System;
 using Xamarin.Forms;
 
 using StatusChecker.Services;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace StatusChecker
+namespace StatusChecker.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class StatusCheckerPage : ContentPage
     {
-        public MainPage()
+        public StatusCheckerPage()
         {
             InitializeComponent();
         }
@@ -51,6 +50,11 @@ namespace StatusChecker
 
             var gadgetConfigs = new Dictionary<string, Label>()
             {
+                { "192.168.0.17", _temp_1 },
+                { "192.168.0.38", _temp_2 },
+                { "192.168.0.95", _temp_3 },
+                { "192.168.0.178", _temp_4 },
+                { "192.168.0.248", _temp_5 }
             };
 
             ResetStatusLabels(gadgetConfigs.Select(x => x.Value).ToList());
