@@ -12,9 +12,9 @@
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Gerätename" FontSize="Medium" />
-            <Entry Text="{Binding Gadget.Name}" FontSize="Small" />
+            <Entry Text="{Binding Gadget.Name}" FontSize="Small" Placeholder="z.B. Neues Gerät 1" />
             <Label Text="Ip Adresse" FontSize="Medium" />
-            <Editor Text="{Binding Gadget.IpAddress}" FontSize="Small" Margin="0" />
+            <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small" Placeholder="0.0.0.0" />
         </StackLayout>
     </ContentPage.Content>
     

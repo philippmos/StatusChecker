@@ -15,7 +15,7 @@ namespace StatusChecker.Views
 
             Gadget = new Gadget
             {
-                Name = "Gerätename",
+                Name = "",
                 IpAddress = ""
             };
 
