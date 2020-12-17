@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StatusChecker.Views.GadgetDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Gerätename:" FontSize="Medium" />
+        <Label Text="{Binding Gadget.Name}" FontSize="Small"/>
+        <Label Text="Ip Adresse:" FontSize="Medium" />
+        <Label Text="{Binding Gadget.IpAddress}" FontSize="Small"/>
+    </StackLayout>
+    
+</ContentPage>

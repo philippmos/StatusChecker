@@ -1,6 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
+
+using StatusChecker.Services;
 
 namespace StatusChecker
 {
@@ -10,7 +10,9 @@ namespace StatusChecker
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            DependencyService.Register<GadgetDataStore>();
+
+            MainPage = new Views.MainPage();
         }
 
         protected override void OnStart()
