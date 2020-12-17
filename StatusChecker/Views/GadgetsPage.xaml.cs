@@ -20,7 +20,7 @@ namespace StatusChecker.Views
         async void OnItemSelected(object sender, EventArgs args)
         {
             var layout = (BindableObject)sender;
-            var gadget = (Gadget)layout.BindingContext;
+            var gadget = (GadgetViewModel)layout.BindingContext;
             await Navigation.PushAsync(new GadgetDetailPage(new GadgetDetailViewModel(gadget)));
         }
 

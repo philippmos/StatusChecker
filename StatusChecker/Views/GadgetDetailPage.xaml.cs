@@ -20,9 +20,9 @@ namespace StatusChecker.Views
         {
             InitializeComponent();
 
-            var gadget = new Gadget
+            var gadget = new GadgetViewModel
             {
-                Name = "Gerät 1",
+                Name = "",
                 IpAddress = ""
             };
 
