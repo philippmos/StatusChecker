@@ -2,7 +2,8 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:StatusChecker.Views"
-            x:Class="StatusChecker.Views.MainPage">
+            x:Class="StatusChecker.Views.MainPage"
+             BackgroundColor="#212121">
 
     <MasterDetailPage.Master>
         <views:MenuPage />
