@@ -55,6 +55,7 @@ namespace StatusChecker.ViewModels
                         Name = gadget.Name,
                         IpAddress = gadget.IpAddress,
                         IsStatusOk = gadgetStatus.temperature_status == "Normal",
+                        TemperatureStatus = gadgetStatus.temperature_status,
                         Temperature = gadgetStatus.temperature,
                         TemperatureC = $"{gadgetStatus.temperature} °C"
                     };

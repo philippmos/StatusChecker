@@ -6,10 +6,27 @@
              BackgroundColor="#212121">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Gerätename:" FontSize="Medium" />
-        <Label Text="{Binding Gadget.Name}" FontSize="Small"/>
-        <Label Text="Ip Adresse:" FontSize="Medium" />
-        <Label Text="{Binding Gadget.IpAddress}" FontSize="Small"/>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Gerätename:" FontSize="Medium"/>
+            <Label Text="{Binding Gadget.Name}" FontSize="Small"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Ip Adresse:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.IpAddress}" FontSize="Small"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Temperatur:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.TemperatureC}" FontSize="Small"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Status Temperatur:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.TemperatureStatus}" FontSize="Small"/>
+        </StackLayout>
+        
     </StackLayout>
     
 </ContentPage>
