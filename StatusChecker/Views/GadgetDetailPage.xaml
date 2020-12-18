@@ -13,7 +13,12 @@
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
-            <Label Text="Ip Adresse:" FontSize="Medium" />
+            <Label Text="Device ID:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.DeviceId}" FontSize="Small"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="IP Adresse:" FontSize="Medium" />
             <Label Text="{Binding Gadget.IpAddress}" FontSize="Small"/>
         </StackLayout>
         

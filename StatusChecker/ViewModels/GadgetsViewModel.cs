@@ -52,6 +52,7 @@ namespace StatusChecker.ViewModels
                     var viewModel = new GadgetViewModel
                     {
                         Id = gadget.Id,
+                        DeviceId = gadgetStatus.mac,
                         Name = gadget.Name,
                         IpAddress = gadget.IpAddress,
                         IsStatusOk = gadgetStatus.temperature_status == "Normal",
