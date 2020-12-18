@@ -2,7 +2,7 @@
 {
     public class GadgetViewModel : BaseViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string DeviceId { get; set; }
         public string Name { get; set; }
         public string IpAddress { get; set; }

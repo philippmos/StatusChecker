@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,7 +34,7 @@ namespace StatusChecker.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
             var oldGadget = gadgets.Where((Gadget arg) => arg.Id == id).FirstOrDefault();
             gadgets.Remove(oldGadget);
@@ -42,7 +42,7 @@ namespace StatusChecker.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<Gadget> GetItemAsync(string id)
+        public async Task<Gadget> GetItemAsync(int id)
         {
             return await Task.FromResult(gadgets.FirstOrDefault(s => s.Id == id));
         }
