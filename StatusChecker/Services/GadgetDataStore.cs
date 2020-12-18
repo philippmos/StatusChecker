@@ -20,7 +20,7 @@ namespace StatusChecker.Services
 
         public async Task<bool> AddItemAsync(Gadget gadget)
         {
-            gadgets.Add(gadget);
+            await App.Database.SaveGadgetAsync(gadget);
 
             return await Task.FromResult(true);
         }
@@ -44,12 +44,12 @@ namespace StatusChecker.Services
 
         public async Task<Gadget> GetItemAsync(int id)
         {
-            return await Task.FromResult(gadgets.FirstOrDefault(s => s.Id == id));
+            return await App.Database.GetGadgetAsync(id);
         }
 
         public async Task<IEnumerable<Gadget>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await Task.FromResult(gadgets);
+            return await App.Database.GetGadgetsAsync();
         }
     }
 }
