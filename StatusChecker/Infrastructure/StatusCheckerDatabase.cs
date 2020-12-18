@@ -12,7 +12,7 @@ namespace StatusChecker.Infrastructure
     {
         static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
-            return new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+            return new SQLiteAsyncConnection(DbConstants.DatabasePath, DbConstants.Flags);
         });
 
         static SQLiteAsyncConnection Database => lazyInitializer.Value;

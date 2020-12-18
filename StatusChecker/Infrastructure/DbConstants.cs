@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-public static class Constants
+public static class DbConstants
 {
-    public const string DatabaseFilename = "StatusCheckerSQLite.db3";
+    public const string DatabaseFilename = "StatusChecker.db";
 
     public const SQLite.SQLiteOpenFlags Flags =
 
