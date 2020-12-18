@@ -24,7 +24,8 @@ namespace StatusChecker.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Gadget);
+            await App.Database.SaveGadgetAsync(Gadget);
+
             await Navigation.PopModalAsync();
         }
 

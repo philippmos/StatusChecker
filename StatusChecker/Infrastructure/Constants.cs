@@ -3,7 +3,7 @@ using System.IO;
 
 public static class Constants
 {
-    public const string DatabaseFilename = "StatusCheckerSQLite.db3";
+    public const string DatabaseFilename = "StatusCheckerSQLite.sqlite";
 
     public const SQLite.SQLiteOpenFlags Flags =
 

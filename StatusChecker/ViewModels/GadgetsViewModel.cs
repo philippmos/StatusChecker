@@ -44,7 +44,7 @@ namespace StatusChecker.ViewModels
             try
             {
                 Gadgets.Clear();
-                var gadgets = await _dataStore.GetItemsAsync(true);
+                var gadgets = await App.Database.GetGadgetsAsync();
                 foreach (var gadget in gadgets)
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
