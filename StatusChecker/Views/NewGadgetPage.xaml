@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StatusChecker.Views.NewGadgetPage"
+             Title="Neues Gerät"
+             BackgroundColor="#212121">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Abbrechen" Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="Speichern" Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Gerätename" FontSize="Medium" />
+            <Entry Text="{Binding Gadget.Name}" FontSize="Small" Placeholder="z.B. Neues Gerät 1" />
+            <Label Text="Ip Adresse" FontSize="Medium" />
+            <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small" Placeholder="0.0.0.0" />
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

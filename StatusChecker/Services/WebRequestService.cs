@@ -1,18 +1,14 @@
-using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 using StatusChecker.Models;
-
-
+using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Services
 {
-    public class WebRequestService
+    public class WebRequestService : IWebRequestService
     {
         private string _statusRequestUrl = "/status";
 

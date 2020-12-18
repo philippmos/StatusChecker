@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StatusChecker.Views.GadgetDetailPage"
+             Title="{Binding Name}"
+             BackgroundColor="#212121">
+
+    <StackLayout Spacing="20" Padding="15">
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Gerätename:" FontSize="Medium"/>
+            <Label Text="{Binding Gadget.Name}" FontSize="Small"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Device ID:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.DeviceId}" FontSize="Small"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="IP Adresse:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.IpAddress}" FontSize="Small"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Temperatur:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.TemperatureC}" FontSize="Small"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Status Temperatur:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.TemperatureStatus}" FontSize="Small"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Volt:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.Voltage}" FontSize="Small"/>
+        </StackLayout>
+        
+    </StackLayout>
+    
+</ContentPage>
