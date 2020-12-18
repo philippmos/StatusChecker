@@ -58,7 +58,8 @@ namespace StatusChecker.ViewModels
                         IsStatusOk = gadgetStatus.temperature_status == "Normal",
                         TemperatureStatus = gadgetStatus.temperature_status,
                         Temperature = gadgetStatus.temperature,
-                        TemperatureC = $"{gadgetStatus.temperature} °C"
+                        TemperatureC = $"{gadgetStatus.temperature} °C",
+                        Voltage = $"{ gadgetStatus.voltage } V"
                     };
 
                     Gadgets.Add(viewModel);

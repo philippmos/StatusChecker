@@ -32,6 +32,11 @@
             <Label Text="{Binding Gadget.TemperatureStatus}" FontSize="Small"/>
         </StackLayout>
         
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Volt:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.Voltage}" FontSize="Small"/>
+        </StackLayout>
+        
     </StackLayout>
     
 </ContentPage>
