@@ -33,7 +33,7 @@ namespace StatusChecker.ViewModels
 
                 
 
-                await DataStore.AddItemAsync(newGadget);
+                await _dataStore.AddItemAsync(newGadget);
             });
         }
 
@@ -44,10 +44,10 @@ namespace StatusChecker.ViewModels
             try
             {
                 Gadgets.Clear();
-                var gadgets = await DataStore.GetItemsAsync(true);
+                var gadgets = await _dataStore.GetItemsAsync(true);
                 foreach (var gadget in gadgets)
                 {
-                    GadgetStatus gadgetStatus = await WebRequestService.GetStatusAsync(gadget.IpAddress);
+                    GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
 
                     var viewModel = new GadgetViewModel
                     {

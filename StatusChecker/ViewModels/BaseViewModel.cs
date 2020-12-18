@@ -12,8 +12,8 @@ namespace StatusChecker.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Gadget> DataStore => DependencyService.Get<IDataStore<Gadget>>();
-        public IWebRequestService WebRequestService => DependencyService.Get<IWebRequestService>();
+        protected IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
+        protected IWebRequestService _webRequestService => DependencyService.Get<IWebRequestService>();
 
         bool isBusy = false;
         public bool IsBusy
