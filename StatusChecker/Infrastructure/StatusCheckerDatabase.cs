@@ -41,12 +41,6 @@ namespace StatusChecker.Infrastructure
         }
 
 
-        public Task<List<Gadget>> GetGadgetsNotDoneAsync()
-        {
-            return Database.QueryAsync<Gadget>("SELECT * FROM [Gadget] WHERE [Done] = 0");
-        }
-
-
         public Task<Gadget> GetGadgetAsync(int id)
         {
             return Database.Table<Gadget>().Where(i => i.Id == id).FirstOrDefaultAsync();
@@ -63,6 +57,12 @@ namespace StatusChecker.Infrastructure
             {
                 return Database.InsertAsync(gadget);
             }
+        }
+
+
+        public Task<int> DeleteGadgetAsync(Gadget gadget)
+        {
+            return Database.DeleteAsync(gadget);
         }
     }
 }
