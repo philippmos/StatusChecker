@@ -1,15 +1,19 @@
-using System;
 using Xamarin.Forms;
-
-using StatusChecker.Services;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace StatusChecker
+using StatusChecker.Services.Interfaces;
+using StatusChecker.Models;
+
+namespace StatusChecker.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class StatusCheckerPage : ContentPage
     {
-        public MainPage()
+
+        private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
+        private IWebRequestService _webRequestService => DependencyService.Get<IWebRequestService>();
+
+        public StatusCheckerPage()
         {
             InitializeComponent();
         }
@@ -47,17 +51,25 @@ namespace StatusChecker
         {
             ToggleActivityIndicator(_checkupIndicator);
 
-            var webRequestService = new WebRequestService();
-
-            var gadgetConfigs = new Dictionary<string, Label>()
+            List<Label> labelList = new List<Label>
             {
+                _temp_1, _temp_2, _temp_3, _temp_4, _temp_5
             };
+
+            var gadgets = await _dataStore.GetItemsAsync();
+            var gadgetConfigs = new Dictionary<string, Label>();
+
+            for(int i = 0; i < labelList.Count(); i++)
+            {
+                gadgetConfigs.Add(gadgets.ElementAt(i).IpAddress, labelList[i]);
+            }
+
 
             ResetStatusLabels(gadgetConfigs.Select(x => x.Value).ToList());
 
             foreach (KeyValuePair<string, Label> gadgetConfig in gadgetConfigs)
             {
-                var gadgetStatus = await webRequestService.GetStatusAsync(gadgetConfig.Key);
+                var gadgetStatus = await _webRequestService.GetStatusAsync(gadgetConfig.Key);
                 if (gadgetStatus == null) continue;
 
                 gadgetConfig.Value.Text = $"{ gadgetStatus.temperature } °C  ({ gadgetStatus.temperature_status })";
