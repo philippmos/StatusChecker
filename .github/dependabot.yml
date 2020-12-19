@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/StatusChecker"
+    schedule:
+      interval: "monthly"
+      
+    reviewers:
+      - "philipp-c-moser"
+      
+    target-branch: "main"
+
+
+  - package-ecosystem: "nuget"
+    directory: "/StatusChecker.iOS"
+    schedule:
+      interval: "monthly"
+      
+    reviewers:
+      - "philipp-c-moser"
+      
+    target-branch: "main"
