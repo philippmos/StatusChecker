@@ -16,5 +16,4 @@ It displays the Temperature of each Gadget and allows re-checking the status.
 
 ## Screenshots
 
-<img src="./.github/images/screenshot_overview.png" width="125">
-<img src="./.github/images/screenshot_additem.png" width="125">
+<img src="./.github/images/screenshot_overview.png" width="250"><img src="./.github/images/screenshot_additem.png" width="250">
