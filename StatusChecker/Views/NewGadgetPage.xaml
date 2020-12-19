@@ -13,16 +13,29 @@
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Gerätename" FontSize="Medium" />
-            <Entry Text="{Binding Gadget.Name}" FontSize="Small" Placeholder="z.B. Neues Gerät 1" />
+            <Entry Text="{Binding Gadget.Name}" FontSize="Small"
+                   Placeholder="z.B. Neues Gerät 1"
+                   HeightRequest="50"
+                   BackgroundColor="#212121"/>
 
             <Label Text="Standort" FontSize="Medium" />
-            <Entry Text="{Binding Gadget.Location}" FontSize="Small" Placeholder="z.B. Rollladen Küche" />
+            <Entry Text="{Binding Gadget.Location}" FontSize="Small"
+                   Placeholder="z.B. Rollladen Küche"
+                   HeightRequest="50"
+                   BackgroundColor="#212121" />
 
-            <Label Text="Ip Adresse" FontSize="Medium" />
-            <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small" Placeholder="0.0.0.0" />
+            <Label Text="IP Adresse" FontSize="Medium" />
+            <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small"
+                   Placeholder="0.0.0.0"
+                   HeightRequest="50"
+                   BackgroundColor="#212121" />
 
             <Label Text="Beschreibung" FontSize="Medium" />
-            <Editor Text="{Binding Gadget.Description}" FontSize="Small" Margin="0" />
+            <Entry Text="{Binding Gadget.Description}" FontSize="Small"
+                   Placeholder="Beschreibung des Gerätes"
+                   HeightRequest="50"
+                   BackgroundColor="#212121"
+                    />
         </StackLayout>
     </ContentPage.Content>
     
