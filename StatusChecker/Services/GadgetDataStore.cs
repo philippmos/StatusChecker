@@ -22,7 +22,11 @@ namespace StatusChecker.Services
 
         public async Task<bool> UpdateItemAsync(Gadget gadget)
         {
-            throw new NotImplementedException();
+            await App.Database.SaveGadgetAsync(gadget);
+
+            Gadget updatedGadget = await App.Database.GetGadgetAsync(gadget.Id);
+
+            return true;
         }
 
 

@@ -6,6 +6,7 @@
              BackgroundColor="#212121">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Bearbeiten" Clicked="EditGadget_Clicked" />
         <ToolbarItem Text="Löschen" Clicked="RemoveGadget_Clicked" />
     </ContentPage.ToolbarItems>
 

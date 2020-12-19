@@ -38,5 +38,10 @@ namespace StatusChecker.Views
             await _dataStore.DeleteItemAsync(viewModel.Gadget.Id);
             await Navigation.PushAsync(new GadgetsPage());
         }
+
+        async void EditGadget_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new EditGadgetPage(viewModel));
+        }
     }
 }
