@@ -1,12 +1,15 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Models;
 
+
 namespace StatusChecker.Views
 {
+    [Obsolete("This View is no longer supported", false)]
     public partial class StatusCheckerPage : ContentPage
     {
 
