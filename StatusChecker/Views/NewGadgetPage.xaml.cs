@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-using StatusChecker.Models;
+using StatusChecker.Models.Database;
 
 namespace StatusChecker.Views
 {

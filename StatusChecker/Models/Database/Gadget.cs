@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace StatusChecker.Models
+namespace StatusChecker.Models.Database
 {
     public class Gadget
     {

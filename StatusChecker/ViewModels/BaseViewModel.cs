@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.ViewModels

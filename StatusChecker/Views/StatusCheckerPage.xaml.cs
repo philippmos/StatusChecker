@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 
 using StatusChecker.Services.Interfaces;
-using StatusChecker.Models;
+using StatusChecker.Models.Database;
 
 
 namespace StatusChecker.Views

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Services

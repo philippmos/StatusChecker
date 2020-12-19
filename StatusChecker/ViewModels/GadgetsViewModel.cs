@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Views;
 
 namespace StatusChecker.ViewModels
