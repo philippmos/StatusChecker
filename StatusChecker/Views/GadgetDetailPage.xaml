@@ -17,6 +17,11 @@
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
+            <Label Text="Standort:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.Location}" FontSize="Small"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
             <Label Text="Device ID:" FontSize="Medium" />
             <Label Text="{Binding Gadget.DeviceId}" FontSize="Small"/>
         </StackLayout>
@@ -39,6 +44,12 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="Volt:" FontSize="Medium" />
             <Label Text="{Binding Gadget.Voltage}" FontSize="Small"/>
+        </StackLayout>
+        
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Beschreibung:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.Description}" FontSize="Small"/>
         </StackLayout>
         
     </StackLayout>

@@ -16,7 +16,9 @@ namespace StatusChecker.Views
             Gadget = new Gadget
             {
                 Name = "",
-                IpAddress = ""
+                Location = "",
+                IpAddress = "",
+                Description = ""
             };
 
             BindingContext = this;

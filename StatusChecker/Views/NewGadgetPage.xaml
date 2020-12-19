@@ -4,18 +4,25 @@
              x:Class="StatusChecker.Views.NewGadgetPage"
              Title="Neues Gerät"
              BackgroundColor="#212121">
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Abbrechen" Clicked="Cancel_Clicked" />
         <ToolbarItem Text="Speichern" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Gerätename" FontSize="Medium" />
             <Entry Text="{Binding Gadget.Name}" FontSize="Small" Placeholder="z.B. Neues Gerät 1" />
+
+            <Label Text="Standort" FontSize="Medium" />
+            <Entry Text="{Binding Gadget.Location}" FontSize="Small" Placeholder="z.B. Rollladen Küche" />
+
             <Label Text="Ip Adresse" FontSize="Medium" />
             <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small" Placeholder="0.0.0.0" />
+
+            <Label Text="Beschreibung" FontSize="Medium" />
+            <Editor Text="{Binding Gadget.Description}" FontSize="Small" Margin="0" />
         </StackLayout>
     </ContentPage.Content>
     
