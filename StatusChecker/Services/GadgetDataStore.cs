@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Services
@@ -22,7 +20,11 @@ namespace StatusChecker.Services
 
         public async Task<bool> UpdateItemAsync(Gadget gadget)
         {
-            throw new NotImplementedException();
+            await App.Database.SaveGadgetAsync(gadget);
+
+            Gadget updatedGadget = await App.Database.GetGadgetAsync(gadget.Id);
+
+            return true;
         }
 
 

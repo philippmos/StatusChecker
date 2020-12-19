@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-using StatusChecker.Models;
+using StatusChecker.Models.Database;
 
 namespace StatusChecker.Views
 {
@@ -16,7 +16,9 @@ namespace StatusChecker.Views
             Gadget = new Gadget
             {
                 Name = "",
-                IpAddress = ""
+                Location = "",
+                IpAddress = "",
+                Description = ""
             };
 
             BindingContext = this;

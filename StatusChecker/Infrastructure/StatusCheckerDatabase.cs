@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
 
-using StatusChecker.Models;
+using StatusChecker.Models.Database;
 
 namespace StatusChecker.Infrastructure
 {

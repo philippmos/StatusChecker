@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Views;
 
 namespace StatusChecker.ViewModels
@@ -28,7 +29,9 @@ namespace StatusChecker.ViewModels
                 Gadgets.Add(new GadgetViewModel {
                        Id = gadget.Id,
                        Name = gadget.Name,
-                       IpAddress = gadget.IpAddress
+                       Location = gadget.Location,
+                       IpAddress = gadget.IpAddress,
+                       Description = gadget.Description
                 });
 
                 
@@ -54,7 +57,9 @@ namespace StatusChecker.ViewModels
                         Id = gadget.Id,
                         DeviceId = gadgetStatus.mac,
                         Name = gadget.Name,
+                        Location = gadget.Location,
                         IpAddress = gadget.IpAddress,
+                        Description = gadget.Description,
                         IsStatusOk = gadgetStatus.temperature_status == "Normal",
                         TemperatureStatus = gadgetStatus.temperature_status,
                         Temperature = gadgetStatus.temperature,

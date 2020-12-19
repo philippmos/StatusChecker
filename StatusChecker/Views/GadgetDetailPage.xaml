@@ -6,6 +6,7 @@
              BackgroundColor="#212121">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Bearbeiten" Clicked="EditGadget_Clicked" />
         <ToolbarItem Text="Löschen" Clicked="RemoveGadget_Clicked" />
     </ContentPage.ToolbarItems>
 
@@ -14,6 +15,11 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="Gerätename:" FontSize="Medium"/>
             <Label Text="{Binding Gadget.Name}" FontSize="Small"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Standort:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.Location}" FontSize="Small"/>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
@@ -39,6 +45,12 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="Volt:" FontSize="Medium" />
             <Label Text="{Binding Gadget.Voltage}" FontSize="Small"/>
+        </StackLayout>
+        
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Beschreibung:" FontSize="Medium" />
+            <Label Text="{Binding Gadget.Description}" FontSize="Small"/>
         </StackLayout>
         
     </StackLayout>
