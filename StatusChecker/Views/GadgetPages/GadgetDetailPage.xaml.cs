@@ -33,13 +33,13 @@ namespace StatusChecker.Views.GadgetPages
             BindingContext = viewModel;
         }
 
-        private async void RemoveGadget_Clicked(System.Object sender, System.EventArgs e)
+        private async void RemoveGadget_Clicked(object sender, System.EventArgs e)
         {
             await _dataStore.DeleteAsync(viewModel.Gadget.Id);
             await Navigation.PushAsync(new GadgetsPage());
         }
 
-        private async void EditGadget_Clicked(System.Object sender, System.EventArgs e)
+        private async void EditGadget_Clicked(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new EditGadgetPage(viewModel));
         }

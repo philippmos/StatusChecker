@@ -35,7 +35,7 @@ namespace StatusChecker.Views.GadgetPages
             BindingContext = viewModel;
         }
 
-        private async void Save_Clicked(System.Object sender, System.EventArgs e)
+        private async void Save_Clicked(object sender, System.EventArgs e)
         {
             var updatedGadget = new Gadget
             {
@@ -53,7 +53,7 @@ namespace StatusChecker.Views.GadgetPages
             }
         }
 
-        private async void Cancel_Clicked(System.Object sender, System.EventArgs e)
+        private async void Cancel_Clicked(object sender, System.EventArgs e)
         {
             await Navigation.PopAsync();
         }

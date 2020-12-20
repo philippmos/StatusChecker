@@ -23,12 +23,12 @@ namespace StatusChecker.Views
             InitializeComponent();
         }
 
-        private void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
+        private void CheckupButton_Clicked(object sender, System.EventArgs e)
         {
             RunStatusCheckup();
         }
 
-        private async void EnableAutoRefreshButton_Clicked(System.Object sender, System.EventArgs e)
+        private async void EnableAutoRefreshButton_Clicked(object sender, System.EventArgs e)
         {
             const int numberOfRuns = 5;
 
