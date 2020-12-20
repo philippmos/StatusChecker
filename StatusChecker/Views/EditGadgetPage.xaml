@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.EditGadgetPage"
              Title="{Binding Name}"
-             BackgroundColor="#212121">
+             BackgroundColor="#1C1C1E">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Abbrechen" Clicked="Cancel_Clicked" />
