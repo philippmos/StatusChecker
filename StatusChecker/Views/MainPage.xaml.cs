@@ -29,6 +29,9 @@ namespace StatusChecker.Views
                     case (int)MenuItemType.Browse:
                         MenuPages.Add(id, new NavigationPage(new GadgetsPage()));
                         break;
+                    case (int)MenuItemType.AppInfo:
+                        MenuPages.Add(id, new NavigationPage(new AppInfoPage()));
+                        break;
                 }
             }
 
