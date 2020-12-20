@@ -8,7 +8,7 @@ using StatusChecker.Models.Database;
 
 namespace StatusChecker.Infrastructure
 {
-    public class StatusCheckerDatabase
+    public class StatusCheckerDatabase : IDatabase
     {
         static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {

@@ -7,15 +7,15 @@ namespace StatusChecker
 {
     public partial class App : Application
     {
-        static StatusCheckerDatabase database;
+        static IDatabase database;
 
-        public static StatusCheckerDatabase Database
+        public static IDatabase Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new StatusCheckerDatabase();
+                    database = DependencyService.Get<IDatabase>(); ;
                 }
                 return database;
             }
@@ -28,6 +28,7 @@ namespace StatusChecker
 
             DependencyService.Register<GadgetDataStore>();
             DependencyService.Register<WebRequestService>();
+            DependencyService.Register<StatusCheckerDatabase>();
 
             MainPage = new Views.MainPage();
         }
