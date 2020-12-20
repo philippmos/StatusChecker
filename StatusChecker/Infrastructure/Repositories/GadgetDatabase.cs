@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using SQLite;
 
 using StatusChecker.Models.Database;
-using StatusChecker.Infrastructure.Interfaces;
+using StatusChecker.Infrastructure.Repositories.Interfaces;
 
-namespace StatusChecker.Infrastructure
+namespace StatusChecker.Infrastructure.Repositories
 {
     public class GadgetDatabase : IDatabase<Gadget>
     {

@@ -1,8 +1,8 @@
 ﻿using Xamarin.Forms;
 
 using StatusChecker.Services;
-using StatusChecker.Infrastructure;
-using StatusChecker.Infrastructure.Interfaces;
+using StatusChecker.Infrastructure.Repositories;
+using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 
 namespace StatusChecker
