@@ -2,6 +2,7 @@
 
 using StatusChecker.Services;
 using StatusChecker.Infrastructure;
+using StatusChecker.Infrastructure.Interfaces;
 
 namespace StatusChecker
 {

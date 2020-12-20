@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using StatusChecker.Models.Database;
 
-namespace StatusChecker.Infrastructure
+namespace StatusChecker.Infrastructure.Interfaces
 {
     public interface IDatabase
     {

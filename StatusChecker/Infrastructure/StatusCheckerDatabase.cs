@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SQLite;
 
 using StatusChecker.Models.Database;
+using StatusChecker.Infrastructure.Interfaces;
 
 namespace StatusChecker.Infrastructure
 {
