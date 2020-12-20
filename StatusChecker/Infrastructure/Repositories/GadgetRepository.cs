@@ -9,7 +9,7 @@ using StatusChecker.Infrastructure.Repositories.Interfaces;
 
 namespace StatusChecker.Infrastructure.Repositories
 {
-    public class GadgetDatabase : IDatabase<Gadget>
+    public class GadgetRepository : IRepository<Gadget>
     {
         static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
@@ -19,7 +19,7 @@ namespace StatusChecker.Infrastructure.Repositories
         static SQLiteAsyncConnection Database => lazyInitializer.Value;
         static bool initialized = false;
 
-        public GadgetDatabase()
+        public GadgetRepository()
         {
             InitializeAsync().SafeFireAndForget(false);
         }

@@ -9,15 +9,15 @@ namespace StatusChecker
 {
     public partial class App : Application
     {
-        static IDatabase<Gadget> database;
+        static IRepository<Gadget> database;
 
-        public static IDatabase<Gadget> Database
+        public static IRepository<Gadget> Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = DependencyService.Get<IDatabase<Gadget>>(); ;
+                    database = DependencyService.Get<IRepository<Gadget>>(); ;
                 }
                 return database;
             }
@@ -29,8 +29,10 @@ namespace StatusChecker
             InitializeComponent();
 
             DependencyService.Register<GadgetDataStore>();
+
             DependencyService.Register<WebRequestService>();
-            DependencyService.Register<GadgetDatabase>();
+
+            DependencyService.Register<GadgetRepository>();
 
             MainPage = new Views.MainPage();
         }
