@@ -12,7 +12,15 @@
 
 
     <ContentPage.Content>
+
         <StackLayout Spacing="20" Padding="15">
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="ID" FontSize="Medium" />
+                <Label Text="{Binding Gadget.Id}" FontSize="Medium" />
+
+            </StackLayout>
+
             <Label Text="Gerätename" FontSize="Medium" />
             <Entry Text="{Binding Gadget.Name}" FontSize="Small"
                    Placeholder="z.B. Neues Gerät 1"
@@ -37,6 +45,7 @@
                    HeightRequest="50"
                    BackgroundColor="#212121" />
         </StackLayout>
+
     </ContentPage.Content>
     
 </ContentPage>
