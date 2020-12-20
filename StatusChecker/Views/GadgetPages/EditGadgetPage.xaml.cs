@@ -11,7 +11,8 @@ namespace StatusChecker.Views.GadgetPages
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
 
         public Gadget Gadget { get; set; }
-        GadgetDetailViewModel viewModel;
+
+        private readonly GadgetDetailViewModel viewModel;
 
         public EditGadgetPage(GadgetDetailViewModel viewModel)
         {
@@ -34,7 +35,7 @@ namespace StatusChecker.Views.GadgetPages
             BindingContext = viewModel;
         }
 
-        async void Save_Clicked(System.Object sender, System.EventArgs e)
+        private async void Save_Clicked(object sender, System.EventArgs e)
         {
             var updatedGadget = new Gadget
             {
@@ -52,7 +53,7 @@ namespace StatusChecker.Views.GadgetPages
             }
         }
 
-        async void Cancel_Clicked(System.Object sender, System.EventArgs e)
+        private async void Cancel_Clicked(object sender, System.EventArgs e)
         {
             await Navigation.PopAsync();
         }

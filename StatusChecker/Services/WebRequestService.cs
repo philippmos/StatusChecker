@@ -10,10 +10,10 @@ namespace StatusChecker.Services
 {
     public class WebRequestService : IWebRequestService
     {
-        private string _statusRequestUrl = "/status";
+        private readonly string _statusRequestUrl = "/status";
 
-        private string _username = "";
-        private string _password = "";
+        private readonly string _username = "";
+        private readonly string _password = "";
 
         private string _ipAddress = "";
 

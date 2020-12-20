@@ -8,7 +8,7 @@ namespace StatusChecker.Views.GadgetPages
 {
     public partial class GadgetsPage : ContentPage
     {
-        GadgetsViewModel viewModel;
+        private readonly GadgetsViewModel viewModel;
 
         public GadgetsPage()
         {
@@ -17,14 +17,14 @@ namespace StatusChecker.Views.GadgetPages
             BindingContext = viewModel = new GadgetsViewModel();
         }
 
-        async void OnItemSelected(object sender, EventArgs args)
+        private async void OnItemSelected(object sender, EventArgs args)
         {
             var layout = (BindableObject)sender;
             var gadget = (GadgetViewModel)layout.BindingContext;
             await Navigation.PushAsync(new GadgetDetailPage(new GadgetDetailViewModel(gadget)));
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
+        private async void AddItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewGadgetPage()));
         }
