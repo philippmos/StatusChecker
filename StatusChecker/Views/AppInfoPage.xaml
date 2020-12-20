@@ -8,13 +8,13 @@
 
     <StackLayout Spacing="20" Padding="15">
 
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Version:" FontSize="Medium"/>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     VerticalOptions="EndAndExpand"
+                     Padding="0,0,0,30">
             <Label x:Name="_lblVersionInfo" FontSize="Small"/>
         </StackLayout>
 
-
-    </StackLayout>  
-
+    </StackLayout>
 
 </ContentPage>

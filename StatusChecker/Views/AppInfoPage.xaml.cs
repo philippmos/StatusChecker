@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Essentials;
+﻿using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace StatusChecker.Views
@@ -13,7 +11,7 @@ namespace StatusChecker.Views
 
             VersionTracking.Track();
 
-            _lblVersionInfo.Text = VersionTracking.CurrentVersion;
+            _lblVersionInfo.Text = $"StatusChecker v{ VersionTracking.CurrentVersion }";
         }
     }
 }
