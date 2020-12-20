@@ -17,21 +17,20 @@ namespace StatusChecker.ViewModels
         protected IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
         protected IWebRequestService _webRequestService => DependencyService.Get<IWebRequestService>();
 
-        bool isBusy = false;
+        private bool _isBusy = false;
 
         public bool IsBusy
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
         }
 
-
-        string title = string.Empty;
+        private string _title = string.Empty;
 
         public string Title
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
         }
         #endregion
 

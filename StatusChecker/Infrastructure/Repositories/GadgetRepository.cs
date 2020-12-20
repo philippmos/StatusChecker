@@ -11,40 +11,41 @@ namespace StatusChecker.Infrastructure.Repositories
 {
     public class GadgetRepository : IGadgetRepository
     {
-        static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
+        private static readonly Lazy<SQLiteAsyncConnection> _lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
             return new SQLiteAsyncConnection(DbConstants.DatabasePath, DbConstants.Flags);
         });
 
-        static SQLiteAsyncConnection Database => lazyInitializer.Value;
-        static bool initialized = false;
+        private static SQLiteAsyncConnection _database => _lazyInitializer.Value;
+
+        private static bool _initialized = false;
 
         public GadgetRepository()
         {
             InitializeAsync().SafeFireAndForget(false);
         }
 
-        async Task InitializeAsync()
+        private async Task InitializeAsync()
         {
-            if (!initialized)
+            if (!_initialized)
             {
-                if (!Database.TableMappings.Any(m => m.MappedType.Name == typeof(Gadget).Name))
+                if (!_database.TableMappings.Any(m => m.MappedType.Name == typeof(Gadget).Name))
                 {
-                    await Database.CreateTablesAsync(CreateFlags.None, typeof(Gadget)).ConfigureAwait(false);
+                    await _database.CreateTablesAsync(CreateFlags.None, typeof(Gadget)).ConfigureAwait(false);
                 }
-                initialized = true;
+                _initialized = true;
             }
         }
 
         public Task<List<Gadget>> GetAllAsync()
         {
-            return Database.Table<Gadget>().ToListAsync();
+            return _database.Table<Gadget>().ToListAsync();
         }
 
 
         public Task<Gadget> GetAsync(int id)
         {
-            return Database.Table<Gadget>().Where(i => i.Id == id).FirstOrDefaultAsync();
+            return _database.Table<Gadget>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
 
@@ -52,18 +53,18 @@ namespace StatusChecker.Infrastructure.Repositories
         {
             if (item.Id != 0)
             {
-                return Database.UpdateAsync(item);
+                return _database.UpdateAsync(item);
             }
             else
             {
-                return Database.InsertAsync(item);
+                return _database.InsertAsync(item);
             }
         }
 
 
         public Task<int> DeleteAsync(Gadget item)
         {
-            return Database.DeleteAsync(item);
+            return _database.DeleteAsync(item);
         }
     }
 }

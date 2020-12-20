@@ -24,7 +24,7 @@ namespace StatusChecker.ViewModels
 
             MessagingCenter.Subscribe<NewGadgetPage, Gadget>(this, "AddItem", async (obj, gadget) =>
             {
-                var newGadget = gadget as Gadget;
+                var newGadget = gadget;
 
                 Gadgets.Add(new GadgetViewModel {
                        Id = gadget.Id,
@@ -40,7 +40,7 @@ namespace StatusChecker.ViewModels
             });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        private async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
@@ -78,17 +78,6 @@ namespace StatusChecker.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        private Gadget MapGadgetViewModelToGadget(GadgetViewModel gadgetViewModel)
-        {
-            return new Gadget
-            {
-                Id = gadgetViewModel.Id,
-                Name = gadgetViewModel.Name,
-                IpAddress = gadgetViewModel.IpAddress,
-                Description = gadgetViewModel.Description
-            };
         }
     }
 }

@@ -23,12 +23,12 @@ namespace StatusChecker.Views
             InitializeComponent();
         }
 
-        void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
+        private void CheckupButton_Clicked(System.Object sender, System.EventArgs e)
         {
             RunStatusCheckup();
         }
 
-        async void EnableAutoRefreshButton_Clicked(System.Object sender, System.EventArgs e)
+        private async void EnableAutoRefreshButton_Clicked(System.Object sender, System.EventArgs e)
         {
             const int numberOfRuns = 5;
 
@@ -83,20 +83,19 @@ namespace StatusChecker.Views
             ToggleActivityIndicator(_checkupIndicator);
         }
 
-
-        void ToggleActivityIndicator(ActivityIndicator activityIndicator)
+        private void ToggleActivityIndicator(ActivityIndicator activityIndicator)
         {
             activityIndicator.IsEnabled = !activityIndicator.IsEnabled;
             activityIndicator.IsRunning = !activityIndicator.IsRunning;
             activityIndicator.IsVisible = !activityIndicator.IsVisible;
         }
 
-        void ToggleManualCheckupButton()
+        private void ToggleManualCheckupButton()
         {
             _btnCheckup.IsEnabled = !_btnCheckup.IsEnabled;
         }
 
-        void ResetStatusLabels(List<Label> labelList)
+        private void ResetStatusLabels(List<Label> labelList)
         {
             foreach(Label label in labelList)
             {
