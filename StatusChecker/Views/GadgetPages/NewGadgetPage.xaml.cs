@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
 
-namespace StatusChecker.Views
+namespace StatusChecker.Views.GadgetPages
 {
     public partial class NewGadgetPage : ContentPage
     {

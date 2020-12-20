@@ -4,7 +4,7 @@ using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
 
-namespace StatusChecker.Views
+namespace StatusChecker.Views.GadgetPages
 {
     public partial class GadgetDetailPage : ContentPage
     {

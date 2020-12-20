@@ -1,10 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 
-using StatusChecker.Models;
 using StatusChecker.ViewModels;
 
-namespace StatusChecker.Views
+namespace StatusChecker.Views.GadgetPages
 {
     public partial class GadgetsPage : ContentPage
     {

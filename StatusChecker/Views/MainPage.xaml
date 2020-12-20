@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:views="clr-namespace:StatusChecker.Views"
+            xmlns:views="clr-namespace:StatusChecker.Views" xmlns:views1="clr-namespace:StatusChecker.Views.GadgetPages"
             x:Class="StatusChecker.Views.MainPage"
              BackgroundColor="#1C1C1E">
 
@@ -12,7 +12,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <views:GadgetsPage />
+                <views1:GadgetsPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

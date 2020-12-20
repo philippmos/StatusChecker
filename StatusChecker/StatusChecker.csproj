@@ -24,5 +24,24 @@
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Models\Database\" />
+    <Folder Include="Views\GadgetPages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GadgetPages\EditGadgetPage.xaml.cs">
+      <DependentUpon>EditGadgetPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GadgetPages\GadgetDetailPage.xaml.cs">
+      <DependentUpon>GadgetDetailPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GadgetPages\GadgetsPage.xaml.cs">
+      <DependentUpon>GadgetsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GadgetPages\NewGadgetPage.xaml.cs">
+      <DependentUpon>NewGadgetPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

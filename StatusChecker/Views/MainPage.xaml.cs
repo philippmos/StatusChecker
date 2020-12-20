@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using StatusChecker.Models;
+using StatusChecker.Views.GadgetPages;
 
 namespace StatusChecker.Views
 {
