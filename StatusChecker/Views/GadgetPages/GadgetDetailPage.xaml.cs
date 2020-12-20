@@ -35,7 +35,7 @@ namespace StatusChecker.Views.GadgetPages
 
         async void RemoveGadget_Clicked(System.Object sender, System.EventArgs e)
         {
-            await _dataStore.DeleteItemAsync(viewModel.Gadget.Id);
+            await _dataStore.DeleteAsync(viewModel.Gadget.Id);
             await Navigation.PushAsync(new GadgetsPage());
         }
 

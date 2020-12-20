@@ -60,7 +60,7 @@ namespace StatusChecker.Views
                 _temp_1, _temp_2, _temp_3, _temp_4, _temp_5
             };
 
-            var gadgets = await _dataStore.GetItemsAsync();
+            var gadgets = await _dataStore.GetAllAsync();
             var gadgetConfigs = new Dictionary<string, Label>();
 
             for(int i = 0; i < labelList.Count(); i++)

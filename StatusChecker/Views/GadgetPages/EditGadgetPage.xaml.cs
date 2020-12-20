@@ -46,7 +46,7 @@ namespace StatusChecker.Views.GadgetPages
             };
 
 
-            if (await _dataStore.UpdateItemAsync(updatedGadget))
+            if (await _dataStore.UpdateAsync(updatedGadget))
             {
                 await Navigation.PopAsync();
             }

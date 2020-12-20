@@ -10,7 +10,7 @@ namespace StatusChecker.DataStore
     {
         public GadgetDataStore() { }
 
-        public async Task<bool> AddItemAsync(Gadget gadget)
+        public async Task<bool> AddAsync(Gadget gadget)
         {
             await App.GadgetRepository.SaveAsync(gadget);
 
@@ -18,7 +18,7 @@ namespace StatusChecker.DataStore
         }
 
 
-        public async Task<bool> UpdateItemAsync(Gadget gadget)
+        public async Task<bool> UpdateAsync(Gadget gadget)
         {
             await App.GadgetRepository.SaveAsync(gadget);
 
@@ -28,9 +28,9 @@ namespace StatusChecker.DataStore
         }
 
 
-        public async Task<bool> DeleteItemAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            Gadget gadget = await GetItemAsync(id);
+            Gadget gadget = await GetAsync(id);
 
             await App.GadgetRepository.DeleteAsync(gadget);
 
@@ -38,13 +38,13 @@ namespace StatusChecker.DataStore
         }
 
 
-        public async Task<Gadget> GetItemAsync(int id)
+        public async Task<Gadget> GetAsync(int id)
         {
             return await App.GadgetRepository.GetAsync(id);
         }
 
 
-        public async Task<IEnumerable<Gadget>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Gadget>> GetAllAsync(bool forceRefresh = false)
         {
             return await App.GadgetRepository.GetAllAsync();
         }
