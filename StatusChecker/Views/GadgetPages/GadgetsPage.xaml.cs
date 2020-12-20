@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Xamarin.Forms;
 
 using StatusChecker.ViewModels;

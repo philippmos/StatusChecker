@@ -6,7 +6,7 @@ using StatusChecker.DataStore.Interfaces;
 
 namespace StatusChecker.DataStore
 {
-    public class GadgetDataStore : IDataStore<Gadget>
+    public class GadgetDataStore : IGadgetDataStore
     {
         public GadgetDataStore() { }
 
@@ -22,7 +22,7 @@ namespace StatusChecker.DataStore
         {
             await App.GadgetRepository.SaveAsync(gadget);
 
-            Gadget updatedGadget = await App.GadgetRepository.GetAsync(gadget.Id);
+            // Gadget updatedGadget = await App.GadgetRepository.GetAsync(gadget.Id);
 
             return true;
         }
