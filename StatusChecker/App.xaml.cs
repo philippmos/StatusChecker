@@ -9,17 +9,17 @@ namespace StatusChecker
 {
     public partial class App : Application
     {
-        static IRepository<Gadget> database;
+        static IRepository<Gadget> gadgetRepository;
 
-        public static IRepository<Gadget> Database
+        public static IRepository<Gadget> GadgetRepository
         {
             get
             {
-                if (database == null)
+                if (gadgetRepository == null)
                 {
-                    database = DependencyService.Get<IRepository<Gadget>>(); ;
+                    gadgetRepository = DependencyService.Get<IRepository<Gadget>>(); ;
                 }
-                return database;
+                return gadgetRepository;
             }
         }
 
