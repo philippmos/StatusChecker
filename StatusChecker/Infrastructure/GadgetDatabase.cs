@@ -9,7 +9,7 @@ using StatusChecker.Infrastructure.Interfaces;
 
 namespace StatusChecker.Infrastructure
 {
-    public class StatusCheckerDatabase : IDatabase
+    public class GadgetDatabase : IDatabase<Gadget>
     {
         static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
@@ -19,7 +19,7 @@ namespace StatusChecker.Infrastructure
         static SQLiteAsyncConnection Database => lazyInitializer.Value;
         static bool initialized = false;
 
-        public StatusCheckerDatabase()
+        public GadgetDatabase()
         {
             InitializeAsync().SafeFireAndForget(false);
         }
@@ -36,34 +36,34 @@ namespace StatusChecker.Infrastructure
             }
         }
 
-        public Task<List<Gadget>> GetGadgetsAsync()
+        public Task<List<Gadget>> GetAllAsync()
         {
             return Database.Table<Gadget>().ToListAsync();
         }
 
 
-        public Task<Gadget> GetGadgetAsync(int id)
+        public Task<Gadget> GetAsync(int id)
         {
             return Database.Table<Gadget>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
 
-        public Task<int> SaveGadgetAsync(Gadget gadget)
+        public Task<int> SaveAsync(Gadget item)
         {
-            if (gadget.Id != 0)
+            if (item.Id != 0)
             {
-                return Database.UpdateAsync(gadget);
+                return Database.UpdateAsync(item);
             }
             else
             {
-                return Database.InsertAsync(gadget);
+                return Database.InsertAsync(item);
             }
         }
 
 
-        public Task<int> DeleteGadgetAsync(Gadget gadget)
+        public Task<int> DeleteAsync(Gadget item)
         {
-            return Database.DeleteAsync(gadget);
+            return Database.DeleteAsync(item);
         }
     }
 }

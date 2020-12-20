@@ -12,7 +12,7 @@ namespace StatusChecker.Services
 
         public async Task<bool> AddItemAsync(Gadget gadget)
         {
-            await App.Database.SaveGadgetAsync(gadget);
+            await App.Database.SaveAsync(gadget);
 
             return await Task.FromResult(true);
         }
@@ -20,9 +20,9 @@ namespace StatusChecker.Services
 
         public async Task<bool> UpdateItemAsync(Gadget gadget)
         {
-            await App.Database.SaveGadgetAsync(gadget);
+            await App.Database.SaveAsync(gadget);
 
-            Gadget updatedGadget = await App.Database.GetGadgetAsync(gadget.Id);
+            Gadget updatedGadget = await App.Database.GetAsync(gadget.Id);
 
             return true;
         }
@@ -32,7 +32,7 @@ namespace StatusChecker.Services
         {
             Gadget gadget = await GetItemAsync(id);
 
-            await App.Database.DeleteGadgetAsync(gadget);
+            await App.Database.DeleteAsync(gadget);
 
             return true;
         }
@@ -40,13 +40,13 @@ namespace StatusChecker.Services
 
         public async Task<Gadget> GetItemAsync(int id)
         {
-            return await App.Database.GetGadgetAsync(id);
+            return await App.Database.GetAsync(id);
         }
 
 
         public async Task<IEnumerable<Gadget>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await App.Database.GetGadgetsAsync();
+            return await App.Database.GetAllAsync();
         }
     }
 }

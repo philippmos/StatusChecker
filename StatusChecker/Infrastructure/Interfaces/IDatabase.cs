@@ -5,14 +5,14 @@ using StatusChecker.Models.Database;
 
 namespace StatusChecker.Infrastructure.Interfaces
 {
-    public interface IDatabase
+    public interface IDatabase<T>
     {
-        Task<List<Gadget>> GetGadgetsAsync();
+        Task<List<T>> GetAllAsync();
 
-        Task<Gadget> GetGadgetAsync(int id);
+        Task<T> GetAsync(int id);
 
-        Task<int> SaveGadgetAsync(Gadget gadget);
+        Task<int> SaveAsync(T item);
 
-        Task<int> DeleteGadgetAsync(Gadget gadget);
+        Task<int> DeleteAsync(T item);
     }
 }

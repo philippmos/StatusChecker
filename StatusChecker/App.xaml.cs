@@ -3,20 +3,21 @@
 using StatusChecker.Services;
 using StatusChecker.Infrastructure;
 using StatusChecker.Infrastructure.Interfaces;
+using StatusChecker.Models.Database;
 
 namespace StatusChecker
 {
     public partial class App : Application
     {
-        static IDatabase database;
+        static IDatabase<Gadget> database;
 
-        public static IDatabase Database
+        public static IDatabase<Gadget> Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = DependencyService.Get<IDatabase>(); ;
+                    database = DependencyService.Get<IDatabase<Gadget>>(); ;
                 }
                 return database;
             }
@@ -29,7 +30,7 @@ namespace StatusChecker
 
             DependencyService.Register<GadgetDataStore>();
             DependencyService.Register<WebRequestService>();
-            DependencyService.Register<StatusCheckerDatabase>();
+            DependencyService.Register<GadgetDatabase>();
 
             MainPage = new Views.MainPage();
         }
