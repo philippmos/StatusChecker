@@ -2,7 +2,7 @@ using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
-using StatusChecker.Services.Interfaces;
+using StatusChecker.DataStore.Interfaces;
 
 namespace StatusChecker.Views.GadgetPages
 {

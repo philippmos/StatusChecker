@@ -4,6 +4,7 @@ using System.Linq;
 using System;
 
 using StatusChecker.Services.Interfaces;
+using StatusChecker.DataStore.Interfaces;
 using StatusChecker.Models.Database;
 
 

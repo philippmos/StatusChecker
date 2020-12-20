@@ -27,6 +27,8 @@
     <Folder Include="Views\GadgetPages\" />
     <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Infrastructure\Repositories\Interfaces\" />
+    <Folder Include="DataStore\" />
+    <Folder Include="DataStore\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GadgetPages\EditGadgetPage.xaml.cs">

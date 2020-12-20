@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 
 using StatusChecker.Models.Database;
-using StatusChecker.Services.Interfaces;
+using StatusChecker.DataStore.Interfaces;
 
-namespace StatusChecker.Services
+namespace StatusChecker.DataStore
 {
     public class GadgetDataStore : IDataStore<Gadget>
     {

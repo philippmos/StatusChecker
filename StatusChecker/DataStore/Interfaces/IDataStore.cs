@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StatusChecker.Services.Interfaces
+namespace StatusChecker.DataStore.Interfaces
 {
     public interface IDataStore<T>
     {

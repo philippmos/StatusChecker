@@ -4,6 +4,7 @@ using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
+using StatusChecker.DataStore;
 
 namespace StatusChecker
 {
