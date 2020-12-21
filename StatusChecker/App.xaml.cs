@@ -1,4 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
+using Xamarin.Forms;
 
 using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
@@ -40,6 +44,8 @@ namespace StatusChecker
 
         protected override void OnStart()
         {
+            AppCenter.Start(AppSettingsManager.Settings["AppCenterSecretForms"],
+                typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()
