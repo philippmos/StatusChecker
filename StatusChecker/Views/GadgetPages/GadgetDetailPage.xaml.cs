@@ -2,15 +2,15 @@ using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
-using StatusChecker.Services.Interfaces;
+using StatusChecker.DataStore.Interfaces;
 
-namespace StatusChecker.Views
+namespace StatusChecker.Views.GadgetPages
 {
     public partial class GadgetDetailPage : ContentPage
     {
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
 
-        GadgetDetailViewModel viewModel;
+        private readonly GadgetDetailViewModel viewModel;
 
         public GadgetDetailPage(GadgetDetailViewModel viewModel)
         {
@@ -33,13 +33,13 @@ namespace StatusChecker.Views
             BindingContext = viewModel;
         }
 
-        async void RemoveGadget_Clicked(System.Object sender, System.EventArgs e)
+        private async void RemoveGadget_Clicked(object sender, System.EventArgs e)
         {
-            await _dataStore.DeleteItemAsync(viewModel.Gadget.Id);
+            await _dataStore.DeleteAsync(viewModel.Gadget.Id);
             await Navigation.PushAsync(new GadgetsPage());
         }
 
-        async void EditGadget_Clicked(System.Object sender, System.EventArgs e)
+        private async void EditGadget_Clicked(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new EditGadgetPage(viewModel));
         }

@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
-using StatusChecker.Views;
+using StatusChecker.Views.GadgetPages;
 
 namespace StatusChecker.ViewModels
 {
@@ -24,7 +24,7 @@ namespace StatusChecker.ViewModels
 
             MessagingCenter.Subscribe<NewGadgetPage, Gadget>(this, "AddItem", async (obj, gadget) =>
             {
-                var newGadget = gadget as Gadget;
+                var newGadget = gadget;
 
                 Gadgets.Add(new GadgetViewModel {
                        Id = gadget.Id,
@@ -36,18 +36,18 @@ namespace StatusChecker.ViewModels
 
                 
 
-                await _dataStore.AddItemAsync(newGadget);
+                await _dataStore.AddAsync(newGadget);
             });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        private async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
                 Gadgets.Clear();
-                var gadgets = await _dataStore.GetItemsAsync(true);
+                var gadgets = await _dataStore.GetAllAsync(true);
                 foreach (var gadget in gadgets)
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
@@ -78,17 +78,6 @@ namespace StatusChecker.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        private Gadget MapGadgetViewModelToGadget(GadgetViewModel gadgetViewModel)
-        {
-            return new Gadget
-            {
-                Id = gadgetViewModel.Id,
-                Name = gadgetViewModel.Name,
-                IpAddress = gadgetViewModel.IpAddress,
-                Description = gadgetViewModel.Description
-            };
         }
     }
 }

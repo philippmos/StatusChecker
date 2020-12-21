@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -28,7 +24,7 @@ namespace StatusChecker.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
-            AppCenter.Start("7c0e3f1c-9d03-4450-a497-c90758acff49",
+            AppCenter.Start(AppSettingsManager.Settings["AppCenterSecretIOS"],
                    typeof(Analytics), typeof(Crashes));
 
             return base.FinishedLaunching(app, options);

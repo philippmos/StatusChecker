@@ -10,27 +10,23 @@ namespace StatusChecker.Services
 {
     public class WebRequestService : IWebRequestService
     {
-        private string _statusRequestUrl = "/status";
-
-        private string _username = "";
-        private string _password = "";
-
-        private string _ipAddress = "";
+        private readonly string _statusRequestUrl = "/status";
 
 
         public async Task<GadgetStatus> GetStatusAsync(string ipAddress)
         {
-            _ipAddress = ipAddress;
-
-            GadgetStatus gadgetStatus = SerializeWebResponse(await GetWebResponseAsync());
+            GadgetStatus gadgetStatus = SerializeWebResponse(await GetWebResponseAsync(ipAddress));
 
             return gadgetStatus ?? null;
         }
 
-        private async Task<string> GetWebResponseAsync()
+        private async Task<string> GetWebResponseAsync(string ipAddress)
         {
-            var request = WebRequest.Create($"http://{ _ipAddress }{ _statusRequestUrl }");
-            request.Credentials = new NetworkCredential(_username, _password);
+            var request = WebRequest.Create($"http://{ ipAddress }{ _statusRequestUrl }");
+
+            request.Credentials = new NetworkCredential(
+                AppSettingsManager.Settings["WebRequestUsername"],
+                AppSettingsManager.Settings["WebRequestPassword"]);
 
             WebResponse response = await request.GetResponseAsync();
 

@@ -2,16 +2,17 @@ using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
-using StatusChecker.Services.Interfaces;
+using StatusChecker.DataStore.Interfaces;
 
-namespace StatusChecker.Views
+namespace StatusChecker.Views.GadgetPages
 {
     public partial class EditGadgetPage : ContentPage
     {
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
 
         public Gadget Gadget { get; set; }
-        GadgetDetailViewModel viewModel;
+
+        private readonly GadgetDetailViewModel viewModel;
 
         public EditGadgetPage(GadgetDetailViewModel viewModel)
         {
@@ -34,7 +35,7 @@ namespace StatusChecker.Views
             BindingContext = viewModel;
         }
 
-        async void Save_Clicked(System.Object sender, System.EventArgs e)
+        private async void Save_Clicked(object sender, System.EventArgs e)
         {
             var updatedGadget = new Gadget
             {
@@ -46,13 +47,13 @@ namespace StatusChecker.Views
             };
 
 
-            if (await _dataStore.UpdateItemAsync(updatedGadget))
+            if (await _dataStore.UpdateAsync(updatedGadget))
             {
                 await Navigation.PopAsync();
             }
         }
 
-        async void Cancel_Clicked(System.Object sender, System.EventArgs e)
+        private async void Cancel_Clicked(object sender, System.EventArgs e)
         {
             await Navigation.PopAsync();
         }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.MenuPage"
              Title="Menü"
-             BackgroundColor="#212121">
+             BackgroundColor="#1C1C1E">
              
     <StackLayout VerticalOptions="FillAndExpand">
         <ListView x:Name="ListViewMenu"

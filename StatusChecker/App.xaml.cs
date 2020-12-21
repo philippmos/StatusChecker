@@ -1,23 +1,30 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
+using Xamarin.Forms;
 
 using StatusChecker.Services;
-using StatusChecker.Infrastructure;
+using StatusChecker.Infrastructure.Repositories;
+using StatusChecker.Infrastructure.Repositories.Interfaces;
+using StatusChecker.Models.Database;
+using StatusChecker.DataStore;
 
 namespace StatusChecker
 {
     public partial class App : Application
     {
-        static StatusCheckerDatabase database;
+        private static IRepository<Gadget> _gadgetRepository;
 
-        public static StatusCheckerDatabase Database
+        public static IRepository<Gadget> GadgetRepository
         {
             get
             {
-                if (database == null)
+                if (_gadgetRepository == null)
                 {
-                    database = new StatusCheckerDatabase();
+                    _gadgetRepository = DependencyService.Get<IRepository<Gadget>>(); ;
                 }
-                return database;
+                return _gadgetRepository;
             }
         }
 
@@ -27,13 +34,18 @@ namespace StatusChecker
             InitializeComponent();
 
             DependencyService.Register<GadgetDataStore>();
+
             DependencyService.Register<WebRequestService>();
+
+            DependencyService.Register<GadgetRepository>();
 
             MainPage = new Views.MainPage();
         }
 
         protected override void OnStart()
         {
+            AppCenter.Start(AppSettingsManager.Settings["AppCenterSecretForms"],
+                typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()

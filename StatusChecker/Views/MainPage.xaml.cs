@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 
 using StatusChecker.Models;
+using StatusChecker.Views.GadgetPages;
 
 namespace StatusChecker.Views
 {
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        private readonly Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
         public MainPage()
         {
             InitializeComponent();
@@ -28,6 +30,9 @@ namespace StatusChecker.Views
                 {
                     case (int)MenuItemType.Browse:
                         MenuPages.Add(id, new NavigationPage(new GadgetsPage()));
+                        break;
+                    case (int)MenuItemType.AppInfo:
+                        MenuPages.Add(id, new NavigationPage(new AppInfoPage()));
                         break;
                 }
             }

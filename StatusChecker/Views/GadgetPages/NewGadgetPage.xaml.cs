@@ -1,9 +1,10 @@
 ﻿using System;
+
 using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
 
-namespace StatusChecker.Views
+namespace StatusChecker.Views.GadgetPages
 {
     public partial class NewGadgetPage : ContentPage
     {
@@ -24,13 +25,13 @@ namespace StatusChecker.Views
             BindingContext = this;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        private async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddItem", Gadget);
             await Navigation.PopModalAsync();
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
+        private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }

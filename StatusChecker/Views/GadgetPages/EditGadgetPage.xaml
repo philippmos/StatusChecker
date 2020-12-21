@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StatusChecker.Views.EditGadgetPage"
+             x:Class="StatusChecker.Views.GadgetPages.EditGadgetPage"
              Title="{Binding Name}"
-             BackgroundColor="#212121">
+             BackgroundColor="#1C1C1E">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Abbrechen" Clicked="Cancel_Clicked" />
@@ -12,7 +12,15 @@
 
 
     <ContentPage.Content>
+
         <StackLayout Spacing="20" Padding="15">
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="ID" FontSize="Medium" />
+                <Label Text="{Binding Gadget.Id}" FontSize="Medium" />
+
+            </StackLayout>
+
             <Label Text="Gerätename" FontSize="Medium" />
             <Entry Text="{Binding Gadget.Name}" FontSize="Small"
                    Placeholder="z.B. Neues Gerät 1"
@@ -37,6 +45,7 @@
                    HeightRequest="50"
                    BackgroundColor="#212121" />
         </StackLayout>
+
     </ContentPage.Content>
     
 </ContentPage>

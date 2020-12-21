@@ -1,6 +1,4 @@
-﻿using StatusChecker.Models;
-
-namespace StatusChecker.ViewModels
+﻿namespace StatusChecker.ViewModels
 {
     public class GadgetDetailViewModel : BaseViewModel
     {
