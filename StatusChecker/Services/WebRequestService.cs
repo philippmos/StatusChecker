@@ -12,21 +12,17 @@ namespace StatusChecker.Services
     {
         private readonly string _statusRequestUrl = "/status";
 
-        private string _ipAddress = "";
-
 
         public async Task<GadgetStatus> GetStatusAsync(string ipAddress)
         {
-            _ipAddress = ipAddress;
-
-            GadgetStatus gadgetStatus = SerializeWebResponse(await GetWebResponseAsync());
+            GadgetStatus gadgetStatus = SerializeWebResponse(await GetWebResponseAsync(ipAddress));
 
             return gadgetStatus ?? null;
         }
 
-        private async Task<string> GetWebResponseAsync()
+        private async Task<string> GetWebResponseAsync(string ipAddress)
         {
-            var request = WebRequest.Create($"http://{ _ipAddress }{ _statusRequestUrl }");
+            var request = WebRequest.Create($"http://{ ipAddress }{ _statusRequestUrl }");
 
             request.Credentials = new NetworkCredential(
                 AppSettingsManager.Settings["WebRequestUsername"],

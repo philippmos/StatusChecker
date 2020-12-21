@@ -20,7 +20,7 @@ namespace StatusChecker
             try
             {
                 var assembly = IntrospectionExtensions.GetTypeInfo(typeof(AppSettingsManager)).Assembly;
-                var stream = assembly.GetManifestResourceStream($"{Namespace}.{FileName}");
+                var stream = assembly.GetManifestResourceStream($"{ Namespace }.{ FileName }");
                 using (var reader = new StreamReader(stream))
                 {
                     var json = reader.ReadToEnd();
@@ -69,7 +69,8 @@ namespace StatusChecker
                 }
                 catch (Exception)
                 {
-                    Debug.WriteLine($"Unable to retrieve appsetting '{name}'");
+                    Debug.WriteLine($"Unable to retrieve appsetting '{ name }'");
+
                     return string.Empty;
                 }
             }
