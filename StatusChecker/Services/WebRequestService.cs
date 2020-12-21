@@ -12,9 +12,6 @@ namespace StatusChecker.Services
     {
         private readonly string _statusRequestUrl = "/status";
 
-        private readonly string _username = "";
-        private readonly string _password = "";
-
         private string _ipAddress = "";
 
 
@@ -30,7 +27,10 @@ namespace StatusChecker.Services
         private async Task<string> GetWebResponseAsync()
         {
             var request = WebRequest.Create($"http://{ _ipAddress }{ _statusRequestUrl }");
-            request.Credentials = new NetworkCredential(_username, _password);
+
+            request.Credentials = new NetworkCredential(
+                AppSettingsManager.Settings["WebRequestUsername"],
+                AppSettingsManager.Settings["WebRequestPassword"]);
 
             WebResponse response = await request.GetResponseAsync();
 
