@@ -39,18 +39,23 @@ namespace StatusChecker.Infrastructure.Repositories
 
                 await _database.CreateTablesAsync(CreateFlags.None, typeof(Setting)).ConfigureAwait(false);
 
-                var initSetting = new Setting
-                {
-                    Id = (int)SettingKeys.StatusRequestUrl,
-                    Key = "StatusRequestUrl",
-                    Value = "/status"
-                };
-
-                await _database.InsertAsync(initSetting);
-
+                InitializeItemsAsync();
 
                 _initialized = true;
             }
+        }
+
+        /// <summary>
+        /// Setup Setting Initialization for each Setting
+        /// </summary>
+        private async void InitializeItemsAsync()
+        {
+            await _database.InsertAsync(new Setting
+            {
+                Id = (int)SettingKeys.StatusRequestUrl,
+                Key = SettingKeys.StatusRequestUrl.ToString(),
+                Value = "/status"
+            });
         }
 
 
