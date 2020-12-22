@@ -49,13 +49,13 @@ namespace StatusChecker.Views.GadgetPages
 
             if (await _dataStore.UpdateAsync(updatedGadget))
             {
-                await Navigation.PopAsync();
+                Application.Current.MainPage = new MainPage();
             }
         }
 
-        private async void Cancel_Clicked(object sender, System.EventArgs e)
+        private void Cancel_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PopAsync();
+            Application.Current.MainPage = new MainPage();
         }
     }
 }
