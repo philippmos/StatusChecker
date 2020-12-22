@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using Microsoft.AppCenter.Analytics;
+using Newtonsoft.Json.Linq;
 
 namespace StatusChecker
 {
@@ -27,8 +28,9 @@ namespace StatusChecker
                     _settings = JObject.Parse(json);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Analytics.TrackEvent(ex.Message);
                 Debug.WriteLine("Unable to load appsettings file");
             }
         }
@@ -67,8 +69,9 @@ namespace StatusChecker
 
                     return node.ToString();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Analytics.TrackEvent(ex.Message);
                     Debug.WriteLine($"Unable to retrieve appsetting '{ name }'");
 
                     return string.Empty;

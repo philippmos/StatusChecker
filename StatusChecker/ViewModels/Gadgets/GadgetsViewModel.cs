@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
+using Microsoft.AppCenter.Analytics;
 
 namespace StatusChecker.ViewModels.Gadgets
 {
@@ -72,6 +73,7 @@ namespace StatusChecker.ViewModels.Gadgets
             }
             catch (Exception ex)
             {
+                Analytics.TrackEvent(ex.Message);
                 Debug.WriteLine(ex);
             }
             finally

@@ -1,7 +1,10 @@
+using System;
 using System.IO;
 using System.Net;
+using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Analytics;
 
 using Xamarin.Forms;
 
@@ -9,6 +12,7 @@ using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
+
 
 namespace StatusChecker.Services
 {
@@ -29,21 +33,32 @@ namespace StatusChecker.Services
 
             if (statusRequestUrlSetting == null) return null;
 
-
-            var request = WebRequest.Create($"http://{ ipAddress }{ statusRequestUrlSetting.Value }");
-
-            request.Credentials = new NetworkCredential(
-                AppSettingsManager.Settings["WebRequestUsername"],
-                AppSettingsManager.Settings["WebRequestPassword"]);
-
-            WebResponse response = await request.GetResponseAsync();
-
-            using (Stream dataStream = response.GetResponseStream())
+            try
             {
-                var reader = new StreamReader(dataStream);
+                var request = WebRequest.Create($"http://{ ipAddress }{ statusRequestUrlSetting.Value }");
 
-                return reader.ReadToEnd();
+                request.Credentials = new NetworkCredential(
+                    AppSettingsManager.Settings["WebRequestUsername"],
+                    AppSettingsManager.Settings["WebRequestPassword"]);
+
+                WebResponse response = await request.GetResponseAsync();
+
+                using (Stream dataStream = response.GetResponseStream())
+                {
+                    var reader = new StreamReader(dataStream);
+
+                    return reader.ReadToEnd();
+                }
             }
+            catch(Exception ex)
+            {
+
+                Analytics.TrackEvent(ex.Message);
+                Debug.WriteLine(ex.Message);
+
+                return null;
+            }
+            
         }
 
 
@@ -52,10 +67,18 @@ namespace StatusChecker.Services
         {
             if (serverResponse == null) return null;
 
-            var deserializedResponse = JsonSerializer.Deserialize<GadgetStatus>(serverResponse);
+            try
+            {
+                return JsonSerializer.Deserialize<GadgetStatus>(serverResponse);
+            }
+            catch (Exception ex)
+            {
+                Analytics.TrackEvent(ex.Message);
+                Debug.WriteLine(ex.Message);
 
+                return null;
+            }
 
-            return deserializedResponse;
         }
 
 
