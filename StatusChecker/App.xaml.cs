@@ -1,4 +1,4 @@
-using Microsoft.AppCenter;
+﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
@@ -14,21 +14,6 @@ namespace StatusChecker
 {
     public partial class App : Application
     {
-        private static IRepository<Gadget> _gadgetRepository;
-
-        public static IRepository<Gadget> GadgetRepository
-        {
-            get
-            {
-                if (_gadgetRepository == null)
-                {
-                    _gadgetRepository = DependencyService.Get<IRepository<Gadget>>(); ;
-                }
-                return _gadgetRepository;
-            }
-        }
-
-
         public App()
         {
             InitializeComponent();
