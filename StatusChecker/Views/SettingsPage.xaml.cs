@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
+﻿using Xamarin.Essentials;
+using Xamarin.Forms;
+
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
-using Xamarin.Forms;
 
 namespace StatusChecker.Views
 {
@@ -17,6 +17,10 @@ namespace StatusChecker.Views
         public SettingsPage()
         {
             InitializeComponent();
+
+            VersionTracking.Track();
+
+            _lblVersionInfo.Text = $"StatusChecker v{ VersionTracking.CurrentVersion }";
         }
 
         protected async override void OnAppearing()
@@ -49,12 +53,12 @@ namespace StatusChecker.Views
 
             await _settingRepository.SaveAsync(updatedStatusRequestUrlSetting);
 
-            Application.Current.MainPage = new Views.MainPage();
+            Application.Current.MainPage = new MainPage();
         }
 
-        private async void Cancel_Clicked(object sender, System.EventArgs e)
+        private void Cancel_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PopAsync();
+            Application.Current.MainPage = new MainPage();
         }
 
 

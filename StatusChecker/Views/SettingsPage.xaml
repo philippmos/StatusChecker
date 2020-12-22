@@ -23,6 +23,13 @@
                    HeightRequest="50"
                    BackgroundColor="#212121"/>
 
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="EndAndExpand"
+                         Padding="0,0,0,30">
+                <Label x:Name="_lblVersionInfo" FontSize="Small"/>
+            </StackLayout>
+
         </StackLayout>
 
     </ContentPage.Content>
