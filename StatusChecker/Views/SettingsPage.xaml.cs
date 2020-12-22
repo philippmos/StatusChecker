@@ -40,7 +40,16 @@ namespace StatusChecker.Views
 
         private async void Save_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PopToRootAsync();
+            var updatedStatusRequestUrlSetting = new Setting
+            {
+                Id = (int)SettingKeys.StatusRequestUrl,
+                Key = SettingKeys.StatusRequestUrl.ToString(),
+                Value = _viewModel.StatusRequestUrl
+            };
+
+            await _settingRepository.SaveAsync(updatedStatusRequestUrlSetting);
+
+            await Navigation.PopAsync();
         }
 
         private async void Cancel_Clicked(object sender, System.EventArgs e)
