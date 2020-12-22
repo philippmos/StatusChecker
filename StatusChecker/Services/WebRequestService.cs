@@ -33,11 +33,15 @@ namespace StatusChecker.Services
 
             if (statusRequestUrlSetting == null) return null;
 
+            var requestUrl = $"http://{ ipAddress }{ statusRequestUrlSetting.Value }";
+
             try
             {
-                var request = WebRequest.Create($"http://{ ipAddress }{ statusRequestUrlSetting.Value }");
+                var request = WebRequest.Create(requestUrl);
 
-                request.Timeout = 10000;
+                int.TryParse(AppSettingsManager.Settings["WebRequestTimeout"], out int webRequestTimeout);
+
+                request.Timeout = webRequestTimeout;
 
                 request.Credentials = new NetworkCredential(
                     AppSettingsManager.Settings["WebRequestUsername"],
@@ -54,6 +58,8 @@ namespace StatusChecker.Services
             }
             catch(Exception ex)
             {
+                await Application.Current.MainPage.DisplayAlert("Status konnte nicht abgefragt werden", $"Adresse: { requestUrl }", "Schade");
+
 
                 var properties = new Dictionary<string, string> {
                     { "Method", "GetWebResponseAsync" },
