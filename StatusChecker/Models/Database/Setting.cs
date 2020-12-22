@@ -12,6 +12,6 @@ namespace StatusChecker.Models.Database
 
     public enum SettingKeys
     {
-
+        StatusRequestUrl
     }
 }
