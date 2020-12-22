@@ -9,7 +9,7 @@ using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
 
-namespace StatusChecker.ViewModels
+namespace StatusChecker.ViewModels.Gadgets
 {
     public class GadgetsViewModel : BaseViewModel
     {
