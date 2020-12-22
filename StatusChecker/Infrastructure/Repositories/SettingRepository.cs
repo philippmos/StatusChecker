@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +30,7 @@ namespace StatusChecker.Infrastructure.Repositories
         {
             if (!_initialized)
             {
-                if (!_database.TableMappings.Any(m => m.MappedType.Name == typeof(Setting).Name))
+                if (_database.TableMappings.Any(m => m.MappedType.Name == typeof(Setting).Name))
                 {
                     _initialized = true;
 
@@ -46,7 +46,7 @@ namespace StatusChecker.Infrastructure.Repositories
                     Value = "/status"
                 };
 
-                await SaveAsync(initSetting);
+                await _database.InsertAsync(initSetting);
 
 
                 _initialized = true;
