@@ -3,15 +3,18 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+using Xamarin.Forms;
+
+using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Services
 {
     public class WebRequestService : IWebRequestService
     {
-        private readonly string _statusRequestUrl = "/status";
-
+        private readonly IRepository<Setting> _settingRepository = DependencyService.Get<IRepository<Setting>>();
 
         public async Task<GadgetStatus> GetStatusAsync(string ipAddress)
         {
@@ -22,7 +25,12 @@ namespace StatusChecker.Services
 
         private async Task<string> GetWebResponseAsync(string ipAddress)
         {
-            var request = WebRequest.Create($"http://{ ipAddress }{ _statusRequestUrl }");
+            var statusRequestUrlSetting = await _settingRepository.GetAsync((int)SettingKeys.StatusRequestUrl);
+
+            if (statusRequestUrlSetting == null) return null;
+
+
+            var request = WebRequest.Create($"http://{ ipAddress }{ statusRequestUrlSetting.Value }");
 
             request.Credentials = new NetworkCredential(
                 AppSettingsManager.Settings["WebRequestUsername"],
