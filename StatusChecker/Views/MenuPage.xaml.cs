@@ -29,8 +29,7 @@ namespace StatusChecker.Views
 
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
-                if (e.SelectedItem == null)
-                    return;
+                if (e.SelectedItem == null) return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
 

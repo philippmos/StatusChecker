@@ -34,7 +34,10 @@ namespace StatusChecker.Views.GadgetPages
             base.OnAppearing();
 
             if (viewModel.Gadgets.Count == 0)
+            {
                 viewModel.IsBusy = true;
+            }
+                
         }
     }
 }
