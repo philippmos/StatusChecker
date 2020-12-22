@@ -6,46 +6,52 @@ using Xamarin.Forms;
 
 using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
+using StatusChecker.DataStore;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
-using StatusChecker.DataStore;
 
 namespace StatusChecker
 {
     public partial class App : Application
     {
-        private static IRepository<Gadget> _gadgetRepository;
-
-        public static IRepository<Gadget> GadgetRepository
-        {
-            get
-            {
-                if (_gadgetRepository == null)
-                {
-                    _gadgetRepository = DependencyService.Get<IRepository<Gadget>>(); ;
-                }
-                return _gadgetRepository;
-            }
-        }
-
+        public static bool PermissionTrackErrors = false;
 
         public App()
         {
             InitializeComponent();
 
+            #region DependencyService
             DependencyService.Register<GadgetDataStore>();
 
             DependencyService.Register<WebRequestService>();
 
             DependencyService.Register<GadgetRepository>();
+            DependencyService.Register<SettingRepository>();
+            #endregion
+
 
             MainPage = new Views.MainPage();
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
-            AppCenter.Start(AppSettingsManager.Settings["AppCenterSecretForms"],
-                typeof(Analytics), typeof(Crashes));
+            var settingRepository = DependencyService.Get<IRepository<Setting>>();
+            var permissionTrackErrorsSetting = await settingRepository.GetAsync((int)SettingKeys.PermissionTrackErrors);
+
+            if(permissionTrackErrorsSetting != null && permissionTrackErrorsSetting.Value == "1")
+            {
+                PermissionTrackErrors = true;
+            }
+
+            var appCenterSecretForms = AppSettingsManager.Settings["AppCenterSecretForms"];
+
+            if(PermissionTrackErrors && !string.IsNullOrEmpty(appCenterSecretForms))
+            {
+                AppCenter.Start(appCenterSecretForms,
+                                typeof(Analytics),
+                                typeof(Crashes));
+            }
+
         }
 
         protected override void OnSleep()

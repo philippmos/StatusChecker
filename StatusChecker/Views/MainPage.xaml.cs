@@ -19,7 +19,7 @@ namespace StatusChecker.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.GadgetOverview, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -28,11 +28,14 @@ namespace StatusChecker.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
+                    case (int)MenuItemType.GadgetOverview:
                         MenuPages.Add(id, new NavigationPage(new GadgetsPage()));
                         break;
                     case (int)MenuItemType.AppInfo:
                         MenuPages.Add(id, new NavigationPage(new AppInfoPage()));
+                        break;
+                    case (int)MenuItemType.Setting:
+                        MenuPages.Add(id, new NavigationPage(new SettingsPage()));
                         break;
                 }
             }

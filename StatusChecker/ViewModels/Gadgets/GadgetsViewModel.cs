@@ -8,8 +8,10 @@ using Xamarin.Forms;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
+using Microsoft.AppCenter.Crashes;
+using System.Collections.Generic;
 
-namespace StatusChecker.ViewModels
+namespace StatusChecker.ViewModels.Gadgets
 {
     public class GadgetsViewModel : BaseViewModel
     {
@@ -36,7 +38,7 @@ namespace StatusChecker.ViewModels
 
                 
 
-                await _dataStore.AddAsync(newGadget);
+                await _gadgetDataStore.AddAsync(newGadget);
             });
         }
 
@@ -47,7 +49,7 @@ namespace StatusChecker.ViewModels
             try
             {
                 Gadgets.Clear();
-                var gadgets = await _dataStore.GetAllAsync(true);
+                var gadgets = await _gadgetDataStore.GetAllAsync(true);
                 foreach (var gadget in gadgets)
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
@@ -72,6 +74,17 @@ namespace StatusChecker.ViewModels
             }
             catch (Exception ex)
             {
+                 var properties = new Dictionary<string, string> {
+                    { "Method", "ExecuteLoadItemsCommand" },
+                    { "Event", "Could not Add GadgetViewModel" }
+                };
+
+                if(App.PermissionTrackErrors)
+                {
+                    Crashes.TrackError(ex, properties);
+                }
+                
+
                 Debug.WriteLine(ex);
             }
             finally

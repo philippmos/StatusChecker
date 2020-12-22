@@ -24,8 +24,15 @@ namespace StatusChecker.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
-            AppCenter.Start(AppSettingsManager.Settings["AppCenterSecretIOS"],
-                   typeof(Analytics), typeof(Crashes));
+            var appCenterSecretIOS = AppSettingsManager.Settings["AppCenterSecretIOS"];
+
+            if(!string.IsNullOrEmpty(appCenterSecretIOS))
+            {
+                AppCenter.Start(appCenterSecretIOS,
+                            typeof(Analytics),
+                            typeof(Crashes));
+            }
+
 
             return base.FinishedLaunching(app, options);
 
