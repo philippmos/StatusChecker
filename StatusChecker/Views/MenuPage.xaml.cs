@@ -18,8 +18,9 @@ namespace StatusChecker.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem { Id = MenuItemType.Browse, Title = "Übersicht" },
-                new HomeMenuItem { Id = MenuItemType.AppInfo, Title = "App Info" }
+                new HomeMenuItem { Id = MenuItemType.GadgetOverview, Title = "Geräte" },
+                new HomeMenuItem { Id = MenuItemType.AppInfo, Title = "App Info" },
+                new HomeMenuItem { Id = MenuItemType.Setting, Title = "Einstellungen" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
