@@ -37,7 +37,11 @@ namespace StatusChecker
                     { "Event", "Unable to load AppSettings File" }
                 };
 
-                Crashes.TrackError(ex, properties);
+                // TODO: Outsource to Service
+                if(App.PermissionTrackErrors)
+                {
+                    Crashes.TrackError(ex, properties);
+                }
 
 
                 Analytics.TrackEvent(ex.Message);
@@ -86,7 +90,10 @@ namespace StatusChecker
                         { "Event", "Could not find AppSetting" }
                     };
 
-                    Crashes.TrackError(ex, properties);
+                    if(App.PermissionTrackErrors)
+                    {
+                        Crashes.TrackError(ex, properties);
+                    }
 
 
                     Debug.WriteLine($"Unable to retrieve appsetting '{ name }'");

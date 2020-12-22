@@ -12,6 +12,8 @@ namespace StatusChecker.Models.Database
 
     public enum SettingKeys
     {
-        StatusRequestUrl = 1
+        StatusRequestUrl = 1,
+        PermissionTrackErrors = 2,
+        NotifyWhenStatusNotRespond = 3
     }
 }

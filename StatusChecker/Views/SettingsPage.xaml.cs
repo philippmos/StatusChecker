@@ -31,13 +31,23 @@ namespace StatusChecker.Views
             };
 
 
+
             var statusRequestUrl = await _settingRepository.GetAsync((int)SettingKeys.StatusRequestUrl);
+            var permissionTrackErrors = await _settingRepository.GetAsync((int)SettingKeys.PermissionTrackErrors);
+            var notifyWhenStatusNotRespond = await _settingRepository.GetAsync((int)SettingKeys.NotifyWhenStatusNotRespond);
 
             if (statusRequestUrl != null)
             {
                 _viewModel.StatusRequestUrl = statusRequestUrl.Value;
             }
-
+            if (permissionTrackErrors != null && permissionTrackErrors.Value == "1")
+            {
+                _swtPermissionTrackErrors.IsToggled = true;
+            }
+            if (notifyWhenStatusNotRespond != null && notifyWhenStatusNotRespond.Value == "1")
+            {
+                _viewModel.NotifyWhenStatusNotRespond = true;
+            }
 
             BindingContext = _viewModel;
         }
@@ -53,12 +63,40 @@ namespace StatusChecker.Views
 
             await _settingRepository.SaveAsync(updatedStatusRequestUrlSetting);
 
+
+            var updatedPermissionTrackErrors = new Setting
+            {
+                Id = (int)SettingKeys.PermissionTrackErrors,
+                Key = SettingKeys.PermissionTrackErrors.ToString(),
+                Value = ParseBoolSetting(_swtPermissionTrackErrors.IsToggled)
+            };
+
+            await _settingRepository.SaveAsync(updatedPermissionTrackErrors);
+
+
+            var updatedNotifyWhenStatusNotRespond = new Setting
+            {
+                Id = (int)SettingKeys.NotifyWhenStatusNotRespond,
+                Key = SettingKeys.NotifyWhenStatusNotRespond.ToString(),
+                Value = ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
+            };
+
+            await _settingRepository.SaveAsync(updatedNotifyWhenStatusNotRespond);
+
+
+
             Application.Current.MainPage = new MainPage();
         }
 
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
             Application.Current.MainPage = new MainPage();
+        }
+
+
+        private string ParseBoolSetting(bool value)
+        {
+            return value ? "1" : "0";
         }
 
 

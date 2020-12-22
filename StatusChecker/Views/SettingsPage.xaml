@@ -23,6 +23,15 @@
                    HeightRequest="50"
                    BackgroundColor="#212121"/>
 
+            
+            <Label Text="Error Logging aktiv" FontSize="Medium" />
+            <Switch IsToggled="False" x:Name="_swtPermissionTrackErrors" />
+
+            
+            <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" />
+            <Switch IsToggled="{Binding NotifyWhenStatusNotRespond}" x:Name="_swtNotifyWhenStatusNotRespond" />
+
+
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center"
                          VerticalOptions="EndAndExpand"

@@ -56,6 +56,20 @@ namespace StatusChecker.Infrastructure.Repositories
                 Key = SettingKeys.StatusRequestUrl.ToString(),
                 Value = AppSettingsManager.Settings["InitialStatusRequestUrl"]
             });
+
+            await _database.InsertAsync(new Setting
+            {
+                Id = (int)SettingKeys.PermissionTrackErrors,
+                Key = SettingKeys.PermissionTrackErrors.ToString(),
+                Value = "0"
+            });
+
+            await _database.InsertAsync(new Setting
+            {
+                Id = (int)SettingKeys.NotifyWhenStatusNotRespond,
+                Key = SettingKeys.NotifyWhenStatusNotRespond.ToString(),
+                Value = "0"
+            });
         }
 
 

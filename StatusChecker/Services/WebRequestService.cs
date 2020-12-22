@@ -58,15 +58,22 @@ namespace StatusChecker.Services
             }
             catch(Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Status konnte nicht abgefragt werden", $"Adresse: { requestUrl }", "Schade");
-
+                var notifyWhenStatusNotRespond = await _settingRepository.GetAsync((int)SettingKeys.NotifyWhenStatusNotRespond);
+                if (notifyWhenStatusNotRespond != null && notifyWhenStatusNotRespond.Value == "1")
+                {
+                    await Application.Current.MainPage.DisplayAlert("Status konnte nicht abgefragt werden", $"Adresse: { requestUrl }", "Schade");
+                }
+                
 
                 var properties = new Dictionary<string, string> {
                     { "Method", "GetWebResponseAsync" },
                     { "Event", "Could not proceed WebRequest" }
                 };
 
-                Crashes.TrackError(ex, properties);
+                if(App.PermissionTrackErrors)
+                {
+                    Crashes.TrackError(ex, properties);
+                }
 
                 Debug.WriteLine(ex.Message);
 
@@ -92,7 +99,12 @@ namespace StatusChecker.Services
                     { "Event", "Could not deserialize ServerResponse" }
                 };
 
-                Crashes.TrackError(ex, properties);
+                if (App.PermissionTrackErrors)
+                {
+                    Crashes.TrackError(ex, properties);
+                }
+
+
                 Debug.WriteLine(ex.Message);
 
                 return null;
