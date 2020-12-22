@@ -9,7 +9,7 @@ namespace StatusChecker.Views
 {
     public partial class SettingsPage : ContentPage
     {
-        private readonly SettingsViewModel viewModel;
+        private SettingsViewModel _viewModel;
 
         private readonly IRepository<Setting> _settingRepository = DependencyService.Get<IRepository<Setting>>();
 
@@ -17,18 +17,25 @@ namespace StatusChecker.Views
         public SettingsPage()
         {
             InitializeComponent();
-
-
-            BindingContext = this.viewModel = new SettingsViewModel
-            {
-                Title = "Einstellungen",
-                StatusRequestUrl = "/status2"
-            };
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
+            _viewModel = new SettingsViewModel()
+            {
+                Title = "Einstellungen"
+            };
 
+
+            var statusRequestUrl = await _settingRepository.GetAsync((int)SettingKeys.StatusRequestUrl);
+
+            if (statusRequestUrl != null)
+            {
+                _viewModel.StatusRequestUrl = statusRequestUrl.Value;
+            }
+
+
+            BindingContext = _viewModel;
         }
 
         private async void Save_Clicked(object sender, System.EventArgs e)
