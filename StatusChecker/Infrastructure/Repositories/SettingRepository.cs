@@ -54,7 +54,7 @@ namespace StatusChecker.Infrastructure.Repositories
             {
                 Id = (int)SettingKeys.StatusRequestUrl,
                 Key = SettingKeys.StatusRequestUrl.ToString(),
-                Value = "/status"
+                Value = AppSettingsManager.Settings["InitialStatusRequestUrl"]
             });
         }
 
