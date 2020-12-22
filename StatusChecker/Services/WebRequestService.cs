@@ -37,6 +37,8 @@ namespace StatusChecker.Services
             {
                 var request = WebRequest.Create($"http://{ ipAddress }{ statusRequestUrlSetting.Value }");
 
+                request.Timeout = 10000;
+
                 request.Credentials = new NetworkCredential(
                     AppSettingsManager.Settings["WebRequestUsername"],
                     AppSettingsManager.Settings["WebRequestPassword"]);
