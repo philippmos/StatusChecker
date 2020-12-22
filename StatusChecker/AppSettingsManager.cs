@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json.Linq;
 
 namespace StatusChecker
@@ -30,6 +32,14 @@ namespace StatusChecker
             }
             catch (Exception ex)
             {
+                var properties = new Dictionary<string, string> {
+                    { "Method", "AppSettingsManager" },
+                    { "Event", "Unable to load AppSettings File" }
+                };
+
+                Crashes.TrackError(ex, properties);
+
+
                 Analytics.TrackEvent(ex.Message);
                 Debug.WriteLine("Unable to load appsettings file");
             }
@@ -71,7 +81,14 @@ namespace StatusChecker
                 }
                 catch (Exception ex)
                 {
-                    Analytics.TrackEvent(ex.Message);
+                    var properties = new Dictionary<string, string> {
+                        { "Method", "AppSettingsManager" },
+                        { "Event", "Could not find AppSetting" }
+                    };
+
+                    Crashes.TrackError(ex, properties);
+
+
                     Debug.WriteLine($"Unable to retrieve appsetting '{ name }'");
 
                     return string.Empty;

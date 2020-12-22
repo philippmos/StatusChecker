@@ -8,7 +8,8 @@ using Xamarin.Forms;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
-using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System.Collections.Generic;
 
 namespace StatusChecker.ViewModels.Gadgets
 {
@@ -73,7 +74,13 @@ namespace StatusChecker.ViewModels.Gadgets
             }
             catch (Exception ex)
             {
-                Analytics.TrackEvent(ex.Message);
+                 var properties = new Dictionary<string, string> {
+                    { "Method", "ExecuteLoadItemsCommand" },
+                    { "Event", "Could not Add GadgetViewModel" }
+                };
+
+                Crashes.TrackError(ex, properties);
+
                 Debug.WriteLine(ex);
             }
             finally

@@ -4,7 +4,8 @@ using System.Net;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
@@ -12,7 +13,6 @@ using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
-
 
 namespace StatusChecker.Services
 {
@@ -53,7 +53,13 @@ namespace StatusChecker.Services
             catch(Exception ex)
             {
 
-                Analytics.TrackEvent(ex.Message);
+                var properties = new Dictionary<string, string> {
+                    { "Method", "GetWebResponseAsync" },
+                    { "Event", "Could not proceed WebRequest" }
+                };
+
+                Crashes.TrackError(ex, properties);
+
                 Debug.WriteLine(ex.Message);
 
                 return null;
@@ -73,7 +79,12 @@ namespace StatusChecker.Services
             }
             catch (Exception ex)
             {
-                Analytics.TrackEvent(ex.Message);
+                var properties = new Dictionary<string, string> {
+                    { "Method", "SerializeWebResponse" },
+                    { "Event", "Could not deserialize ServerResponse" }
+                };
+
+                Crashes.TrackError(ex, properties);
                 Debug.WriteLine(ex.Message);
 
                 return null;
