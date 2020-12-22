@@ -8,8 +8,6 @@ using Microsoft.AppCenter.Crashes;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-
-using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;

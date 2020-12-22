@@ -1,4 +1,7 @@
-﻿using Microsoft.AppCenter;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
@@ -7,12 +10,8 @@ using Xamarin.Forms;
 using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.DataStore;
-using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace StatusChecker
 {
@@ -55,7 +54,7 @@ namespace StatusChecker
 
         
 
-        protected async override void OnStart()
+        protected override async void OnStart()
         {
             var settingService = DependencyService.Get<ISettingService>();
             var permissionTrackErrorSetting = await settingService.GetSettingValueAsync(SettingKeys.PermissionTrackErrors);

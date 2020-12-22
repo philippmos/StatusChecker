@@ -5,7 +5,6 @@ using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace StatusChecker.Views
@@ -30,7 +29,7 @@ namespace StatusChecker.Views
         }
 
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             _viewModel = new SettingsViewModel()
             {

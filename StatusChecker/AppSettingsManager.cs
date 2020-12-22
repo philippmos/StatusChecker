@@ -12,7 +12,7 @@ namespace StatusChecker
     public class AppSettingsManager
     {
         private static AppSettingsManager _instance;
-        private JObject _settings;
+        private readonly JObject _settings;
 
         private const string Namespace = "StatusChecker";
         private const string FileName = "appsettings.json";
