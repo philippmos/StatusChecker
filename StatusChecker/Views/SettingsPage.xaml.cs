@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
@@ -49,7 +49,7 @@ namespace StatusChecker.Views
 
             await _settingRepository.SaveAsync(updatedStatusRequestUrlSetting);
 
-            await Navigation.PopAsync();
+            Application.Current.MainPage = new Views.MainPage();
         }
 
         private async void Cancel_Clicked(object sender, System.EventArgs e)
