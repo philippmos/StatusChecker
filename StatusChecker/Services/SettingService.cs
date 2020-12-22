@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace StatusChecker.Services
 {
@@ -16,6 +17,8 @@ namespace StatusChecker.Services
             _settingRepository = DependencyService.Get<IRepository<Setting>>();
         }
 
+
+        #region Public Methods
         /// <summary>
         /// Get SettingValue by ID
         /// </summary>
@@ -25,10 +28,11 @@ namespace StatusChecker.Services
         {
             Setting setting = await _settingRepository.GetAsync(settingId);
 
-            if(IsSettingValid(setting)) return null;
+            if(IsSettingValid(setting)) return setting.Value;
 
-            return setting.Value;
+            return null;
         }
+
 
         /// <summary>
         /// Get SettingValue by Enum
@@ -40,6 +44,39 @@ namespace StatusChecker.Services
             return await GetSettingValueAsync((int)settingKey);
         }
 
+
+        /// <summary>
+        /// Updates the Value of a defined Setting
+        /// </summary>
+        /// <param name="settingKey"></param>
+        /// <param name="newValue"></param>
+        public async void UpdateSettingValue(SettingKeys settingKey, string newValue)
+        {
+            await _settingRepository.SaveAsync(new Setting
+            {
+                Id = (int)settingKey,
+                Key = settingKey.ToString(),
+                Value = newValue
+            });
+        }
+
+
+        /// <summary>
+        /// Updates Values of multiple Settings
+        /// </summary>
+        /// <param name="updateSettings"></param>
+        public void UpdateSettingsValues(Dictionary<SettingKeys, string> updateSettings)
+        {
+            foreach(var updateSetting in updateSettings)
+            {
+                UpdateSettingValue(updateSetting.Key, updateSetting.Value);
+            }
+        }
+        #endregion
+
+
+
+        #region Private Methods
         /// <summary>
         /// Checks if Setting is valid
         /// </summary>
@@ -49,5 +86,6 @@ namespace StatusChecker.Services
         {
             return setting != null && !string.IsNullOrEmpty(setting.Value);
         }
+        #endregion
     }
 }

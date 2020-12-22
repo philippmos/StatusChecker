@@ -9,6 +9,10 @@ using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.DataStore;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
+using StatusChecker.Services.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace StatusChecker
 {
@@ -24,6 +28,7 @@ namespace StatusChecker
             DependencyService.Register<GadgetDataStore>();
 
             DependencyService.Register<WebRequestService>();
+            DependencyService.Register<SettingService>();
 
             DependencyService.Register<GadgetRepository>();
             DependencyService.Register<SettingRepository>();
@@ -33,12 +38,29 @@ namespace StatusChecker
             MainPage = new Views.MainPage();
         }
 
+        /// <summary>
+        /// Tracks Errors for Crashes and Exceptions
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="properties"></param>
+        public static void TrackError(Exception exception, Dictionary<string, string> properties)
+        {
+            if (PermissionTrackErrors)
+            {
+                Crashes.TrackError(exception, properties);
+            }
+
+            Debug.WriteLine(exception.Message);
+        }
+
+        
+
         protected async override void OnStart()
         {
-            var settingRepository = DependencyService.Get<IRepository<Setting>>();
-            var permissionTrackErrorsSetting = await settingRepository.GetAsync((int)SettingKeys.PermissionTrackErrors);
+            var settingService = DependencyService.Get<ISettingService>();
+            var permissionTrackErrorSetting = await settingService.GetSettingValueAsync(SettingKeys.PermissionTrackErrors);
 
-            if(permissionTrackErrorsSetting != null && permissionTrackErrorsSetting.Value == "1")
+            if(permissionTrackErrorSetting == "1")
             {
                 PermissionTrackErrors = true;
             }

@@ -11,9 +11,11 @@ namespace StatusChecker.DataStore
 {
     public class SettingDataStore : ISettingDataStore
     {
-        private readonly IRepository<Setting> _settingRepository = DependencyService.Get<IRepository<Setting>>();
+        private readonly IRepository<Setting> _settingRepository;
 
-        public SettingDataStore() { }
+        public SettingDataStore() {
+            _settingRepository = DependencyService.Get<IRepository<Setting>>();
+        }
 
         public async Task<bool> AddAsync(Setting setting)
         {

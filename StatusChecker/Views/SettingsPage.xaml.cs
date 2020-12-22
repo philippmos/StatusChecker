@@ -4,24 +4,31 @@ using Xamarin.Forms;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
+using StatusChecker.Services.Interfaces;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace StatusChecker.Views
 {
     public partial class SettingsPage : ContentPage
     {
         private SettingsViewModel _viewModel;
-
-        private readonly IRepository<Setting> _settingRepository = DependencyService.Get<IRepository<Setting>>();
+        private readonly IRepository<Setting> _settingRepository;
+        private readonly ISettingService _settingService;
 
 
         public SettingsPage()
         {
             InitializeComponent();
 
+            _settingRepository = DependencyService.Get<IRepository<Setting>>();
+            _settingService = DependencyService.Get<ISettingService>();
+
             VersionTracking.Track();
 
             _lblVersionInfo.Text = $"StatusChecker v{ VersionTracking.CurrentVersion }";
         }
+
 
         protected async override void OnAppearing()
         {
@@ -30,21 +37,17 @@ namespace StatusChecker.Views
                 Title = "Einstellungen"
             };
 
+            var permissionTrackErrors = await _settingService.GetSettingValueAsync(SettingKeys.PermissionTrackErrors);
+            var notifyWhenStatusNotRespond = await _settingService.GetSettingValueAsync(SettingKeys.NotifyWhenStatusNotRespond);
 
 
-            var statusRequestUrl = await _settingRepository.GetAsync((int)SettingKeys.StatusRequestUrl);
-            var permissionTrackErrors = await _settingRepository.GetAsync((int)SettingKeys.PermissionTrackErrors);
-            var notifyWhenStatusNotRespond = await _settingRepository.GetAsync((int)SettingKeys.NotifyWhenStatusNotRespond);
-
-            if (statusRequestUrl != null)
-            {
-                _viewModel.StatusRequestUrl = statusRequestUrl.Value;
-            }
-            if (permissionTrackErrors != null && permissionTrackErrors.Value == "1")
+            _viewModel.StatusRequestUrl = await _settingService.GetSettingValueAsync(SettingKeys.StatusRequestUrl); ;
+ 
+            if(permissionTrackErrors == "1")
             {
                 _swtPermissionTrackErrors.IsToggled = true;
             }
-            if (notifyWhenStatusNotRespond != null && notifyWhenStatusNotRespond.Value == "1")
+            if(notifyWhenStatusNotRespond == "1")
             {
                 _viewModel.NotifyWhenStatusNotRespond = true;
             }
@@ -52,41 +55,29 @@ namespace StatusChecker.Views
             BindingContext = _viewModel;
         }
 
-        private async void Save_Clicked(object sender, System.EventArgs e)
+
+        private void Save_Clicked(object sender, System.EventArgs e)
         {
-            var updatedStatusRequestUrlSetting = new Setting
+            _settingService.UpdateSettingsValues(new Dictionary<SettingKeys, string>()
             {
-                Id = (int)SettingKeys.StatusRequestUrl,
-                Key = SettingKeys.StatusRequestUrl.ToString(),
-                Value = _viewModel.StatusRequestUrl
-            };
-
-            await _settingRepository.SaveAsync(updatedStatusRequestUrlSetting);
-
-
-            var updatedPermissionTrackErrors = new Setting
-            {
-                Id = (int)SettingKeys.PermissionTrackErrors,
-                Key = SettingKeys.PermissionTrackErrors.ToString(),
-                Value = ParseBoolSetting(_swtPermissionTrackErrors.IsToggled)
-            };
-
-            await _settingRepository.SaveAsync(updatedPermissionTrackErrors);
-
-
-            var updatedNotifyWhenStatusNotRespond = new Setting
-            {
-                Id = (int)SettingKeys.NotifyWhenStatusNotRespond,
-                Key = SettingKeys.NotifyWhenStatusNotRespond.ToString(),
-                Value = ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
-            };
-
-            await _settingRepository.SaveAsync(updatedNotifyWhenStatusNotRespond);
-
+                {
+                    SettingKeys.StatusRequestUrl,
+                    _viewModel.StatusRequestUrl
+                },
+                {
+                    SettingKeys.PermissionTrackErrors,
+                    ParseBoolSetting(_swtPermissionTrackErrors.IsToggled)
+                },
+                {
+                    SettingKeys.NotifyWhenStatusNotRespond,
+                    ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
+                }
+            });
 
 
             Application.Current.MainPage = new MainPage();
         }
+
 
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
@@ -98,7 +89,5 @@ namespace StatusChecker.Views
         {
             return value ? "1" : "0";
         }
-
-
     }
 }

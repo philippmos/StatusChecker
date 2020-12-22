@@ -18,7 +18,12 @@ namespace StatusChecker.Services
 {
     public class WebRequestService : IWebRequestService
     {
-        private readonly IRepository<Setting> _settingRepository = DependencyService.Get<IRepository<Setting>>();
+        private readonly ISettingService _settingService;
+
+        public WebRequestService()
+        {
+            _settingService = DependencyService.Get<ISettingService>();
+        }
 
         public async Task<GadgetStatus> GetStatusAsync(string ipAddress)
         {
@@ -29,11 +34,9 @@ namespace StatusChecker.Services
 
         private async Task<string> GetWebResponseAsync(string ipAddress)
         {
-            var statusRequestUrlSetting = await _settingRepository.GetAsync((int)SettingKeys.StatusRequestUrl);
+            var statusRequestUrl = await _settingService.GetSettingValueAsync(SettingKeys.StatusRequestUrl);
 
-            if (statusRequestUrlSetting == null) return null;
-
-            var requestUrl = $"http://{ ipAddress }{ statusRequestUrlSetting.Value }";
+            var requestUrl = $"http://{ ipAddress }{ statusRequestUrl }";
 
             try
             {
@@ -58,24 +61,20 @@ namespace StatusChecker.Services
             }
             catch(Exception ex)
             {
-                var notifyWhenStatusNotRespond = await _settingRepository.GetAsync((int)SettingKeys.NotifyWhenStatusNotRespond);
-                if (notifyWhenStatusNotRespond != null && notifyWhenStatusNotRespond.Value == "1")
+                var notifyWhenStatusNotRespond = await _settingService.GetSettingValueAsync(SettingKeys.NotifyWhenStatusNotRespond);
+
+                if(notifyWhenStatusNotRespond == "1")
                 {
                     await Application.Current.MainPage.DisplayAlert("Status konnte nicht abgefragt werden", $"Adresse: { requestUrl }", "Schade");
                 }
-                
+
 
                 var properties = new Dictionary<string, string> {
                     { "Method", "GetWebResponseAsync" },
                     { "Event", "Could not proceed WebRequest" }
                 };
 
-                if(App.PermissionTrackErrors)
-                {
-                    Crashes.TrackError(ex, properties);
-                }
-
-                Debug.WriteLine(ex.Message);
+                App.TrackError(ex, properties);
 
                 return null;
             }
