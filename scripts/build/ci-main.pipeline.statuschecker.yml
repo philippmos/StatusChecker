@@ -1,0 +1,54 @@
+
+trigger:
+- main
+
+pool:
+  vmImage: 'macos-latest'
+
+variables:
+  - group: ios-appcenter-deployment
+
+
+steps:
+
+- task: InstallAppleCertificate@2
+  inputs:
+   certSecureFile: '$(certFileName)'
+   certPwd: '$(certPassword)'
+   keychain: 'temp'
+   deleteCert: true
+  displayName: 'Install Apple Certificate'
+
+
+- task: InstallAppleProvisioningProfile@1
+  inputs:
+   provisioningProfileLocation: 'secureFiles'
+   provProfileSecureFile: '$(provisioningProfileFileName)'
+   removeProfile: true
+  displayName: 'Install Provisioning Profile'
+
+
+- script: sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 5_12_0
+  enabled: false
+  displayName: 'Select the Xamarin SDK version'
+
+- task: NuGetToolInstaller@1
+  displayName: 'Install NuGetTool'
+
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '**/*.sln'
+  displayName: 'Restore NuGet Packages'
+
+
+- task: XamariniOS@2
+  inputs:
+    solutionFile: '**/*.sln'
+    configuration: 'Release'
+    buildForSimulator: true
+    packageApp: true
+    signingIdentity: '$(appleCertificateSigningIdentity)'
+    signingProvisioningProfileID: '$(appleProvProfileUUID)'
+    args: /p:IpaPackageDir="$(build.artifactStagingDirectory)"
+  displayName: 'Build Xamarin Solution'
