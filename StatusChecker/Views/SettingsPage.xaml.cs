@@ -52,7 +52,20 @@ namespace StatusChecker.Views
                 _viewModel.NotifyWhenStatusNotRespond = true;
             }
 
-            _pckTimeoutSetting.ItemsSource = Enumerable.Range(1, 20).ToList();
+            var timeoutSettingOptions = new List<string>();
+
+            for(int i = 1; i < 20; i++)
+            {
+                timeoutSettingOptions.Add($"{i} Sekunden");
+            }
+
+            _pckTimeoutSetting.ItemsSource = timeoutSettingOptions;
+
+
+            var requestTimeoutInSeconds = await _settingService.GetSettingValueAsync(SettingKeys.RequestTimeoutInSeconds);
+
+            int.TryParse(requestTimeoutInSeconds, out int requestTimeout);
+            _pckTimeoutSetting.SelectedIndex = requestTimeout - 1;
             
 
             BindingContext = _viewModel;
@@ -74,6 +87,10 @@ namespace StatusChecker.Views
                 {
                     SettingKeys.NotifyWhenStatusNotRespond,
                     ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
+                },
+                {
+                    SettingKeys.RequestTimeoutInSeconds,
+                    (_pckTimeoutSetting.SelectedIndex + 1).ToString()
                 }
             });
 
