@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using Xamarin.Forms;
 
@@ -27,15 +29,20 @@ namespace StatusChecker.Views.GadgetPages
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            if(IsGadgetValidToSave(Gadget))
+            var validationErrorList = CreateValidationErrorList(Gadget);
+
+            if(validationErrorList.Count() == 0)
             {
                 MessagingCenter.Send(this, "AddItem", Gadget);
 
                 Application.Current.MainPage = new MainPage();
             }
 
-            await DisplayAlert("Der Eintrag konnte nicht gespeichert werden", "Bitte überprüfe Deine Eingaben", "Ok");
+            var errorString = string.Join(",", validationErrorList);
+
+            await DisplayAlert("Bitte überprüfe Deine Eingaben", errorString, "Ok");
         }
+
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
@@ -43,9 +50,21 @@ namespace StatusChecker.Views.GadgetPages
         }
 
 
-        private bool IsGadgetValidToSave(Gadget gadget)
+        private List<string> CreateValidationErrorList(Gadget gadget)
         {
-            return false;
+            var invalidFieldsList = new List<string>();
+
+            if (gadget.Name.Length <= 3)
+            {
+                invalidFieldsList.Add("Länge des Gerätenamens");
+            }
+
+            if(string.IsNullOrEmpty(gadget.IpAddress))
+            {
+                invalidFieldsList.Add("IP Adresse ist erforderlich");
+            }
+
+            return invalidFieldsList;
         }
     }
 }
