@@ -25,16 +25,27 @@ namespace StatusChecker.Views.GadgetPages
             BindingContext = this;
         }
 
-        private void Save_Clicked(object sender, EventArgs e)
+        private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Gadget);
+            if(IsGadgetValidToSave(Gadget))
+            {
+                MessagingCenter.Send(this, "AddItem", Gadget);
 
-            Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new MainPage();
+            }
+
+            await DisplayAlert("Der Eintrag konnte nicht gespeichert werden", "Bitte überprüfe Deine Eingaben", "Ok");
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+
+        private bool IsGadgetValidToSave(Gadget gadget)
+        {
+            return false;
         }
     }
 }
