@@ -70,6 +70,13 @@ namespace StatusChecker.Infrastructure.Repositories
                 Key = SettingKeys.NotifyWhenStatusNotRespond.ToString(),
                 Value = "0"
             });
+
+            await _database.InsertAsync(new Setting
+            {
+                Id = (int)SettingKeys.RequestTimeoutInSeconds,
+                Key = SettingKeys.RequestTimeoutInSeconds.ToString(),
+                Value = "10"
+            });
         }
 
 

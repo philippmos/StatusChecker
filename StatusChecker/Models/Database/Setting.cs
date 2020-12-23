@@ -14,6 +14,7 @@ namespace StatusChecker.Models.Database
     {
         StatusRequestUrl = 1,
         PermissionTrackErrors = 2,
-        NotifyWhenStatusNotRespond = 3
+        NotifyWhenStatusNotRespond = 3,
+        RequestTimeoutInSeconds = 4
     }
 }

@@ -38,9 +38,10 @@ namespace StatusChecker.Services
             {
                 var request = WebRequest.Create(requestUrl);
 
-                int.TryParse(AppSettingsManager.Settings["WebRequestTimeout"], out int webRequestTimeout);
+                var requestTimeoutInSeconds = await _settingService.GetSettingValueAsync(SettingKeys.RequestTimeoutInSeconds);
+                int.TryParse(requestTimeoutInSeconds, out int requestTimeout);
 
-                request.Timeout = webRequestTimeout;
+                request.Timeout = requestTimeout * 1000;
 
                 request.Credentials = new NetworkCredential(
                     AppSettingsManager.Settings["WebRequestUsername"],
