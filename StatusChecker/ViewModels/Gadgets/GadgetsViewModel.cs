@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -8,7 +7,6 @@ using Xamarin.Forms;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
-using Microsoft.AppCenter.Crashes;
 using System.Collections.Generic;
 
 namespace StatusChecker.ViewModels.Gadgets
@@ -96,13 +94,7 @@ namespace StatusChecker.ViewModels.Gadgets
                     { "Event", "Could not Add GadgetViewModel" }
                 };
 
-                if(App.PermissionTrackErrors)
-                {
-                    Crashes.TrackError(ex, properties);
-                }
-                
-
-                Debug.WriteLine(ex);
+                App.TrackError(ex, properties);
             }
             finally
             {
