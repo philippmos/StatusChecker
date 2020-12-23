@@ -82,6 +82,10 @@ namespace StatusChecker.ViewModels.Gadgets
                         Voltage = $"{ gadgetStatus.voltage } V"
                     };
 
+                    if(gadgetStatus.temperature_status == "undefined")
+                    {
+                        viewModel.TemperatureC = "Temperatur nicht verfügbar";
+                    }
 
 
                     Gadgets.Add(viewModel);
@@ -104,7 +108,7 @@ namespace StatusChecker.ViewModels.Gadgets
 
         private StatusIndicatorColors GetStatusIndicatorColor(GadgetStatus gadgetStatus)
         {
-            if (gadgetStatus == null) return StatusIndicatorColors.Red;
+            if (gadgetStatus == null) return StatusIndicatorColors.Black;
 
             if(gadgetStatus.overtemperature == false && gadgetStatus.temperature <= 90.00 && gadgetStatus.voltage <= 250.00)
             {
