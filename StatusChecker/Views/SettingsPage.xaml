@@ -31,6 +31,10 @@
             <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" />
             <Switch IsToggled="{Binding NotifyWhenStatusNotRespond}" x:Name="_swtNotifyWhenStatusNotRespond" />
 
+            <Label Text="Timeout für Requests in Sekunden" FontSize="Medium" />
+            <Picker x:Name="_pckTimeoutSetting"
+                    Title="Select">
+		    </Picker>
 
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center"

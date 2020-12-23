@@ -6,6 +6,7 @@ using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StatusChecker.Views
 {
@@ -50,6 +51,9 @@ namespace StatusChecker.Views
             {
                 _viewModel.NotifyWhenStatusNotRespond = true;
             }
+
+            _pckTimeoutSetting.ItemsSource = Enumerable.Range(1, 20).ToList();
+            
 
             BindingContext = _viewModel;
         }
