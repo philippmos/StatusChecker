@@ -38,7 +38,7 @@ namespace StatusChecker.Views.GadgetPages
                 Application.Current.MainPage = new MainPage();
             }
 
-            var errorString = string.Join(",", validationErrorList);
+            var errorString = string.Join(", ", validationErrorList);
 
             await DisplayAlert("Bitte überprüfe Deine Eingaben", errorString, "Ok");
         }
