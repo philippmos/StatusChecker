@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json.Linq;
 
 namespace StatusChecker
@@ -37,15 +34,7 @@ namespace StatusChecker
                     { "Event", "Unable to load AppSettings File" }
                 };
 
-                // TODO: Outsource to Service
-                if(App.PermissionTrackErrors)
-                {
-                    Crashes.TrackError(ex, properties);
-                }
-
-
-                Analytics.TrackEvent(ex.Message);
-                Debug.WriteLine("Unable to load appsettings file");
+                App.TrackError(ex, properties);
             }
         }
 
@@ -90,13 +79,8 @@ namespace StatusChecker
                         { "Event", "Could not find AppSetting" }
                     };
 
-                    if(App.PermissionTrackErrors)
-                    {
-                        Crashes.TrackError(ex, properties);
-                    }
+                    App.TrackError(ex, properties);
 
-
-                    Debug.WriteLine($"Unable to retrieve appsetting '{ name }'");
 
                     return string.Empty;
                 }

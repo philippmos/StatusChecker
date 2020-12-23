@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -8,7 +7,6 @@ using Xamarin.Forms;
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
-using Microsoft.AppCenter.Crashes;
 using System.Collections.Generic;
 
 namespace StatusChecker.ViewModels.Gadgets
@@ -54,6 +52,20 @@ namespace StatusChecker.ViewModels.Gadgets
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
 
+                    var statusIndicatorColor = GetStatusIndicatorColor(gadgetStatus);
+
+                    if(gadgetStatus == null)
+                    {
+                        gadgetStatus = new GadgetStatus
+                        {
+                            temperature = 0.00,
+                            overtemperature = false,
+                            temperature_status = "undefined",
+                            mac = "",
+                            voltage = 0.00
+                        };                       
+                    }
+
                     var viewModel = new GadgetViewModel
                     {
                         Id = gadget.Id,
@@ -63,11 +75,14 @@ namespace StatusChecker.ViewModels.Gadgets
                         IpAddress = gadget.IpAddress,
                         Description = gadget.Description,
                         IsStatusOk = gadgetStatus.temperature_status == "Normal",
+                        StatusIndicatorColor = statusIndicatorColor.ToString(),
                         TemperatureStatus = gadgetStatus.temperature_status,
                         Temperature = gadgetStatus.temperature,
                         TemperatureC = $"{gadgetStatus.temperature} °C",
                         Voltage = $"{ gadgetStatus.voltage } V"
                     };
+
+
 
                     Gadgets.Add(viewModel);
                 }
@@ -79,18 +94,25 @@ namespace StatusChecker.ViewModels.Gadgets
                     { "Event", "Could not Add GadgetViewModel" }
                 };
 
-                if(App.PermissionTrackErrors)
-                {
-                    Crashes.TrackError(ex, properties);
-                }
-                
-
-                Debug.WriteLine(ex);
+                App.TrackError(ex, properties);
             }
             finally
             {
                 IsBusy = false;
             }
+        }
+
+        private StatusIndicatorColors GetStatusIndicatorColor(GadgetStatus gadgetStatus)
+        {
+            if (gadgetStatus == null) return StatusIndicatorColors.Red;
+
+            if(gadgetStatus.overtemperature == false && gadgetStatus.temperature <= 90.00 && gadgetStatus.voltage <= 250.00)
+            {
+                return StatusIndicatorColors.Green;
+            }
+
+            return StatusIndicatorColors.Red;
+
         }
     }
 }
