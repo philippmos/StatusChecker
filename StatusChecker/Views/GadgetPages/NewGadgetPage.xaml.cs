@@ -25,10 +25,11 @@ namespace StatusChecker.Views.GadgetPages
             BindingContext = this;
         }
 
-        private async void Save_Clicked(object sender, EventArgs e)
+        private void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddItem", Gadget);
-            await Navigation.PopModalAsync();
+
+            Application.Current.MainPage = new MainPage();
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
