@@ -8,4 +8,10 @@
         public string mac { get; set; }
         public double voltage { get; set; }
     }
+
+    public enum StatusIndicatorColors
+    {
+        Red,
+        Green
+    }
 }
