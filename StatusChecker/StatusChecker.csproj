@@ -31,6 +31,7 @@
     <Folder Include="Infrastructure\Repositories\Interfaces\" />
     <Folder Include="DataStore\" />
     <Folder Include="DataStore\Interfaces\" />
+    <Folder Include="ViewModels\Gadgets\" />
   </ItemGroup>
     
   <ItemGroup>

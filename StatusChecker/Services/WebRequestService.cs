@@ -1,17 +1,27 @@
+using System;
 using System.IO;
 using System.Net;
+using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Crashes;
+using System.Collections.Generic;
 
+using Xamarin.Forms;
 using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Services
 {
     public class WebRequestService : IWebRequestService
     {
-        private readonly string _statusRequestUrl = "/status";
+        private readonly ISettingService _settingService;
 
+        public WebRequestService()
+        {
+            _settingService = DependencyService.Get<ISettingService>();
+        }
 
         public async Task<GadgetStatus> GetStatusAsync(string ipAddress)
         {
@@ -22,20 +32,51 @@ namespace StatusChecker.Services
 
         private async Task<string> GetWebResponseAsync(string ipAddress)
         {
-            var request = WebRequest.Create($"http://{ ipAddress }{ _statusRequestUrl }");
+            var statusRequestUrl = await _settingService.GetSettingValueAsync(SettingKeys.StatusRequestUrl);
 
-            request.Credentials = new NetworkCredential(
-                AppSettingsManager.Settings["WebRequestUsername"],
-                AppSettingsManager.Settings["WebRequestPassword"]);
+            var requestUrl = $"http://{ ipAddress }{ statusRequestUrl }";
 
-            WebResponse response = await request.GetResponseAsync();
-
-            using (Stream dataStream = response.GetResponseStream())
+            try
             {
-                var reader = new StreamReader(dataStream);
+                var request = WebRequest.Create(requestUrl);
 
-                return reader.ReadToEnd();
+                int.TryParse(AppSettingsManager.Settings["WebRequestTimeout"], out int webRequestTimeout);
+
+                request.Timeout = webRequestTimeout;
+
+                request.Credentials = new NetworkCredential(
+                    AppSettingsManager.Settings["WebRequestUsername"],
+                    AppSettingsManager.Settings["WebRequestPassword"]);
+
+                WebResponse response = await request.GetResponseAsync();
+
+                using (Stream dataStream = response.GetResponseStream())
+                {
+                    var reader = new StreamReader(dataStream);
+
+                    return reader.ReadToEnd();
+                }
             }
+            catch(Exception ex)
+            {
+                var notifyWhenStatusNotRespond = await _settingService.GetSettingValueAsync(SettingKeys.NotifyWhenStatusNotRespond);
+
+                if(notifyWhenStatusNotRespond == "1")
+                {
+                    await Application.Current.MainPage.DisplayAlert("Status konnte nicht abgefragt werden", $"Adresse: { requestUrl }", "Schade");
+                }
+
+
+                var properties = new Dictionary<string, string> {
+                    { "Method", "GetWebResponseAsync" },
+                    { "Event", "Could not proceed WebRequest" }
+                };
+
+                App.TrackError(ex, properties);
+
+                return null;
+            }
+            
         }
 
 
@@ -44,10 +85,28 @@ namespace StatusChecker.Services
         {
             if (serverResponse == null) return null;
 
-            var deserializedResponse = JsonSerializer.Deserialize<GadgetStatus>(serverResponse);
+            try
+            {
+                return JsonSerializer.Deserialize<GadgetStatus>(serverResponse);
+            }
+            catch (Exception ex)
+            {
+                var properties = new Dictionary<string, string> {
+                    { "Method", "SerializeWebResponse" },
+                    { "Event", "Could not deserialize ServerResponse" }
+                };
+
+                if (App.PermissionTrackErrors)
+                {
+                    Crashes.TrackError(ex, properties);
+                }
 
 
-            return deserializedResponse;
+                Debug.WriteLine(ex.Message);
+
+                return null;
+            }
+
         }
 
 

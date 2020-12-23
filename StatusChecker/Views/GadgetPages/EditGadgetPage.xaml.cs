@@ -1,7 +1,7 @@
 using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
-using StatusChecker.ViewModels;
+using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.DataStore.Interfaces;
 
 namespace StatusChecker.Views.GadgetPages
@@ -49,13 +49,13 @@ namespace StatusChecker.Views.GadgetPages
 
             if (await _dataStore.UpdateAsync(updatedGadget))
             {
-                await Navigation.PopAsync();
+                Application.Current.MainPage = new MainPage();
             }
         }
 
-        private async void Cancel_Clicked(object sender, System.EventArgs e)
+        private void Cancel_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PopAsync();
+            Application.Current.MainPage = new MainPage();
         }
     }
 }

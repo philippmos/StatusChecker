@@ -1,15 +1,18 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Newtonsoft.Json.Linq;
 
 namespace StatusChecker
 {
     public class AppSettingsManager
     {
         private static AppSettingsManager _instance;
-        private JObject _settings;
+        private readonly JObject _settings;
 
         private const string Namespace = "StatusChecker";
         private const string FileName = "appsettings.json";
@@ -27,8 +30,21 @@ namespace StatusChecker
                     _settings = JObject.Parse(json);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                var properties = new Dictionary<string, string> {
+                    { "Method", "AppSettingsManager" },
+                    { "Event", "Unable to load AppSettings File" }
+                };
+
+                // TODO: Outsource to Service
+                if(App.PermissionTrackErrors)
+                {
+                    Crashes.TrackError(ex, properties);
+                }
+
+
+                Analytics.TrackEvent(ex.Message);
                 Debug.WriteLine("Unable to load appsettings file");
             }
         }
@@ -67,8 +83,19 @@ namespace StatusChecker
 
                     return node.ToString();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    var properties = new Dictionary<string, string> {
+                        { "Method", "AppSettingsManager" },
+                        { "Event", "Could not find AppSetting" }
+                    };
+
+                    if(App.PermissionTrackErrors)
+                    {
+                        Crashes.TrackError(ex, properties);
+                    }
+
+
                     Debug.WriteLine($"Unable to retrieve appsetting '{ name }'");
 
                     return string.Empty;

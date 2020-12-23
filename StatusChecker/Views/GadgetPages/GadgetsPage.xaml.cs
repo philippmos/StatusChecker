@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-using StatusChecker.ViewModels;
+using StatusChecker.ViewModels.Gadgets;
 
 namespace StatusChecker.Views.GadgetPages
 {
@@ -34,7 +34,10 @@ namespace StatusChecker.Views.GadgetPages
             base.OnAppearing();
 
             if (viewModel.Gadgets.Count == 0)
+            {
                 viewModel.IsBusy = true;
+            }
+                
         }
     }
 }
