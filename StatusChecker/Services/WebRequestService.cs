@@ -1,10 +1,8 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.AppCenter.Crashes;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -96,13 +94,7 @@ namespace StatusChecker.Services
                     { "Event", "Could not deserialize ServerResponse" }
                 };
 
-                if (App.PermissionTrackErrors)
-                {
-                    Crashes.TrackError(ex, properties);
-                }
-
-
-                Debug.WriteLine(ex.Message);
+                App.TrackError(ex, properties);
 
                 return null;
             }
