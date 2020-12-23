@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using Xamarin.Forms;
 
@@ -27,13 +29,42 @@ namespace StatusChecker.Views.GadgetPages
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Gadget);
-            await Navigation.PopModalAsync();
+            var validationErrorList = CreateValidationErrorList(Gadget);
+
+            if(validationErrorList.Count() == 0)
+            {
+                MessagingCenter.Send(this, "AddItem", Gadget);
+
+                Application.Current.MainPage = new MainPage();
+            }
+
+            var errorString = string.Join(", ", validationErrorList);
+
+            await DisplayAlert("Bitte überprüfe Deine Eingaben", errorString, "Ok");
         }
+
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+
+        private List<string> CreateValidationErrorList(Gadget gadget)
+        {
+            var invalidFieldsList = new List<string>();
+
+            if (gadget.Name.Length <= 3)
+            {
+                invalidFieldsList.Add("Länge des Gerätenamens");
+            }
+
+            if(string.IsNullOrEmpty(gadget.IpAddress))
+            {
+                invalidFieldsList.Add("IP Adresse ist erforderlich");
+            }
+
+            return invalidFieldsList;
         }
     }
 }

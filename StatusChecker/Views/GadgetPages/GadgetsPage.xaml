@@ -40,7 +40,7 @@
                                    HorizontalOptions="EndAndExpand"
                                    Margin="0,0,10,0"
                                    Padding="0"
-                                   BackgroundColor="Green"
+                                   BackgroundColor="{Binding StatusIndicatorColor}"
                                    HasShadow="False"/>
 
                         </StackLayout>
