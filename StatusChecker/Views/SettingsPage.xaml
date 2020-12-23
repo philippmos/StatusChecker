@@ -17,19 +17,28 @@
 
         <StackLayout Spacing="20" Padding="15">
 
-            <Label Text="Status Request Url" FontSize="Medium" />
+            <Label Text="Status Request Url" FontSize="Medium" FontAttributes="Bold" />
             <Entry Text="{Binding StatusRequestUrl}" FontSize="Small"
                    Placeholder="z.B. /status"
                    HeightRequest="50"
-                   BackgroundColor="#212121"/>
+                   BackgroundColor="#212121"
+                   Margin="0,0,0,20"/>
 
             
-            <Label Text="Error Logging aktiv" FontSize="Medium" />
-            <Switch IsToggled="False" x:Name="_swtPermissionTrackErrors" />
+            <Label Text="Error Logging aktiv" FontSize="Medium" FontAttributes="Bold" />
+            <Switch IsToggled="False" x:Name="_swtPermissionTrackErrors" Margin="0,0,0,20" />
 
             
-            <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" />
-            <Switch IsToggled="{Binding NotifyWhenStatusNotRespond}" x:Name="_swtNotifyWhenStatusNotRespond" />
+            <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" FontAttributes="Bold" />
+            <Switch IsToggled="{Binding NotifyWhenStatusNotRespond}" x:Name="_swtNotifyWhenStatusNotRespond" Margin="0,0,0,20" />
+
+            <Label Text="Timeout für Requests in Sekunden" FontSize="Medium" FontAttributes="Bold" />
+            <Picker x:Name="_pckTimeoutSetting"
+                    Title="Select"
+                    HeightRequest="50"
+                    BackgroundColor="#212121"
+                    Margin="0,0,0,20">
+		    </Picker>
 
 
             <StackLayout Orientation="Horizontal"
