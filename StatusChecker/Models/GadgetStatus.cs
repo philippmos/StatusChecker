@@ -12,6 +12,7 @@
     public enum StatusIndicatorColors
     {
         Red,
-        Green
+        Green,
+        Black
     }
 }
