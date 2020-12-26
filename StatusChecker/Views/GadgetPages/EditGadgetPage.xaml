@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.GadgetPages.EditGadgetPage"
@@ -24,24 +24,29 @@
             <Label Text="Gerätename" FontSize="Medium" />
             <Entry Text="{Binding Gadget.Name}" FontSize="Small"
                    Placeholder="z.B. Neues Gerät 1"
+                   MaxLength="30"
                    HeightRequest="50"
                    BackgroundColor="#212121"/>
 
             <Label Text="Standort" FontSize="Medium" />
             <Entry Text="{Binding Gadget.Location}" FontSize="Small"
                    Placeholder="z.B. Rollladen Küche"
+                   MaxLength="50"
                    HeightRequest="50"
                    BackgroundColor="#212121" />
 
             <Label Text="IP Adresse" FontSize="Medium" />
             <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small"
                    Placeholder="0.0.0.0"
+                   MaxLength="15"
+                   Keyboard="Numeric"
                    HeightRequest="50"
                    BackgroundColor="#212121" />
 
             <Label Text="Beschreibung" FontSize="Medium" />
             <Entry Text="{Binding Gadget.Description}" FontSize="Small"
                    Placeholder="Beschreibung des Gerätes"
+                   MaxLength="255"
                    HeightRequest="50"
                    BackgroundColor="#212121" />
         </StackLayout>
