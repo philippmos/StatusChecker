@@ -13,13 +13,14 @@
 
 
 
-    <ContentPage.Content>
+    <ScrollView>
 
         <StackLayout Spacing="20" Padding="15">
 
             <Label Text="Status Request Url" FontSize="Medium" FontAttributes="Bold" />
             <Entry Text="{Binding StatusRequestUrl}" FontSize="Small"
                    Placeholder="z.B. /status"
+                   MaxLength="255"
                    HeightRequest="50"
                    BackgroundColor="#212121"
                    Margin="0,0,0,20"/>
@@ -50,6 +51,6 @@
 
         </StackLayout>
 
-    </ContentPage.Content>
+    </ScrollView>
 
 </ContentPage>
