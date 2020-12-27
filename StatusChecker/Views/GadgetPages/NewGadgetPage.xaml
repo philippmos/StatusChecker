@@ -27,13 +27,13 @@
                        HeightRequest="50"
                        BackgroundColor="#212121" />
 
-                <Label Text="IP Adresse" FontSize="Medium" />
+                <Label Text="IP Adresse oder Hostname" FontSize="Medium" />
                 <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small"
                        Placeholder="0.0.0.0"
                        MaxLength="15"
                        HeightRequest="50"
                        BackgroundColor="#212121"
-                       Keyboard="Numeric"/>
+                       Keyboard="Url" />
 
                 <Label Text="Beschreibung" FontSize="Medium" />
                 <Entry Text="{Binding Gadget.Description}" FontSize="Small"
