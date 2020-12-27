@@ -1,7 +1,7 @@
 ﻿using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace StatusChecker.Views
+namespace StatusChecker.Views.LegalPages
 {
     public partial class AppInfoPage : ContentPage
     {

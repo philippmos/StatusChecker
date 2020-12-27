@@ -32,6 +32,7 @@
     <Folder Include="DataStore\" />
     <Folder Include="DataStore\Interfaces\" />
     <Folder Include="ViewModels\Gadgets\" />
+    <Folder Include="Views\LegalPages\" />
   </ItemGroup>
     
   <ItemGroup>
