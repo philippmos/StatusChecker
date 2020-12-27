@@ -10,7 +10,7 @@
         <ToolbarItem Text="Speichern" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
 
-    <ScrollView>
+    <ScrollView VerticalScrollBarVisibility="Never">
 
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Gerätename" FontSize="Medium" />
