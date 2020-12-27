@@ -13,5 +13,15 @@ namespace StatusChecker.Views.LegalPages
 
             _lblVersionInfo.Text = $"StatusChecker v{ VersionTracking.CurrentVersion }";
         }
+
+        async void _btnImprint_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new ImprintPage());
+        }
+
+        async void _btnPrivacyPolicy_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new PrivacyPolicyPage());
+        }
     }
 }
