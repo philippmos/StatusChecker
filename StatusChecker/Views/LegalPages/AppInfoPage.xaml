@@ -5,16 +5,19 @@
              x:Class="StatusChecker.Views.LegalPages.AppInfoPage"
              BackgroundColor="#1C1C1E">
 
+    <ScrollView VerticalScrollBarVisibility="Never">
+        
+        <StackLayout Spacing="20" Padding="15">
 
-    <StackLayout Spacing="20" Padding="15">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="EndAndExpand"
+                         Padding="0,0,0,30">
+                <Label x:Name="_lblVersionInfo" FontSize="Small"/>
+            </StackLayout>
 
-        <StackLayout Orientation="Horizontal"
-                     HorizontalOptions="Center"
-                     VerticalOptions="EndAndExpand"
-                     Padding="0,0,0,30">
-            <Label x:Name="_lblVersionInfo" FontSize="Small"/>
         </StackLayout>
 
-    </StackLayout>
+    </ScrollView>
 
 </ContentPage>
