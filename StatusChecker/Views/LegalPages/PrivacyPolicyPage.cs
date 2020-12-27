@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System.IO;
+using System.Reflection;
+using Xamarin.Forms;
 
 namespace StatusChecker.Views.LegalPages
 {
@@ -9,11 +11,18 @@ namespace StatusChecker.Views.LegalPages
             var browser = new WebView();
             var htmlSource = new HtmlWebViewSource();
 
-            htmlSource.Html = @"<html><body>
-                                <h1>Datenschutz</h1>
-                                <p></p>
-                                </body>
-                                </html>";
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(ImprintPage)).Assembly;
+            Stream stream = assembly.GetManifestResourceStream("StatusChecker.Content.Static.Legal.privacypolicy_de.html");
+
+
+            string htmlFileContent = "";
+            using (var reader = new StreamReader(stream))
+            {
+                htmlFileContent = reader.ReadToEnd();
+            }
+
+
+            htmlSource.Html = htmlFileContent;
 
             browser.Source = htmlSource;
             Content = browser;
