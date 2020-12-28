@@ -40,6 +40,7 @@ namespace StatusChecker.Views
 
             var permissionTrackErrors = await _settingService.GetSettingValueAsync(SettingKeys.PermissionTrackErrors);
             var notifyWhenStatusNotRespond = await _settingService.GetSettingValueAsync(SettingKeys.NotifyWhenStatusNotRespond);
+            var darkModeEnabled = await _settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
 
 
             _viewModel.StatusRequestUrl = await _settingService.GetSettingValueAsync(SettingKeys.StatusRequestUrl); ;
@@ -51,6 +52,10 @@ namespace StatusChecker.Views
             if(notifyWhenStatusNotRespond == "1")
             {
                 _viewModel.NotifyWhenStatusNotRespond = true;
+            }
+            if(darkModeEnabled == "1")
+            {
+                _viewModel.DarkModeEnabled = true;
             }
 
             var timeoutSettingOptions = new List<string>();
@@ -92,6 +97,10 @@ namespace StatusChecker.Views
                 {
                     SettingKeys.RequestTimeoutInSeconds,
                     (_pckTimeoutSetting.SelectedIndex + 1).ToString()
+                },
+                {
+                    SettingKeys.DarkModeEnabled,
+                    ParseBoolSetting(_swtDarkmodeEnabled.IsToggled)
                 }
             });
 

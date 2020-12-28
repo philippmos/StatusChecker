@@ -12,6 +12,7 @@ using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.DataStore;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
+using StatusChecker.Helper.Interfaces;
 
 namespace StatusChecker
 {
@@ -74,6 +75,8 @@ namespace StatusChecker
                                 typeof(Crashes));
             }
 
+            InitializeStyleTheme();
+
         }
 
         protected override void OnSleep()
@@ -91,6 +94,20 @@ namespace StatusChecker
             Dark
         }
 
+
+        private async void InitializeStyleTheme()
+        {
+            var settingService = DependencyService.Get<ISettingService>();
+
+            var isDarkModeEnabled = await settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
+
+            Theme activeTheme = Theme.Light;
+
+            if (!string.IsNullOrEmpty(isDarkModeEnabled) && isDarkModeEnabled == "1") activeTheme = Theme.Dark;
+
+
+            DependencyService.Get<IThemeHelper>().SetAppTheme(activeTheme);
+        }
 
     }
 }

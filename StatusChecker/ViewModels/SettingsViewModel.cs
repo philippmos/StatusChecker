@@ -6,5 +6,6 @@
         public bool PermissionTrackErrors { get; set; }
         public bool NotifyWhenStatusNotRespond { get; set; }
         public int RequestTimeoutInSeconds { get; set; }
+        public bool DarkModeEnabled { get; set; }
     }
 }

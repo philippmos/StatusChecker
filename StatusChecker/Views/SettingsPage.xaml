@@ -27,7 +27,7 @@
 
             
             <Label Text="Error Logging aktiv" FontSize="Medium" FontAttributes="Bold" />
-            <Switch IsToggled="False" x:Name="_swtPermissionTrackErrors" Margin="0,0,0,20" />
+            <Switch IsToggled="{Binding PermissionTrackErrors}" x:Name="_swtPermissionTrackErrors" Margin="0,0,0,20" />
 
             
             <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" FontAttributes="Bold" />
@@ -35,7 +35,7 @@
 
 
             <Label Text="Darkmode enabled" FontSize="Medium" FontAttributes="Bold" />
-            <Switch IsToggled="False" x:Name="_swtDarkmodeEnabled" Margin="0,0,0,20" Toggled="_swtDarkmodeEnabled_Toggled" />
+            <Switch IsToggled="{Binding DarkModeEnabled}" x:Name="_swtDarkmodeEnabled" Margin="0,0,0,20" Toggled="_swtDarkmodeEnabled_Toggled" />
 
             <Label Text="Timeout für Requests in Sekunden" FontSize="Medium" FontAttributes="Bold" />
             <Picker x:Name="_pckTimeoutSetting"
