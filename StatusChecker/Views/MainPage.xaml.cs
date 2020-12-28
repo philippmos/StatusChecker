@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using StatusChecker.Models;
+using StatusChecker.Views.LegalPages;
 using StatusChecker.Views.GadgetPages;
 
 namespace StatusChecker.Views
@@ -31,11 +32,11 @@ namespace StatusChecker.Views
                     case (int)MenuItemType.GadgetOverview:
                         MenuPages.Add(id, new NavigationPage(new GadgetsPage()));
                         break;
-                    case (int)MenuItemType.AppInfo:
-                        MenuPages.Add(id, new NavigationPage(new AppInfoPage()));
-                        break;
                     case (int)MenuItemType.Setting:
                         MenuPages.Add(id, new NavigationPage(new SettingsPage()));
+                        break;
+                    case (int)MenuItemType.AppInfo:
+                        MenuPages.Add(id, new NavigationPage(new AppInfoPage()));
                         break;
                 }
             }

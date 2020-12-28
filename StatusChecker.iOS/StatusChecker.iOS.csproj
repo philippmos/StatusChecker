@@ -125,6 +125,8 @@
     <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
     <ImageAsset Include="Resources\Assets.xcassets\LaunchScreenIcon.imageset\LaunchScreenIcon.png" />
     <ImageAsset Include="Resources\Assets.xcassets\LaunchScreenIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon_StatusChecker_Yellow.imageset\AppIcon_StatusChecker_Yellow.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon_StatusChecker_Yellow.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
