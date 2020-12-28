@@ -3,7 +3,8 @@
 <img src="./.github/images/readme_title.png" style="width: 100%;">
 
 ## Pipelines
-[![Build Status](https://dev.azure.com/philipp-c-moser/StatusChecker/_apis/build/status/philipp-c-moser.StatusChecker?branchName=main)](https://dev.azure.com/philipp-c-moser/StatusChecker/_build/latest?definitionId=51&branchName=main)
+[![Build Status](https://dev.azure.com/philipp-c-moser/StatusChecker/_apis/build/status/philipp-c-moser.StatusChecker?branchName=main)](https://dev.azure.com/philipp-c-moser/StatusChecker/_build/latest?definitionId=51&branchName=main)&nbsp;&nbsp;
+[![Build status](https://build.appcenter.ms/v0.1/apps/f7f560e4-d871-4dd5-ab08-c5a004190175/branches/main/badge)](https://appcenter.ms)
 
 ![CodeQL](https://github.com/philipp-c-moser/StatusChecker/workflows/CodeQL/badge.svg?branch=main)
 
