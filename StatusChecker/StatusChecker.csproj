@@ -34,6 +34,7 @@
     <Folder Include="ViewModels\Gadgets\" />
     <Folder Include="Views\LegalPages\" />
     <Folder Include="Content\" />
+    <Folder Include="StyleThemes\" />
   </ItemGroup>
     
   <ItemGroup>
