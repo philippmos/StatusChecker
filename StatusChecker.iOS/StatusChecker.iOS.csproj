@@ -76,6 +76,7 @@
     <None Include="..\StatusChecker\StatusChecker.db">
       <Link>StatusChecker.db</Link>
     </None>
+    <Compile Include="Helper\ThemeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
