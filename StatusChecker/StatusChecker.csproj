@@ -35,6 +35,8 @@
     <Folder Include="Views\LegalPages\" />
     <Folder Include="Content\" />
     <Folder Include="StyleThemes\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Helper\Interfaces\" />
   </ItemGroup>
     
   <ItemGroup>

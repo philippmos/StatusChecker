@@ -18,6 +18,7 @@ namespace StatusChecker
     public partial class App : Application
     {
         public static bool PermissionTrackErrors = false;
+        public static Theme AppTheme { get; set; }
 
         public App()
         {
@@ -82,5 +83,14 @@ namespace StatusChecker
         protected override void OnResume()
         {
         }
+
+
+        public enum Theme
+        {
+            Light,
+            Dark
+        }
+
+
     }
 }
