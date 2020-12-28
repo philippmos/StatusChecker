@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
@@ -32,6 +32,10 @@
             
             <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" FontAttributes="Bold" />
             <Switch IsToggled="{Binding NotifyWhenStatusNotRespond}" x:Name="_swtNotifyWhenStatusNotRespond" Margin="0,0,0,20" />
+
+
+            <Label Text="Darkmode enabled" FontSize="Medium" FontAttributes="Bold" />
+            <Switch IsToggled="False" x:Name="_swtDarkmodeEnabled" Margin="0,0,0,20" Toggled="_swtDarkmodeEnabled_Toggled" />
 
             <Label Text="Timeout für Requests in Sekunden" FontSize="Medium" FontAttributes="Bold" />
             <Picker x:Name="_pckTimeoutSetting"

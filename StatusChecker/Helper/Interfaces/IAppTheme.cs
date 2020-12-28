@@ -2,7 +2,7 @@
 
 namespace StatusChecker.Helper.Interfaces
 {
-    public interface IAppTheme
+    public interface IThemeHelper
     {
         void SetAppTheme(Theme theme);
     }

@@ -6,7 +6,8 @@ using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
+using StatusChecker.Helper.Interfaces;
+using static StatusChecker.App;
 
 namespace StatusChecker.Views
 {
@@ -109,5 +110,23 @@ namespace StatusChecker.Views
         {
             return value ? "1" : "0";
         }
+
+        private void _swtDarkmodeEnabled_Toggled(object sender, ToggledEventArgs e)
+        {
+            SetTheme(_swtDarkmodeEnabled.IsToggled);
+        }
+
+        private void SetTheme(bool status)
+        {
+            Theme themeRequested = Theme.Light;
+
+            if (status)
+            {
+                themeRequested = Theme.Dark;
+            }
+
+            DependencyService.Get<IThemeHelper>().SetAppTheme(themeRequested);
+        }
+
     }
 }

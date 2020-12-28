@@ -1,12 +1,13 @@
 ﻿using Xamarin.Forms;
 
 using StatusChecker.Helper.Interfaces;
+using StatusChecker.StyleThemes;
 using static StatusChecker.App;
 
 [assembly: Dependency(typeof(StatusChecker.iOS.Helper.ThemeHelper))]
 namespace StatusChecker.iOS.Helper
 {
-    public class ThemeHelper : IAppTheme
+    public class ThemeHelper : IThemeHelper
     {
         public void SetAppTheme(App.Theme theme)
         {
