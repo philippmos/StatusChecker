@@ -26,8 +26,6 @@ namespace StatusChecker.Views.LegalPages
 
             browser.Source = htmlSource;
             Content = browser;
-
-            Content.BackgroundColor = Color.FromHex("#1C1C1E");
         }
     }
 }
