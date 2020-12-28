@@ -47,7 +47,7 @@ namespace StatusChecker.Views
  
             if(permissionTrackErrors == "1")
             {
-                _swtPermissionTrackErrors.IsToggled = true;
+                _viewModel.PermissionTrackErrors = true;
             }
             if(notifyWhenStatusNotRespond == "1")
             {
