@@ -4,5 +4,9 @@
              x:Class="StatusChecker.StyleThemes.DarkTheme">
 
     <Color x:Key="BackgroundColor">#1C1C1E</Color>
+    <Color x:Key="TextColor">#FEFEFE</Color>
+
+    <Color x:Key="FormBackgroundColor">#212121</Color>
+    <Color x:Key="FormTextColor">#FEFEFE</Color>
 
 </ResourceDictionary>
