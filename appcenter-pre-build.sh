@@ -9,7 +9,7 @@ APPSETTINGS_FILE = $APPCENTER_SOURCE_DIRECTORY/StatusChecker/appsettings.json
 # Replacing AppSettings.Json
 if [ -e "$APPSETTINGS_FILE" ]
 then
-    echo "Updating configuration in appsettings.json from Project"
+    echo "Updating configuration in appsettings.json from Solution"
     sed -i '' 's/"WebRequestUsername": ""/"WebRequestUsername": "usernameTest"/' $APPSETTINGS_FILE
     sed -i '' 's/"WebRequestPassword": ""/"WebRequestPassword": "test12345"/' $APPSETTINGS_FILE
 
