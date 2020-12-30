@@ -23,7 +23,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>StatusChecker</string>
 	<key>CFBundleIdentifier</key>
-	<string>de.company.statuschecker</string>
+	<string>de.philippmoserprvt.statuschecker</string>
 	<key>CFBundleVersion</key>
 	<string>1.1.22</string>
 	<key>UILaunchStoryboardName</key>
