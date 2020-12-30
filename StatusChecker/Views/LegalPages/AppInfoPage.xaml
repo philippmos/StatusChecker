@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="App Informationen"
+             x:Class="StatusChecker.Views.LegalPages.AppInfoPage"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        
+        <StackLayout Spacing="20" Padding="15">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,15,0,0">
+                <Image Source="AppIcon_StatusChecker_Yellow" WidthRequest="125"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label x:Name="_lblVersionInfo" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+            </StackLayout> 
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="EndAndExpand"
+                         Padding="0,0,0,30">
+                
+                <Button Text="Impressum" Margin="0,0,10,0" x:Name="_btnImprint" Clicked="_btnImprint_Clicked"/>
+                <Button Text="Datenschutz" Margin="10,0,0,0" x:Name="_btnPrivacyPolicy" Clicked="_btnPrivacyPolicy_Clicked" />
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>

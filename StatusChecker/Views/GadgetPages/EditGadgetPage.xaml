@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.GadgetPages.EditGadgetPage"
              Title="{Binding Name}"
-             BackgroundColor="#1C1C1E">
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Abbrechen" Clicked="Cancel_Clicked" />
@@ -16,39 +16,43 @@
         <StackLayout Spacing="20" Padding="15">
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="ID" FontSize="Medium" />
-                <Label Text="{Binding Gadget.Id}" FontSize="Medium" />
-
+                <Label Text="ID" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.Id}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
-            <Label Text="Gerätename" FontSize="Medium" />
+
+            <Label Text="Gerätename" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Name}" FontSize="Small"
-                   Placeholder="z.B. Neues Gerät 1"
-                   MaxLength="30"
-                   HeightRequest="50"
-                   BackgroundColor="#212121"/>
+                    Placeholder="z.B. Neues Gerät 1"
+                    MaxLength="30"
+                    HeightRequest="50"
+                    BackgroundColor="{DynamicResource FormBackgroundColor}"
+                    TextColor="{DynamicResource FormTextColor}"/>
 
-            <Label Text="Standort" FontSize="Medium" />
+            <Label Text="Standort" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Location}" FontSize="Small"
-                   Placeholder="z.B. Rollladen Küche"
-                   MaxLength="50"
-                   HeightRequest="50"
-                   BackgroundColor="#212121" />
+                    Placeholder="z.B. Rollladen Küche"
+                    MaxLength="50"
+                    HeightRequest="50"
+                    BackgroundColor="{DynamicResource FormBackgroundColor}"
+                    TextColor="{DynamicResource FormTextColor}" />
 
-            <Label Text="IP Adresse oder Hostname" FontSize="Medium" />
+            <Label Text="IP Adresse oder Hostname" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small"
-                   Placeholder="0.0.0.0"
-                   MaxLength="15"
-                   HeightRequest="50"
-                   BackgroundColor="#212121"
-                   Keyboard="Url" />
+                    Placeholder="0.0.0.0"
+                    MaxLength="15"
+                    HeightRequest="50"
+                    Keyboard="Url"
+                    BackgroundColor="{DynamicResource FormBackgroundColor}"
+                    TextColor="{DynamicResource FormTextColor}" />
 
-            <Label Text="Beschreibung" FontSize="Medium" />
+            <Label Text="Beschreibung" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Description}" FontSize="Small"
-                   Placeholder="Beschreibung des Gerätes"
-                   MaxLength="255"
-                   HeightRequest="50"
-                   BackgroundColor="#212121" />
+                    Placeholder="Beschreibung des Gerätes"
+                    MaxLength="255"
+                    HeightRequest="50"
+                    BackgroundColor="{DynamicResource FormBackgroundColor}"
+                    TextColor="{DynamicResource FormTextColor}"/>
         </StackLayout>
 
     </ScrollView>

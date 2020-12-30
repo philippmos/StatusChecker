@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
              x:Class="StatusChecker.Views.SettingsPage"
-             BackgroundColor="#1C1C1E">
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
 
     <ContentPage.ToolbarItems>
@@ -17,27 +17,33 @@
 
         <StackLayout Spacing="20" Padding="15">
 
-            <Label Text="Status Request Url" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="Status Request Url" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding StatusRequestUrl}" FontSize="Small"
                    Placeholder="z.B. /status"
                    MaxLength="255"
                    HeightRequest="50"
-                   BackgroundColor="#212121"
+                   BackgroundColor="{DynamicResource FormBackgroundColor}"
+                   TextColor="{DynamicResource FormTextColor}"
                    Margin="0,0,0,20"/>
 
             
-            <Label Text="Error Logging aktiv" FontSize="Medium" FontAttributes="Bold" />
-            <Switch IsToggled="False" x:Name="_swtPermissionTrackErrors" Margin="0,0,0,20" />
+            <Label Text="Error Logging aktiv" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Switch IsToggled="{Binding PermissionTrackErrors}" x:Name="_swtPermissionTrackErrors" Margin="0,0,0,20" />
 
             
-            <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Switch IsToggled="{Binding NotifyWhenStatusNotRespond}" x:Name="_swtNotifyWhenStatusNotRespond" Margin="0,0,0,20" />
 
-            <Label Text="Timeout für Requests in Sekunden" FontSize="Medium" FontAttributes="Bold" />
+
+            <Label Text="Darkmode enabled" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Switch IsToggled="{Binding DarkModeEnabled}" x:Name="_swtDarkmodeEnabled" Margin="0,0,0,20" Toggled="_swtDarkmodeEnabled_Toggled" />
+
+            <Label Text="Timeout für Requests in Sekunden" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Picker x:Name="_pckTimeoutSetting"
                     Title="Select"
                     HeightRequest="50"
-                    BackgroundColor="#212121"
+                    BackgroundColor="{DynamicResource FormBackgroundColor}"
+                    TextColor="{DynamicResource FormTextColor}"
                     Margin="0,0,0,20">
 		    </Picker>
 
@@ -46,7 +52,7 @@
                          HorizontalOptions="Center"
                          VerticalOptions="EndAndExpand"
                          Padding="0,0,0,30">
-                <Label x:Name="_lblVersionInfo" FontSize="Small"/>
+                <Label x:Name="_lblVersionInfo" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
         </StackLayout>

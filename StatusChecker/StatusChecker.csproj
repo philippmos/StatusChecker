@@ -32,6 +32,11 @@
     <Folder Include="DataStore\" />
     <Folder Include="DataStore\Interfaces\" />
     <Folder Include="ViewModels\Gadgets\" />
+    <Folder Include="Views\LegalPages\" />
+    <Folder Include="Content\" />
+    <Folder Include="StyleThemes\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Helper\Interfaces\" />
   </ItemGroup>
     
   <ItemGroup>
@@ -55,12 +60,19 @@
     
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Content\Static\Legal\imprint_de.html" />
+    <None Remove="Content\Static\Legal\privacypolicy_de.html" />
   </ItemGroup>
     
   <ItemGroup>
     <EmbeddedResource Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Content\Static\Legal\imprint_de.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\Static\Legal\privacypolicy_de.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
-    
 </Project>

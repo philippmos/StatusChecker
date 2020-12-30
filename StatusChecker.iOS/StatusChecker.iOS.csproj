@@ -76,6 +76,7 @@
     <None Include="..\StatusChecker\StatusChecker.db">
       <Link>StatusChecker.db</Link>
     </None>
+    <Compile Include="Helper\ThemeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -125,6 +126,8 @@
     <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
     <ImageAsset Include="Resources\Assets.xcassets\LaunchScreenIcon.imageset\LaunchScreenIcon.png" />
     <ImageAsset Include="Resources\Assets.xcassets\LaunchScreenIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon_StatusChecker_Yellow.imageset\AppIcon_StatusChecker_Yellow.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon_StatusChecker_Yellow.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -160,5 +163,8 @@
       <Project>{49634C61-A371-4B45-9BCE-D33CEAB6015A}</Project>
       <Name>StatusChecker</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
   </ItemGroup>
 </Project>

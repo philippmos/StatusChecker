@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.GadgetPages.GadgetDetailPage"
              Title="{Binding Name}"
-             BackgroundColor="#1C1C1E">
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Bearbeiten" Clicked="EditGadget_Clicked" />
@@ -15,44 +15,44 @@
         <StackLayout Spacing="20" Padding="15">
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Gerätename:" FontSize="Medium"/>
-                <Label Text="{Binding Gadget.Name}" FontSize="Small"/>
+                <Label Text="Gerätename:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.Name}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Standort:" FontSize="Medium" />
-                <Label Text="{Binding Gadget.Location}" FontSize="Small"/>
+                <Label Text="Standort:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.Location}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Device ID:" FontSize="Medium" />
-                <Label Text="{Binding Gadget.DeviceId}" FontSize="Small"/>
+                <Label Text="Device ID:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.DeviceId}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="IP Adresse:" FontSize="Medium" />
-                <Label Text="{Binding Gadget.IpAddress}" FontSize="Small"/>
+                <Label Text="IP Adresse:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.IpAddress}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Temperatur:" FontSize="Medium" />
-                <Label Text="{Binding Gadget.TemperatureC}" FontSize="Small"/>
+                <Label Text="Temperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.TemperatureC}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Status Temperatur:" FontSize="Medium" />
-                <Label Text="{Binding Gadget.TemperatureStatus}" FontSize="Small"/>
+                <Label Text="Status Temperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.TemperatureStatus}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Volt:" FontSize="Medium" />
-                <Label Text="{Binding Gadget.Voltage}" FontSize="Small"/>
+                <Label Text="Volt:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.Voltage}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Beschreibung:" FontSize="Medium" />
-                <Label Text="{Binding Gadget.Description}" FontSize="Small"/>
+                <Label Text="Beschreibung:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.Description}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
         </StackLayout>
