@@ -6,7 +6,8 @@ using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
+using StatusChecker.Helper.Interfaces;
+using static StatusChecker.App;
 
 namespace StatusChecker.Views
 {
@@ -39,17 +40,22 @@ namespace StatusChecker.Views
 
             var permissionTrackErrors = await _settingService.GetSettingValueAsync(SettingKeys.PermissionTrackErrors);
             var notifyWhenStatusNotRespond = await _settingService.GetSettingValueAsync(SettingKeys.NotifyWhenStatusNotRespond);
+            var darkModeEnabled = await _settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
 
 
             _viewModel.StatusRequestUrl = await _settingService.GetSettingValueAsync(SettingKeys.StatusRequestUrl); ;
  
             if(permissionTrackErrors == "1")
             {
-                _swtPermissionTrackErrors.IsToggled = true;
+                _viewModel.PermissionTrackErrors = true;
             }
             if(notifyWhenStatusNotRespond == "1")
             {
                 _viewModel.NotifyWhenStatusNotRespond = true;
+            }
+            if(darkModeEnabled == "1")
+            {
+                _viewModel.DarkModeEnabled = true;
             }
 
             var timeoutSettingOptions = new List<string>();
@@ -91,6 +97,10 @@ namespace StatusChecker.Views
                 {
                     SettingKeys.RequestTimeoutInSeconds,
                     (_pckTimeoutSetting.SelectedIndex + 1).ToString()
+                },
+                {
+                    SettingKeys.DarkModeEnabled,
+                    ParseBoolSetting(_swtDarkmodeEnabled.IsToggled)
                 }
             });
 
@@ -109,5 +119,23 @@ namespace StatusChecker.Views
         {
             return value ? "1" : "0";
         }
+
+        private void _swtDarkmodeEnabled_Toggled(object sender, ToggledEventArgs e)
+        {
+            SetTheme(_swtDarkmodeEnabled.IsToggled);
+        }
+
+        private void SetTheme(bool status)
+        {
+            Theme themeRequested = Theme.Light;
+
+            if (status)
+            {
+                themeRequested = Theme.Dark;
+            }
+
+            DependencyService.Get<IThemeHelper>().SetAppTheme(themeRequested);
+        }
+
     }
 }

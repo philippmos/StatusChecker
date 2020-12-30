@@ -4,7 +4,7 @@
              x:Class="StatusChecker.Views.GadgetPages.GadgetsPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage"
-             BackgroundColor="#1C1C1E">
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Hinzufügen" Clicked="AddItem_Clicked" />
@@ -21,8 +21,8 @@
 
                             <Label Text="{Binding Name}"
                                 LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemTextStyle}"
-                                FontSize="16" FontAttributes="Bold" />
+                                FontSize="16" FontAttributes="Bold"
+                                TextColor="{DynamicResource TextColor}"/>
 
                             <Frame HeightRequest="20"
                                        WidthRequest="20"
@@ -39,14 +39,14 @@
                         <StackLayout Orientation="Vertical" Margin="0,0,0,15">
                             
                             <Label Text="{Binding Location}" 
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="12" />
+                                    LineBreakMode="NoWrap"
+                                    FontSize="12"
+                                    TextColor="{DynamicResource TextColor}" />
 
                             <Label Text="{Binding TemperatureC}" 
                                     LineBreakMode="NoWrap"
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="12" />
+                                    FontSize="12"
+                                    TextColor="{DynamicResource TextColor}" />
 
                         </StackLayout>
 

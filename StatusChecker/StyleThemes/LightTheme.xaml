@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="StatusChecker.StyleThemes.LightTheme">
+
+    <Color x:Key="BackgroundColor">#FEFEFE</Color>
+    <Color x:Key="TextColor">#1C1C1E</Color>
+
+    <Color x:Key="FormBackgroundColor">#f2f2f2</Color>
+    <Color x:Key="FormTextColor">#636366</Color>
+
+    <Color x:Key="MenueBackgroundColor">#1C1C1E</Color>
+    <Color x:Key="MenueTextColor">#FEFEFE</Color>
+
+</ResourceDictionary>

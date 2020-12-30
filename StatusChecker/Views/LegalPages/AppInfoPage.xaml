@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="App Informationen"
              x:Class="StatusChecker.Views.LegalPages.AppInfoPage"
-             BackgroundColor="#1C1C1E">
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ScrollView VerticalScrollBarVisibility="Never">
         
@@ -13,7 +13,7 @@
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label x:Name="_lblVersionInfo" FontSize="Small"/>
+                <Label x:Name="_lblVersionInfo" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout> 
 
             <StackLayout Orientation="Horizontal"

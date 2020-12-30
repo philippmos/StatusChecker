@@ -20,7 +20,7 @@ namespace StatusChecker.Views
             {
                 new HomeMenuItem { Id = MenuItemType.GadgetOverview, Title = "Geräte" },
                 new HomeMenuItem { Id = MenuItemType.Setting, Title = "Einstellungen" },
-                new HomeMenuItem { Id = MenuItemType.AppInfo, Title = "Info" }
+                new HomeMenuItem { Id = MenuItemType.AppInfo, Title = "Information" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

@@ -12,12 +12,14 @@ using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.DataStore;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
+using StatusChecker.Helper.Interfaces;
 
 namespace StatusChecker
 {
     public partial class App : Application
     {
         public static bool PermissionTrackErrors = false;
+        public static Theme AppTheme { get; set; }
 
         public App()
         {
@@ -73,6 +75,8 @@ namespace StatusChecker
                                 typeof(Crashes));
             }
 
+            InitializeStyleTheme();
+
         }
 
         protected override void OnSleep()
@@ -82,5 +86,28 @@ namespace StatusChecker
         protected override void OnResume()
         {
         }
+
+
+        public enum Theme
+        {
+            Light,
+            Dark
+        }
+
+
+        private async void InitializeStyleTheme()
+        {
+            var settingService = DependencyService.Get<ISettingService>();
+
+            var isDarkModeEnabled = await settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
+
+            Theme activeTheme = Theme.Light;
+
+            if (!string.IsNullOrEmpty(isDarkModeEnabled) && isDarkModeEnabled == "1") activeTheme = Theme.Dark;
+
+
+            DependencyService.Get<IThemeHelper>().SetAppTheme(activeTheme);
+        }
+
     }
 }
