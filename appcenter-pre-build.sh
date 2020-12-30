@@ -2,7 +2,7 @@
 
 
 # Variables
-APPSETTINGS_FILE = $APPCENTER_SOURCE_DIRECTORY/StatusChecker/appsettings.json
+APPSETTINGS_FILE=$APPCENTER_SOURCE_DIRECTORY/StatusChecker/appsettings.json
 # ./Variables
 
 
