@@ -9,4 +9,7 @@
     <Color x:Key="FormBackgroundColor">#212121</Color>
     <Color x:Key="FormTextColor">#FEFEFE</Color>
 
+    <Color x:Key="MenueBackgroundColor">#1C1C1E</Color>
+    <Color x:Key="MenueTextColor">#FEFEFE</Color>
+
 </ResourceDictionary>
