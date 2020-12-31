@@ -43,9 +43,13 @@ namespace StatusChecker.Services
 
                 request.Timeout = requestTimeout * 1000;
 
-                request.Credentials = new NetworkCredential(
-                    AppSettingsManager.Settings["WebRequestUsername"],
-                    AppSettingsManager.Settings["WebRequestPassword"]);
+                string webRequestUsername = AppSettingsManager.Settings["WebRequestUsername"];
+                string webRequestPassword = AppSettingsManager.Settings["WebRequestPassword"];
+
+                if (!string.IsNullOrEmpty(webRequestUsername) && !string.IsNullOrEmpty(webRequestPassword))
+                {
+                    request.Credentials = new NetworkCredential(webRequestUsername, webRequestPassword);
+                }
 
                 WebResponse response = await request.GetResponseAsync();
 
