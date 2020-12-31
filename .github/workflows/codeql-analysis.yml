@@ -33,7 +33,6 @@ jobs:
 
     - name: Build Xamarin
       run: |
-        cd StatusChecker
         nuget restore
         msbuild StatusChecker/StatusChecker.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
 
