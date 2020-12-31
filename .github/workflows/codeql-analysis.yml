@@ -31,9 +31,8 @@ jobs:
 #    - name: Autobuild
 #      uses: github/codeql-action/autobuild@v1
 
-    - name: iOS
+    - name: Build Xamarin
       run: |
-        cd StatusChecker
         nuget restore
         msbuild StatusChecker.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
 
