@@ -6,8 +6,8 @@ using System.Linq;
 using Xamarin.Forms;
 
 using StatusChecker.Models;
-using StatusChecker.Models.Database;
 using StatusChecker.Models.Enums;
+using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.Services.Interfaces;
 
 
@@ -39,7 +39,7 @@ namespace StatusChecker.Helper
         /// </summary>
         /// <param name="unsortedGadgetList"></param>
         /// <returns></returns>
-        public async static Task<List<Gadget>> SortGadgetListBySetting(List<Gadget> unsortedGadgetList)
+        public async static Task<List<GadgetViewModel>> SortGadgetListBySettingAsync(List<GadgetViewModel> unsortedGadgetList)
         {
             var settingService = DependencyService.Get<ISettingService>();
             var sortingSetting = await settingService.GetSettingValueAsync(SettingKeys.GadgetSortingType);

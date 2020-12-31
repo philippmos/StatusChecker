@@ -54,9 +54,9 @@ namespace StatusChecker.ViewModels.Gadgets
                 if (gadgets == null || gadgets.Count() == 0) return;
 
 
-                List<Gadget> sortedGadgetList = await GadgetHelper.SortGadgetListBySetting(gadgets.ToList());
+                var unsortedGadgetList = new List<GadgetViewModel>();                
 
-                foreach (var gadget in sortedGadgetList)
+                foreach (var gadget in gadgets)
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
 
@@ -96,8 +96,13 @@ namespace StatusChecker.ViewModels.Gadgets
                     }
 
 
-                    Gadgets.Add(viewModel);
+                    unsortedGadgetList.Add(viewModel);
                 }
+
+                List<GadgetViewModel> sortedGadgetList = await GadgetHelper.SortGadgetListBySettingAsync(unsortedGadgetList);
+
+                sortedGadgetList.ForEach(Gadgets.Add);
+
             }
             catch (Exception ex)
             {
