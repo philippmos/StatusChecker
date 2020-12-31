@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 using System.Linq;
@@ -43,7 +43,7 @@ namespace StatusChecker.Helper
         {
             var settingService = DependencyService.Get<ISettingService>();
             var sortingSetting = await settingService.GetSettingValueAsync(SettingKeys.GadgetSortingType);
-            var gadgetSortingType = (GadgetSortingTypes)Enum.Parse(typeof(GadgetSortingTypes), sortingSetting);
+            Enum.TryParse(typeof(GadgetSortingTypes), sortingSetting, true, out var gadgetSortingType);
 
             switch (gadgetSortingType)
             {
