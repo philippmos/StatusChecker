@@ -6,10 +6,12 @@ APPSETTINGS_FILE=$APPCENTER_SOURCE_DIRECTORY/StatusChecker/appsettings.json
 # ./Variables
 
 
-# Replacing AppSettings.Json
+# Replacing appsettings.json
 if [ -e "$APPSETTINGS_FILE" ]
 then
     echo "Updating configuration in appsettings.json"
+    sed -i '' 's/"AppBuildNumber": ""/"AppBuildNumber": "'$APPCENTER_BUILD_ID'"/' $APPSETTINGS_FILE
+
     sed -i '' 's/"WebRequestUsername": ""/"WebRequestUsername": "'$CONF_WEBREQUESTUSERNAME'"/' $APPSETTINGS_FILE
     sed -i '' 's/"WebRequestPassword": ""/"WebRequestPassword": "'$CONF_WEBREQUESTPASSWORD'"/' $APPSETTINGS_FILE
 
@@ -18,4 +20,4 @@ then
 
     sed -i '' 's+"InitialStatusRequestUrl": ""+"InitialStatusRequestUrl": "'$CONF_INITIALSTATUSREQUESTURL'"+' $APPSETTINGS_FILE
 fi
-# ./Replacing AppSettings.Json
+# ./Replacing appsettings.json

@@ -1,5 +1,4 @@
-﻿using Xamarin.Essentials;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
@@ -14,7 +13,6 @@ namespace StatusChecker.Views
     public partial class SettingsPage : ContentPage
     {
         private SettingsViewModel _viewModel;
-        private readonly IRepository<Setting> _settingRepository;
         private readonly ISettingService _settingService;
 
 
@@ -22,12 +20,9 @@ namespace StatusChecker.Views
         {
             InitializeComponent();
 
-            _settingRepository = DependencyService.Get<IRepository<Setting>>();
             _settingService = DependencyService.Get<ISettingService>();
-
-            VersionTracking.Track();
-
-            _lblVersionInfo.Text = $"StatusChecker v{ VersionTracking.CurrentVersion }";
+           
+            _lblVersionInfo.Text = App.GetAppVersionInformation();
         }
 
 

@@ -1,5 +1,4 @@
-﻿using Xamarin.Essentials;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace StatusChecker.Views.LegalPages
 {
@@ -9,9 +8,7 @@ namespace StatusChecker.Views.LegalPages
         {
             InitializeComponent();
 
-            VersionTracking.Track();
-
-            _lblVersionInfo.Text = $"StatusChecker v{ VersionTracking.CurrentVersion }";
+            _lblVersionInfo.Text = App.GetAppVersionInformation();
         }
 
         async void _btnImprint_Clicked(object sender, System.EventArgs e)
