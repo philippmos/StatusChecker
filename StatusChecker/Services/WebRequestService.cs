@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using StatusChecker.Models;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Models.Enums;
+using StatusChecker.Helper;
 
 namespace StatusChecker.Services
 {
@@ -113,7 +114,7 @@ namespace StatusChecker.Services
                     { "Event", "Could not deserialize ServerResponse" }
                 };
 
-                App.TrackError(ex, properties);
+                AppHelper.TrackError(ex, properties);
 
                 return default;
             }
@@ -139,7 +140,7 @@ namespace StatusChecker.Services
                     { "Event", "Could not proceed WebRequest" }
                 };
 
-            App.TrackError(ex, properties);
+            AppHelper.TrackError(ex, properties);
         }
         #endregion
     }

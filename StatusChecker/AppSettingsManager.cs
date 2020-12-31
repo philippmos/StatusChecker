@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
+using StatusChecker.Helper;
 
 namespace StatusChecker
 {
@@ -66,7 +67,7 @@ namespace StatusChecker
                         { "Event", "Could not find AppSetting" }
                     };
 
-                    App.TrackError(ex, properties);
+                    AppHelper.TrackError(ex, properties);
 
 
                     return string.Empty;
@@ -96,7 +97,7 @@ namespace StatusChecker
                     { "Event", "Unable to load AppSettings File" }
                 };
 
-                App.TrackError(ex, properties);
+                AppHelper.TrackError(ex, properties);
             }
         }
         #endregion

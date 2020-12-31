@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Microsoft.AppCenter.Crashes;
+
 using Xamarin.Essentials;
 
 namespace StatusChecker.Helper
@@ -19,6 +23,22 @@ namespace StatusChecker.Helper
             VersionTracking.Track();
 
             return $"StatusChecker v{ VersionTracking.CurrentVersion } { appBuildNumberString }";
+        }
+
+
+        /// <summary>
+        /// Tracks Errors for Crashes and Exceptions
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="properties"></param>
+        public static void TrackError(Exception exception, Dictionary<string, string> properties)
+        {
+            if (App.PermissionTrackErrors)
+            {
+                Crashes.TrackError(exception, properties);
+            }
+
+            Debug.WriteLine(exception.Message);
         }
 
 

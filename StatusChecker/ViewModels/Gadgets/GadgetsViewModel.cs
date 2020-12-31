@@ -99,7 +99,7 @@ namespace StatusChecker.ViewModels.Gadgets
                     { "Event", "Could not Add GadgetViewModel" }
                 };
 
-                App.TrackError(ex, properties);
+                AppHelper.TrackError(ex, properties);
             }
             finally
             {

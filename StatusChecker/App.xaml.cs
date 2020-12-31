@@ -45,21 +45,6 @@ namespace StatusChecker
         #endregion
 
 
-        /// <summary>
-        /// Tracks Errors for Crashes and Exceptions
-        /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="properties"></param>
-        public static void TrackError(Exception exception, Dictionary<string, string> properties)
-        {
-            if (PermissionTrackErrors)
-            {
-                Crashes.TrackError(exception, properties);
-            }
-
-            Debug.WriteLine(exception.Message);
-        }
-
 
         #region View Handler
         protected override async void OnStart()
