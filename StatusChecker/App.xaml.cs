@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -11,8 +8,8 @@ using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.DataStore;
 using StatusChecker.Services.Interfaces;
-using StatusChecker.Helper.Interfaces;
 using StatusChecker.Models.Enums;
+using StatusChecker.Helper;
 
 namespace StatusChecker
 {
@@ -66,8 +63,7 @@ namespace StatusChecker
                                 typeof(Crashes));
             }
 
-            InitializeStyleTheme();
-
+            AppHelper.InitializeStyleTheme();
         }
 
         protected override void OnSleep()
@@ -78,21 +74,5 @@ namespace StatusChecker
         {
         }
         #endregion
-
-
-        private async void InitializeStyleTheme()
-        {
-            var settingService = DependencyService.Get<ISettingService>();
-
-            var isDarkModeEnabled = await settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
-
-            Themes activeTheme = Themes.Light;
-
-            if (!string.IsNullOrEmpty(isDarkModeEnabled) && isDarkModeEnabled == "1") activeTheme = Themes.Dark;
-
-
-            DependencyService.Get<IThemeHelper>().SetAppTheme(activeTheme);
-        }
-
     }
 }

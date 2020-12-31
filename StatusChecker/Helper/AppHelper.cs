@@ -4,6 +4,11 @@ using System.Diagnostics;
 using Microsoft.AppCenter.Crashes;
 
 using Xamarin.Essentials;
+using Xamarin.Forms;
+
+using StatusChecker.Helper.Interfaces;
+using StatusChecker.Models.Enums;
+using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Helper
 {
@@ -50,6 +55,24 @@ namespace StatusChecker.Helper
         public static string ParseBoolSetting(bool value)
         {
             return value ? "1" : "0";
+        }
+
+
+        /// <summary>
+        /// Initialize selection of AppTheme at AppStart
+        /// </summary>
+        public static async void InitializeStyleTheme()
+        {
+            var settingService = DependencyService.Get<ISettingService>();
+
+            var isDarkModeEnabled = await settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
+
+            Themes activeTheme = Themes.Light;
+
+            if (!string.IsNullOrEmpty(isDarkModeEnabled) && isDarkModeEnabled == "1") activeTheme = Themes.Dark;
+
+
+            DependencyService.Get<IThemeHelper>().SetAppTheme(activeTheme);
         }
     }
 }
