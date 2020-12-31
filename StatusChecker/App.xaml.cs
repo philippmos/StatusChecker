@@ -18,9 +18,13 @@ namespace StatusChecker
 {
     public partial class App : Application
     {
+        #region Fields
         public static bool PermissionTrackErrors = false;
         public static Themes AppTheme { get; set; }
+        #endregion
 
+
+        #region Construction
         public App()
         {
             InitializeComponent();
@@ -38,6 +42,8 @@ namespace StatusChecker
 
             MainPage = new Views.MainPage();
         }
+        #endregion
+
 
         /// <summary>
         /// Tracks Errors for Crashes and Exceptions
@@ -54,8 +60,8 @@ namespace StatusChecker
             Debug.WriteLine(exception.Message);
         }
 
-        
 
+        #region View Handler
         protected override async void OnStart()
         {
             var settingService = DependencyService.Get<ISettingService>();
@@ -86,6 +92,7 @@ namespace StatusChecker
         protected override void OnResume()
         {
         }
+        #endregion
 
 
         private async void InitializeStyleTheme()

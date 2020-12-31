@@ -9,10 +9,14 @@ namespace StatusChecker.Views
 {
     public partial class MenuPage : ContentPage
     {
+        #region Fields
         private MainPage RootPage { get => Application.Current.MainPage as MainPage; }
 
         private readonly List<HomeMenuItem> menuItems;
+        #endregion
 
+
+        #region Construction
         public MenuPage()
         {
             InitializeComponent();
@@ -37,5 +41,6 @@ namespace StatusChecker.Views
                 await RootPage.NavigateFromMenu(id);
             };
         }
+        #endregion
     }
 }

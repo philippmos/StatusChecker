@@ -4,6 +4,7 @@ namespace StatusChecker.Views.LegalPages
 {
     public class PrivacyPolicyPage : ContentPage
     {
+        #region Construction
         public PrivacyPolicyPage()
         {
             var browser = new WebView();
@@ -11,6 +12,6 @@ namespace StatusChecker.Views.LegalPages
             browser.Source = AppSettingsManager.Settings["LegalPrivacyPolicyUrl"];
             Content = browser;
         }
+        #endregion
     }
 }
-

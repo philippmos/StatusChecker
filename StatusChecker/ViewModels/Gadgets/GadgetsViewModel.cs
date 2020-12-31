@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
-using System.Collections.Generic;
-using StatusChecker.Models.Enums;
 using StatusChecker.Helper;
 
 namespace StatusChecker.ViewModels.Gadgets

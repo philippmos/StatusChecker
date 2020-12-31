@@ -14,8 +14,11 @@ namespace StatusChecker.iOS.Helper
             SetTheme(theme);
         }
 
-
-        void SetTheme(Themes mode)
+        /// <summary>
+        /// Update AppTheme and assign correct Resources
+        /// </summary>
+        /// <param name="mode"></param>
+        private void SetTheme(Themes mode)
         {
 
             if (mode == Themes.Dark)

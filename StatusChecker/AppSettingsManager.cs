@@ -8,6 +8,7 @@ namespace StatusChecker
 {
     public class AppSettingsManager
     {
+        #region Fields
         private static AppSettingsManager _instance;
         private readonly JObject _settings;
 
@@ -15,30 +16,10 @@ namespace StatusChecker
         private const string FileName = "appsettings.json";
 
 
-        private AppSettingsManager()
-        {
-            try
-            {
-                var assembly = IntrospectionExtensions.GetTypeInfo(typeof(AppSettingsManager)).Assembly;
-                var stream = assembly.GetManifestResourceStream($"{ Namespace }.{ FileName }");
-                using (var reader = new StreamReader(stream))
-                {
-                    var json = reader.ReadToEnd();
-                    _settings = JObject.Parse(json);
-                }
-            }
-            catch (Exception ex)
-            {
-                var properties = new Dictionary<string, string> {
-                    { "Method", "AppSettingsManager" },
-                    { "Event", "Unable to load AppSettings File" }
-                };
-
-                App.TrackError(ex, properties);
-            }
-        }
-
-
+        #region Singleton
+        /// <summary>
+        /// Singleton for AppSettingsManager Instance
+        /// </summary>
         public static AppSettingsManager Settings
         {
             get
@@ -51,8 +32,14 @@ namespace StatusChecker
                 return _instance;
             }
         }
+        #endregion
 
 
+        /// <summary>
+        /// Search and return Setting by Name in Settings-JSON-File
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public string this[string name]
         {
             get
@@ -86,5 +73,32 @@ namespace StatusChecker
                 }
             }
         }
+        #endregion
+
+
+        #region Construction
+        private AppSettingsManager()
+        {
+            try
+            {
+                var assembly = IntrospectionExtensions.GetTypeInfo(typeof(AppSettingsManager)).Assembly;
+                var stream = assembly.GetManifestResourceStream($"{ Namespace }.{ FileName }");
+                using (var reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    _settings = JObject.Parse(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                var properties = new Dictionary<string, string> {
+                    { "Method", "AppSettingsManager" },
+                    { "Event", "Unable to load AppSettings File" }
+                };
+
+                App.TrackError(ex, properties);
+            }
+        }
+        #endregion
     }
 }

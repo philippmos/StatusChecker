@@ -13,7 +13,12 @@ namespace StatusChecker.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
+        #region Fields
         private readonly Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        #endregion
+
+
+        #region Construction
         public MainPage()
         {
             InitializeComponent();
@@ -22,7 +27,15 @@ namespace StatusChecker.Views
 
             MenuPages.Add((int)MenuItemTypes.GadgetOverview, (NavigationPage)Detail);
         }
+        #endregion
 
+
+        #region Helper Methods
+        /// <summary>
+        /// Handling / Routing Menu-Navigation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task NavigateFromMenu(int id)
         {
             if (!MenuPages.ContainsKey(id))
@@ -53,5 +66,6 @@ namespace StatusChecker.Views
                 IsPresented = false;
             }
         }
+        #endregion
     }
 }

@@ -10,8 +10,12 @@ namespace StatusChecker.Views.GadgetPages
 {
     public partial class NewGadgetPage : ContentPage
     {
+        #region Fields
         public Gadget Gadget { get; set; }
+        #endregion
 
+
+        #region Construction
         public NewGadgetPage()
         {
             InitializeComponent();
@@ -26,7 +30,15 @@ namespace StatusChecker.Views.GadgetPages
 
             BindingContext = this;
         }
+        #endregion
 
+
+        #region View Events
+        /// <summary>
+        /// Validates Input and saves new Item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Save_Clicked(object sender, EventArgs e)
         {
             var validationErrorList = ValidationHelper.CreateValidationErrorList(Gadget);
@@ -43,11 +55,15 @@ namespace StatusChecker.Views.GadgetPages
             await DisplayAlert("Bitte überprüfe Deine Eingaben", errorString, "Ok");
         }
 
-
+        /// <summary>
+        /// Cancel the current Input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
-
+        #endregion
     }
 }

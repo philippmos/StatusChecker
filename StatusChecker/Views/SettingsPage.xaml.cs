@@ -12,10 +12,13 @@ namespace StatusChecker.Views
 {
     public partial class SettingsPage : ContentPage
     {
+        #region Fields
         private SettingsViewModel _viewModel;
         private readonly ISettingService _settingService;
+        #endregion
 
 
+        #region Construction
         public SettingsPage()
         {
             InitializeComponent();
@@ -24,8 +27,10 @@ namespace StatusChecker.Views
            
             _lblVersionInfo.Text = AppHelper.GetAppVersionInformation();
         }
+        #endregion
 
 
+        #region View Handler
         protected override async void OnAppearing()
         {
             _viewModel = new SettingsViewModel()
@@ -71,8 +76,15 @@ namespace StatusChecker.Views
 
             BindingContext = _viewModel;
         }
+        #endregion
 
 
+        #region View Events
+        /// <summary>
+        /// Request Updating Setting Values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save_Clicked(object sender, System.EventArgs e)
         {
             _settingService.UpdateSettingsValues(new Dictionary<SettingKeys, string>()
@@ -103,19 +115,33 @@ namespace StatusChecker.Views
             Application.Current.MainPage = new MainPage();
         }
 
-
+        /// <summary>
+        /// Cancel Settings View and open MainView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
             Application.Current.MainPage = new MainPage();
         }
         
-
+        /// <summary>
+        /// Instantly Toggle AppTheme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _swtDarkmodeEnabled_Toggled(object sender, ToggledEventArgs e)
         {
             SetTheme(_swtDarkmodeEnabled.IsToggled);
         }
+        #endregion
 
 
+        #region Helper Methods
+        /// <summary>
+        /// Updates the current selected AppTheme
+        /// </summary>
+        /// <param name="status"></param>
         private void SetTheme(bool status)
         {
             Themes themeRequested = Themes.Light;
@@ -127,6 +153,6 @@ namespace StatusChecker.Views
 
             DependencyService.Get<IThemeHelper>().SetAppTheme(themeRequested);
         }
-
+        #endregion
     }
 }
