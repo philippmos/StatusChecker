@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -49,6 +50,11 @@ namespace StatusChecker.ViewModels.Gadgets
             {
                 Gadgets.Clear();
                 var gadgets = await _gadgetDataStore.GetAllAsync(true);
+
+                if (gadgets == null || gadgets.Count() == 0) return;
+
+                List<Gadget> sortedGadgetList = await GadgetHelper.SortGadgetListBySetting(gadgets.ToList());
+
                 foreach (var gadget in gadgets)
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);

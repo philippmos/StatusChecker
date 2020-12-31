@@ -1,5 +1,15 @@
-﻿using StatusChecker.Models;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
+using System.Linq;
+
+using Xamarin.Forms;
+
+using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.Models.Enums;
+using StatusChecker.Services.Interfaces;
+
 
 namespace StatusChecker.Helper
 {
@@ -22,6 +32,34 @@ namespace StatusChecker.Helper
 
             return StatusIndicatorColors.Red;
 
+        }
+
+        /// <summary>
+        /// Order the Gadgets by SystemSetting
+        /// </summary>
+        /// <param name="unsortedGadgetList"></param>
+        /// <returns></returns>
+        public async static Task<List<Gadget>> SortGadgetListBySetting(List<Gadget> unsortedGadgetList)
+        {
+            var settingService = DependencyService.Get<ISettingService>();
+            var sortingSetting = await settingService.GetSettingValueAsync(SettingKeys.GadgetSortingType);
+            var gadgetSortingType = (GadgetSortingTypes)Enum.Parse(typeof(GadgetSortingTypes), sortingSetting);
+
+            switch (gadgetSortingType)
+            {
+                case GadgetSortingTypes.ByNameAsc:
+                    return unsortedGadgetList.OrderBy(x => x.Name).ToList();
+
+                case GadgetSortingTypes.ByNameDesc:
+                    return unsortedGadgetList.OrderByDescending(x => x.Name).ToList();
+
+                case GadgetSortingTypes.ByCreationDesc:
+                    return unsortedGadgetList.OrderByDescending(x => x.Id).ToList();
+
+                case GadgetSortingTypes.ByCreationAsc:
+                default:
+                    return unsortedGadgetList.OrderBy(x => x.Id).ToList();
+            }
         }
     }
 }
