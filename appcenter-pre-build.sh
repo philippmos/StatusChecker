@@ -19,5 +19,9 @@ then
     sed -i '' 's/"AppCenterSecretIOS": ""/"AppCenterSecretIOS": "'$CONF_APPCENTERSECRETIOS'"/' $APPSETTINGS_FILE
 
     sed -i '' 's+"InitialStatusRequestUrl": ""+"InitialStatusRequestUrl": "'$CONF_INITIALSTATUSREQUESTURL'"+' $APPSETTINGS_FILE
+
+    sed -i '' 's+"LegalImprintUrl": ""+"LegalImprintUrl": "'$CONF_LEGALIMPRINTURL'"+' $APPSETTINGS_FILE
+    sed -i '' 's+"LegalPrivacyPolicyUrl": ""+"LegalPrivacyPolicyUrl": "'$CONF_LEGALPRIVACYPOLICYURL'"+' $APPSETTINGS_FILE
+
 fi
 # ./Replacing appsettings.json
