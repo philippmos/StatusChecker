@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 using System.Linq;
@@ -52,6 +52,12 @@ namespace StatusChecker.Helper
 
                 case GadgetSortingTypes.ByNameDesc:
                     return unsortedGadgetList.OrderByDescending(x => x.Name).ToList();
+
+                case GadgetSortingTypes.ByLocationAsc:
+                    return unsortedGadgetList.OrderBy(x => x.Location).ToList();
+
+                case GadgetSortingTypes.ByLocationDesc:
+                    return unsortedGadgetList.OrderByDescending(x => x.Location).ToList();
 
                 case GadgetSortingTypes.ByCreationDesc:
                     return unsortedGadgetList.OrderByDescending(x => x.Id).ToList();
