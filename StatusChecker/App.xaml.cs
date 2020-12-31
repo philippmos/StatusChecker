@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AppCenter;
@@ -6,6 +6,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
@@ -92,6 +93,19 @@ namespace StatusChecker
         {
             Light,
             Dark
+        }
+
+
+        public static string GetAppVersionInformation()
+        {
+            string appBuildNumber = AppSettingsManager.Settings["AppBuildNumber"];
+            string appBuildNumberString = "";
+
+            if (!string.IsNullOrEmpty(appBuildNumber)) appBuildNumberString = $"({ appBuildNumber })";
+
+            VersionTracking.Track();
+
+            return $"StatusChecker v{ VersionTracking.CurrentVersion } { appBuildNumberString }";
         }
 
 

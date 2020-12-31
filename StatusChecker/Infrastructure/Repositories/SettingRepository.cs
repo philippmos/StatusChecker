@@ -80,8 +80,8 @@ namespace StatusChecker.Infrastructure.Repositories
 
             await _database.InsertAsync(new Setting
             {
-                Id = (int)SettingKeys.RequestTimeoutInSeconds,
-                Key = SettingKeys.RequestTimeoutInSeconds.ToString(),
+                Id = (int)SettingKeys.DarkModeEnabled,
+                Key = SettingKeys.DarkModeEnabled.ToString(),
                 Value = "0"
             });
         }
