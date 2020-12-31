@@ -4,6 +4,7 @@ namespace StatusChecker.Views.LegalPages
 {
     public class ImprintPage : ContentPage
     {
+        #region Construction
         public ImprintPage()
         {
             var browser = new WebView();
@@ -11,5 +12,6 @@ namespace StatusChecker.Views.LegalPages
             browser.Source = AppSettingsManager.Settings["LegalImprintUrl"];
             Content = browser;
         }
+        #endregion
     }
 }

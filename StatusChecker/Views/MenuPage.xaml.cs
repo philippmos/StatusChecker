@@ -3,24 +3,29 @@
 using Xamarin.Forms;
 
 using StatusChecker.Models;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Views
 {
     public partial class MenuPage : ContentPage
     {
+        #region Fields
         private MainPage RootPage { get => Application.Current.MainPage as MainPage; }
 
         private readonly List<HomeMenuItem> menuItems;
+        #endregion
 
+
+        #region Construction
         public MenuPage()
         {
             InitializeComponent();
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem { Id = MenuItemType.GadgetOverview, Title = "Geräte" },
-                new HomeMenuItem { Id = MenuItemType.Setting, Title = "Einstellungen" },
-                new HomeMenuItem { Id = MenuItemType.AppInfo, Title = "Information" }
+                new HomeMenuItem { Id = MenuItemTypes.GadgetOverview, Title = "Geräte" },
+                new HomeMenuItem { Id = MenuItemTypes.Setting, Title = "Einstellungen" },
+                new HomeMenuItem { Id = MenuItemTypes.AppInfo, Title = "Information" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
@@ -36,5 +41,6 @@ namespace StatusChecker.Views
                 await RootPage.NavigateFromMenu(id);
             };
         }
+        #endregion
     }
 }

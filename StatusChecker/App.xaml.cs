@@ -1,27 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
 using Xamarin.Forms;
-using Xamarin.Essentials;
 
 using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.DataStore;
-using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
-using StatusChecker.Helper.Interfaces;
+using StatusChecker.Models.Enums;
+using StatusChecker.Helper;
 
 namespace StatusChecker
 {
     public partial class App : Application
     {
+        #region Fields
         public static bool PermissionTrackErrors = false;
-        public static Theme AppTheme { get; set; }
+        public static Themes AppTheme { get; set; }
+        #endregion
 
+
+        #region Construction
         public App()
         {
             InitializeComponent();
@@ -39,24 +39,11 @@ namespace StatusChecker
 
             MainPage = new Views.MainPage();
         }
+        #endregion
 
-        /// <summary>
-        /// Tracks Errors for Crashes and Exceptions
-        /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="properties"></param>
-        public static void TrackError(Exception exception, Dictionary<string, string> properties)
-        {
-            if (PermissionTrackErrors)
-            {
-                Crashes.TrackError(exception, properties);
-            }
 
-            Debug.WriteLine(exception.Message);
-        }
 
-        
-
+        #region View Handler
         protected override async void OnStart()
         {
             var settingService = DependencyService.Get<ISettingService>();
@@ -76,8 +63,7 @@ namespace StatusChecker
                                 typeof(Crashes));
             }
 
-            InitializeStyleTheme();
-
+            AppHelper.InitializeStyleTheme();
         }
 
         protected override void OnSleep()
@@ -87,41 +73,6 @@ namespace StatusChecker
         protected override void OnResume()
         {
         }
-
-
-        public enum Theme
-        {
-            Light,
-            Dark
-        }
-
-
-        public static string GetAppVersionInformation()
-        {
-            string appBuildNumber = AppSettingsManager.Settings["AppBuildNumber"];
-            string appBuildNumberString = "";
-
-            if (!string.IsNullOrEmpty(appBuildNumber)) appBuildNumberString = $"({ appBuildNumber })";
-
-            VersionTracking.Track();
-
-            return $"StatusChecker v{ VersionTracking.CurrentVersion } { appBuildNumberString }";
-        }
-
-
-        private async void InitializeStyleTheme()
-        {
-            var settingService = DependencyService.Get<ISettingService>();
-
-            var isDarkModeEnabled = await settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
-
-            Theme activeTheme = Theme.Light;
-
-            if (!string.IsNullOrEmpty(isDarkModeEnabled) && isDarkModeEnabled == "1") activeTheme = Theme.Dark;
-
-
-            DependencyService.Get<IThemeHelper>().SetAppTheme(activeTheme);
-        }
-
+        #endregion
     }
 }

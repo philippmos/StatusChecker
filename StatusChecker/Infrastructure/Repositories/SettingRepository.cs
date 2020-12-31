@@ -6,11 +6,13 @@ using SQLite;
 
 using StatusChecker.Models.Database;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Infrastructure.Repositories
 {
     public class SettingRepository : ISettingRepository
     {
+        #region Fields
         private static readonly Lazy<SQLiteAsyncConnection> _lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
             return new SQLiteAsyncConnection(DbConstants.DatabasePath, DbConstants.Flags);
@@ -19,13 +21,18 @@ namespace StatusChecker.Infrastructure.Repositories
         private static SQLiteAsyncConnection _database => _lazyInitializer.Value;
 
         private static bool _initialized = false;
+        #endregion
 
+
+        #region Construction
         public SettingRepository()
         {
             InitializeAsync().SafeFireAndForget(false);
         }
+        #endregion
 
 
+        #region Initialization
         private async Task InitializeAsync()
         {
             if (!_initialized)
@@ -85,19 +92,19 @@ namespace StatusChecker.Infrastructure.Repositories
                 Value = "0"
             });
         }
+        #endregion
 
 
+        #region Repository Methods
         public Task<List<Setting>> GetAllAsync()
         {
             return _database.Table<Setting>().ToListAsync();
         }
 
-
         public Task<Setting> GetAsync(int id)
         {
             return _database.Table<Setting>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
-
 
         public Task<int> SaveAsync(Setting item)
         {
@@ -111,10 +118,10 @@ namespace StatusChecker.Infrastructure.Repositories
             }
         }
 
-
         public Task<int> DeleteAsync(Setting item)
         {
             return _database.DeleteAsync(item);
         }
+        #endregion
     }
 }

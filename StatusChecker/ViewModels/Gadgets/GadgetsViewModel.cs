@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
-using System.Collections.Generic;
+using StatusChecker.Helper;
 
 namespace StatusChecker.ViewModels.Gadgets
 {
@@ -52,7 +53,7 @@ namespace StatusChecker.ViewModels.Gadgets
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
 
-                    var statusIndicatorColor = GetStatusIndicatorColor(gadgetStatus);
+                    var statusIndicatorColor = GadgetHelper.GetStatusIndicatorColor(gadgetStatus);
 
                     if(gadgetStatus == null)
                     {
@@ -98,25 +99,12 @@ namespace StatusChecker.ViewModels.Gadgets
                     { "Event", "Could not Add GadgetViewModel" }
                 };
 
-                App.TrackError(ex, properties);
+                AppHelper.TrackError(ex, properties);
             }
             finally
             {
                 IsBusy = false;
             }
-        }
-
-        private StatusIndicatorColors GetStatusIndicatorColor(GadgetStatus gadgetStatus)
-        {
-            if (gadgetStatus == null) return StatusIndicatorColors.Black;
-
-            if(gadgetStatus.overtemperature == false && gadgetStatus.temperature <= 90.00 && gadgetStatus.voltage <= 250.00)
-            {
-                return StatusIndicatorColors.Green;
-            }
-
-            return StatusIndicatorColors.Red;
-
         }
     }
 }

@@ -1,31 +1,36 @@
-﻿using Xamarin.Forms;
+﻿using System.Collections.Generic;
 
-using StatusChecker.Infrastructure.Repositories.Interfaces;
-using StatusChecker.Models.Database;
+using Xamarin.Forms;
+
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
-using System.Collections.Generic;
 using StatusChecker.Helper.Interfaces;
-using static StatusChecker.App;
+using StatusChecker.Helper;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Views
 {
     public partial class SettingsPage : ContentPage
     {
+        #region Fields
         private SettingsViewModel _viewModel;
         private readonly ISettingService _settingService;
+        #endregion
 
 
+        #region Construction
         public SettingsPage()
         {
             InitializeComponent();
 
             _settingService = DependencyService.Get<ISettingService>();
            
-            _lblVersionInfo.Text = App.GetAppVersionInformation();
+            _lblVersionInfo.Text = AppHelper.GetAppVersionInformation();
         }
+        #endregion
 
 
+        #region View Handler
         protected override async void OnAppearing()
         {
             _viewModel = new SettingsViewModel()
@@ -71,8 +76,15 @@ namespace StatusChecker.Views
 
             BindingContext = _viewModel;
         }
+        #endregion
 
 
+        #region View Events
+        /// <summary>
+        /// Request Updating Setting Values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save_Clicked(object sender, System.EventArgs e)
         {
             _settingService.UpdateSettingsValues(new Dictionary<SettingKeys, string>()
@@ -83,11 +95,11 @@ namespace StatusChecker.Views
                 },
                 {
                     SettingKeys.PermissionTrackErrors,
-                    ParseBoolSetting(_swtPermissionTrackErrors.IsToggled)
+                    AppHelper.ParseBoolSetting(_swtPermissionTrackErrors.IsToggled)
                 },
                 {
                     SettingKeys.NotifyWhenStatusNotRespond,
-                    ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
+                    AppHelper.ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
                 },
                 {
                     SettingKeys.RequestTimeoutInSeconds,
@@ -95,7 +107,7 @@ namespace StatusChecker.Views
                 },
                 {
                     SettingKeys.DarkModeEnabled,
-                    ParseBoolSetting(_swtDarkmodeEnabled.IsToggled)
+                    AppHelper.ParseBoolSetting(_swtDarkmodeEnabled.IsToggled)
                 }
             });
 
@@ -103,34 +115,44 @@ namespace StatusChecker.Views
             Application.Current.MainPage = new MainPage();
         }
 
-
+        /// <summary>
+        /// Cancel Settings View and open MainView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
             Application.Current.MainPage = new MainPage();
         }
-
-
-        private string ParseBoolSetting(bool value)
-        {
-            return value ? "1" : "0";
-        }
-
+        
+        /// <summary>
+        /// Instantly Toggle AppTheme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _swtDarkmodeEnabled_Toggled(object sender, ToggledEventArgs e)
         {
             SetTheme(_swtDarkmodeEnabled.IsToggled);
         }
+        #endregion
 
+
+        #region Helper Methods
+        /// <summary>
+        /// Updates the current selected AppTheme
+        /// </summary>
+        /// <param name="status"></param>
         private void SetTheme(bool status)
         {
-            Theme themeRequested = Theme.Light;
+            Themes themeRequested = Themes.Light;
 
             if (status)
             {
-                themeRequested = Theme.Dark;
+                themeRequested = Themes.Dark;
             }
 
             DependencyService.Get<IThemeHelper>().SetAppTheme(themeRequested);
         }
-
+        #endregion
     }
 }

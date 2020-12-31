@@ -37,6 +37,7 @@
     <Folder Include="StyleThemes\" />
     <Folder Include="Helper\" />
     <Folder Include="Helper\Interfaces\" />
+    <Folder Include="Models\Enums\" />
   </ItemGroup>
     
   <ItemGroup>

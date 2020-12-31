@@ -8,12 +8,16 @@ namespace StatusChecker.Views.GadgetPages
 {
     public partial class EditGadgetPage : ContentPage
     {
+        #region Fields
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
 
         public Gadget Gadget { get; set; }
 
         private readonly GadgetDetailViewModel viewModel;
+        #endregion
 
+
+        #region Construction
         public EditGadgetPage(GadgetDetailViewModel viewModel)
         {
             InitializeComponent();
@@ -34,7 +38,15 @@ namespace StatusChecker.Views.GadgetPages
             viewModel = new GadgetDetailViewModel(gadget);
             BindingContext = viewModel;
         }
+        #endregion
 
+
+        #region View Events
+        /// <summary>
+        /// Triggered when Save-Button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Save_Clicked(object sender, System.EventArgs e)
         {
             var updatedGadget = new Gadget
@@ -53,9 +65,15 @@ namespace StatusChecker.Views.GadgetPages
             }
         }
 
+        /// <summary>
+        /// Triggered, when Cancel-Button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
             Application.Current.MainPage = new MainPage();
         }
+        #endregion
     }
 }

@@ -1,9 +1,13 @@
-﻿using static StatusChecker.App;
+﻿using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Helper.Interfaces
 {
     public interface IThemeHelper
     {
-        void SetAppTheme(Theme theme);
+        /// <summary>
+        /// Update the current active AppTheme InApp
+        /// </summary>
+        /// <param name="theme"></param>
+        void SetAppTheme(Themes theme);
     }
 }
