@@ -33,8 +33,9 @@ jobs:
 
     - name: Build Xamarin
       run: |
+        cd StatusChecker
         nuget restore
-        msbuild StatusChecker.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        msbuild StatusChecker/StatusChecker.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
