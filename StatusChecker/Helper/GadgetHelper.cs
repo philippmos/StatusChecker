@@ -53,11 +53,20 @@ namespace StatusChecker.Helper
                 case GadgetSortingTypes.ByNameDesc:
                     return unsortedGadgetList.OrderByDescending(x => x.Name).ToList();
 
+
                 case GadgetSortingTypes.ByLocationAsc:
                     return unsortedGadgetList.OrderBy(x => x.Location).ToList();
 
                 case GadgetSortingTypes.ByLocationDesc:
                     return unsortedGadgetList.OrderByDescending(x => x.Location).ToList();
+
+
+                case GadgetSortingTypes.ByTemperatureAsc:
+                    return unsortedGadgetList.OrderBy(x => x.Temperature).ToList();
+
+                case GadgetSortingTypes.ByTemperatureDesc:
+                    return unsortedGadgetList.OrderByDescending(x => x.Temperature).ToList();
+
 
                 case GadgetSortingTypes.ByCreationDesc:
                     return unsortedGadgetList.OrderByDescending(x => x.Id).ToList();

@@ -9,6 +9,9 @@
         ByNameDesc = 4,
 
         ByLocationAsc = 5,
-        ByLocationDesc = 6
+        ByLocationDesc = 6,
+
+        ByTemperatureAsc = 7,
+        ByTemperatureDesc = 8
     }
 }

@@ -60,6 +60,7 @@ namespace StatusChecker.Views
             }
 
             #region GadgetSortingSetting
+            // TODO: Fix this static stuff...
             var allEnumTypes = new List<GadgetSortingTypes>
             {
                 GadgetSortingTypes.ByCreationAsc,
@@ -67,7 +68,9 @@ namespace StatusChecker.Views
                 GadgetSortingTypes.ByNameAsc,
                 GadgetSortingTypes.ByNameDesc,
                 GadgetSortingTypes.ByLocationAsc,
-                GadgetSortingTypes.ByLocationDesc
+                GadgetSortingTypes.ByLocationDesc,
+                GadgetSortingTypes.ByTemperatureAsc,
+                GadgetSortingTypes.ByTemperatureAsc
             };
 
 
@@ -194,26 +197,35 @@ namespace StatusChecker.Views
         /// <returns></returns>
         private string GetGadgetSortingTypeName(GadgetSortingTypes gadgetSortingType)
         {
-            switch(gadgetSortingType)
+            string ascText = "(aufsteigend)";
+            string descText = "(absteigend)";
+
+            switch (gadgetSortingType)
             {
                 case GadgetSortingTypes.ByCreationDesc:
-                    return "Erstelldatum (absteigend)";
+                    return "Erstelldatum " + descText;
 
                 case GadgetSortingTypes.ByNameAsc:
-                    return "Name (aufsteigend)";
+                    return "Name " + ascText;
 
                 case GadgetSortingTypes.ByNameDesc:
-                    return "Name (absteigend)";
+                    return "Name " + descText;
 
                 case GadgetSortingTypes.ByLocationAsc:
-                    return "Standort (aufsteigend)";
+                    return "Standort " + ascText;
 
                 case GadgetSortingTypes.ByLocationDesc:
-                    return "Standort (absteigend)";
+                    return "Standort " + descText;
+
+                case GadgetSortingTypes.ByTemperatureAsc:
+                    return "Temperatur " + ascText;
+
+                case GadgetSortingTypes.ByTemperatureDesc:
+                    return "Temperatur " + descText;
 
                 case GadgetSortingTypes.ByCreationAsc:
                 default:
-                    return "Erstelldatum (aufsteigend)";
+                    return "Erstelldatum " + ascText;
             }
         }
         #endregion
