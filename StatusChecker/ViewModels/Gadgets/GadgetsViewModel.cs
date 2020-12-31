@@ -53,9 +53,10 @@ namespace StatusChecker.ViewModels.Gadgets
 
                 if (gadgets == null || gadgets.Count() == 0) return;
 
+
                 List<Gadget> sortedGadgetList = await GadgetHelper.SortGadgetListBySetting(gadgets.ToList());
 
-                foreach (var gadget in gadgets)
+                foreach (var gadget in sortedGadgetList)
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
 
