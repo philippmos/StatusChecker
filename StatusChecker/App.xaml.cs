@@ -14,13 +14,14 @@ using StatusChecker.DataStore;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Helper.Interfaces;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker
 {
     public partial class App : Application
     {
         public static bool PermissionTrackErrors = false;
-        public static Theme AppTheme { get; set; }
+        public static Themes AppTheme { get; set; }
 
         public App()
         {
@@ -89,23 +90,15 @@ namespace StatusChecker
         }
 
 
-        public enum Theme
-        {
-            Light,
-            Dark
-        }
-
-
-
         private async void InitializeStyleTheme()
         {
             var settingService = DependencyService.Get<ISettingService>();
 
             var isDarkModeEnabled = await settingService.GetSettingValueAsync(SettingKeys.DarkModeEnabled);
 
-            Theme activeTheme = Theme.Light;
+            Themes activeTheme = Themes.Light;
 
-            if (!string.IsNullOrEmpty(isDarkModeEnabled) && isDarkModeEnabled == "1") activeTheme = Theme.Dark;
+            if (!string.IsNullOrEmpty(isDarkModeEnabled) && isDarkModeEnabled == "1") activeTheme = Themes.Dark;
 
 
             DependencyService.Get<IThemeHelper>().SetAppTheme(activeTheme);

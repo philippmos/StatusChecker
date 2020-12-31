@@ -7,8 +7,7 @@ using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Helper.Interfaces;
 using StatusChecker.Helper;
-using static StatusChecker.App;
-
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Views
 {
@@ -124,11 +123,11 @@ namespace StatusChecker.Views
 
         private void SetTheme(bool status)
         {
-            Theme themeRequested = Theme.Light;
+            Themes themeRequested = Themes.Light;
 
             if (status)
             {
-                themeRequested = Theme.Dark;
+                themeRequested = Themes.Dark;
             }
 
             DependencyService.Get<IThemeHelper>().SetAppTheme(themeRequested);

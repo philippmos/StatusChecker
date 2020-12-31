@@ -8,6 +8,7 @@ using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
 using System.Collections.Generic;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.ViewModels.Gadgets
 {
