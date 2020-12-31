@@ -1,12 +1,14 @@
-﻿using Xamarin.Forms;
+﻿using System.Collections.Generic;
 
-using StatusChecker.Infrastructure.Repositories.Interfaces;
+using Xamarin.Forms;
+
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
-using System.Collections.Generic;
 using StatusChecker.Helper.Interfaces;
+using StatusChecker.Helper;
 using static StatusChecker.App;
+
 
 namespace StatusChecker.Views
 {
@@ -22,7 +24,7 @@ namespace StatusChecker.Views
 
             _settingService = DependencyService.Get<ISettingService>();
            
-            _lblVersionInfo.Text = App.GetAppVersionInformation();
+            _lblVersionInfo.Text = AppHelper.GetAppVersionInformation();
         }
 
 

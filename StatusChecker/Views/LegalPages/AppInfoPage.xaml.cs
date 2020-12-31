@@ -1,5 +1,7 @@
 ﻿using Xamarin.Forms;
 
+using StatusChecker.Helper;
+
 namespace StatusChecker.Views.LegalPages
 {
     public partial class AppInfoPage : ContentPage
@@ -8,7 +10,7 @@ namespace StatusChecker.Views.LegalPages
         {
             InitializeComponent();
 
-            _lblVersionInfo.Text = App.GetAppVersionInformation();
+            _lblVersionInfo.Text = AppHelper.GetAppVersionInformation();
         }
 
         async void _btnImprint_Clicked(object sender, System.EventArgs e)

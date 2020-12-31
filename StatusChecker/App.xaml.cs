@@ -96,18 +96,6 @@ namespace StatusChecker
         }
 
 
-        public static string GetAppVersionInformation()
-        {
-            string appBuildNumber = AppSettingsManager.Settings["AppBuildNumber"];
-            string appBuildNumberString = "";
-
-            if (!string.IsNullOrEmpty(appBuildNumber)) appBuildNumberString = $"({ appBuildNumber })";
-
-            VersionTracking.Track();
-
-            return $"StatusChecker v{ VersionTracking.CurrentVersion } { appBuildNumberString }";
-        }
-
 
         private async void InitializeStyleTheme()
         {
