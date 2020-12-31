@@ -20,5 +20,16 @@ namespace StatusChecker.Helper
 
             return $"StatusChecker v{ VersionTracking.CurrentVersion } { appBuildNumberString }";
         }
+
+
+        /// <summary>
+        /// Parse a given Boolean into Database-ready Settingvalue
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ParseBoolSetting(bool value)
+        {
+            return value ? "1" : "0";
+        }
     }
 }

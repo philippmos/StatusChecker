@@ -2,7 +2,6 @@
 
 using Xamarin.Forms;
 
-using StatusChecker.Models.Database;
 using StatusChecker.ViewModels;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Helper.Interfaces;
@@ -84,11 +83,11 @@ namespace StatusChecker.Views
                 },
                 {
                     SettingKeys.PermissionTrackErrors,
-                    ParseBoolSetting(_swtPermissionTrackErrors.IsToggled)
+                    AppHelper.ParseBoolSetting(_swtPermissionTrackErrors.IsToggled)
                 },
                 {
                     SettingKeys.NotifyWhenStatusNotRespond,
-                    ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
+                    AppHelper.ParseBoolSetting(_swtNotifyWhenStatusNotRespond.IsToggled)
                 },
                 {
                     SettingKeys.RequestTimeoutInSeconds,
@@ -96,7 +95,7 @@ namespace StatusChecker.Views
                 },
                 {
                     SettingKeys.DarkModeEnabled,
-                    ParseBoolSetting(_swtDarkmodeEnabled.IsToggled)
+                    AppHelper.ParseBoolSetting(_swtDarkmodeEnabled.IsToggled)
                 }
             });
 
@@ -109,17 +108,13 @@ namespace StatusChecker.Views
         {
             Application.Current.MainPage = new MainPage();
         }
-
-
-        private string ParseBoolSetting(bool value)
-        {
-            return value ? "1" : "0";
-        }
+        
 
         private void _swtDarkmodeEnabled_Toggled(object sender, ToggledEventArgs e)
         {
             SetTheme(_swtDarkmodeEnabled.IsToggled);
         }
+
 
         private void SetTheme(bool status)
         {

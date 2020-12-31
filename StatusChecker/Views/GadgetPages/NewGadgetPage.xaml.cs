@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
+using StatusChecker.Helper;
 
 namespace StatusChecker.Views.GadgetPages
 {
@@ -29,7 +29,7 @@ namespace StatusChecker.Views.GadgetPages
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            var validationErrorList = CreateValidationErrorList(Gadget);
+            var validationErrorList = ValidationHelper.CreateValidationErrorList(Gadget);
 
             if(validationErrorList.Count() == 0)
             {
@@ -49,22 +49,5 @@ namespace StatusChecker.Views.GadgetPages
             await Navigation.PopModalAsync();
         }
 
-
-        private List<string> CreateValidationErrorList(Gadget gadget)
-        {
-            var invalidFieldsList = new List<string>();
-
-            if (gadget.Name.Length <= 3)
-            {
-                invalidFieldsList.Add("Länge des Gerätenamens");
-            }
-
-            if(string.IsNullOrEmpty(gadget.IpAddress))
-            {
-                invalidFieldsList.Add("IP Adresse ist erforderlich");
-            }
-
-            return invalidFieldsList;
-        }
     }
 }
