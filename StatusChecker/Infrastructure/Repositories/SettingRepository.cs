@@ -6,6 +6,7 @@ using SQLite;
 
 using StatusChecker.Models.Database;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Infrastructure.Repositories
 {

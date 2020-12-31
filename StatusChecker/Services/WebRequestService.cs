@@ -7,8 +7,8 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using StatusChecker.Models;
-using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Services
 {

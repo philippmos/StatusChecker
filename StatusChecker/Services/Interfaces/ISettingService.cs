@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using StatusChecker.Models.Database;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Services.Interfaces
 {
