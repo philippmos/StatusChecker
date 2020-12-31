@@ -1,16 +1,10 @@
-﻿namespace StatusChecker.Models
-{
-    public enum MenuItemType
-    {
-        GadgetOverview,
-        AppInfo,
-        Setting
-    }
+﻿using StatusChecker.Models.Enums;
 
+namespace StatusChecker.Models
+{
     public class HomeMenuItem
     {
-        public MenuItemType Id { get; set; }
-
+        public MenuItemTypes Id { get; set; }
         public string Title { get; set; }
     }
 }

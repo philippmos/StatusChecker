@@ -6,20 +6,26 @@ using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 using System.Collections.Generic;
 using StatusChecker.Models.Enums;
+using StatusChecker.Helper;
 
 namespace StatusChecker.Services
 {
     public class SettingService : ISettingService
     {
+        #region Fields
         private readonly IRepository<Setting> _settingRepository;
+        #endregion
 
+
+        #region Construction
         public SettingService()
         {
             _settingRepository = DependencyService.Get<IRepository<Setting>>();
         }
+        #endregion
 
 
-        #region Public Methods
+        #region Interface Methods
         /// <summary>
         /// Get SettingValue by ID
         /// </summary>
@@ -29,7 +35,7 @@ namespace StatusChecker.Services
         {
             Setting setting = await _settingRepository.GetAsync(settingId);
 
-            if(IsSettingValid(setting)) return setting.Value;
+            if(ValidationHelper.IsSettingValid(setting)) return setting.Value;
 
             return null;
         }
@@ -72,20 +78,6 @@ namespace StatusChecker.Services
             {
                 UpdateSettingValue(updateSetting.Key, updateSetting.Value);
             }
-        }
-        #endregion
-
-
-
-        #region Private Methods
-        /// <summary>
-        /// Checks if Setting is valid
-        /// </summary>
-        /// <param name="setting"></param>
-        /// <returns></returns>
-        private bool IsSettingValid(Setting setting)
-        {
-            return setting != null && !string.IsNullOrEmpty(setting.Value);
         }
         #endregion
     }

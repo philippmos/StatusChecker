@@ -26,5 +26,15 @@ namespace StatusChecker.Helper
 
             return invalidFieldsList;
         }
+
+        /// <summary>
+        /// Checks if Setting is valid
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        public static bool IsSettingValid(Setting setting)
+        {
+            return setting != null && !string.IsNullOrEmpty(setting.Value);
+        }
     }
 }

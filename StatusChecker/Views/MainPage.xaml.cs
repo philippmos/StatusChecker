@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using StatusChecker.Models;
 using StatusChecker.Views.LegalPages;
 using StatusChecker.Views.GadgetPages;
+using StatusChecker.Models.Enums;
 
 namespace StatusChecker.Views
 {
@@ -20,7 +20,7 @@ namespace StatusChecker.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.GadgetOverview, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemTypes.GadgetOverview, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -29,13 +29,13 @@ namespace StatusChecker.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.GadgetOverview:
+                    case (int)MenuItemTypes.GadgetOverview:
                         MenuPages.Add(id, new NavigationPage(new GadgetsPage()));
                         break;
-                    case (int)MenuItemType.Setting:
+                    case (int)MenuItemTypes.Setting:
                         MenuPages.Add(id, new NavigationPage(new SettingsPage()));
                         break;
-                    case (int)MenuItemType.AppInfo:
+                    case (int)MenuItemTypes.AppInfo:
                         MenuPages.Add(id, new NavigationPage(new AppInfoPage()));
                         break;
                 }

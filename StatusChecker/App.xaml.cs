@@ -6,12 +6,10 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
 using Xamarin.Forms;
-using Xamarin.Essentials;
 
 using StatusChecker.Services;
 using StatusChecker.Infrastructure.Repositories;
 using StatusChecker.DataStore;
-using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Helper.Interfaces;
 using StatusChecker.Models.Enums;

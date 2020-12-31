@@ -11,12 +11,19 @@ namespace StatusChecker.DataStore
 {
     public class SettingDataStore : ISettingDataStore
     {
+        #region Fields
         private readonly IRepository<Setting> _settingRepository;
+        #endregion
 
+
+        #region Construction
         public SettingDataStore() {
             _settingRepository = DependencyService.Get<IRepository<Setting>>();
         }
+        #endregion
 
+
+        #region Interface Methods
         public async Task<bool> AddAsync(Setting setting)
         {
             await _settingRepository.SaveAsync(setting);
@@ -24,14 +31,12 @@ namespace StatusChecker.DataStore
             return await Task.FromResult(true);
         }
 
-
         public async Task<bool> UpdateAsync(Setting setting)
         {
             await _settingRepository.SaveAsync(setting);
 
             return true;
         }
-
 
         public async Task<bool> DeleteAsync(int id)
         {
@@ -42,16 +47,15 @@ namespace StatusChecker.DataStore
             return true;
         }
 
-
         public async Task<Setting> GetAsync(int id)
         {
             return await _settingRepository.GetAsync(id);
         }
 
-
         public async Task<IEnumerable<Setting>> GetAllAsync(bool forceRefresh = false)
         {
             return await _settingRepository.GetAllAsync();
         }
+        #endregion
     }
 }

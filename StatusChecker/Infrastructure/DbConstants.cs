@@ -3,6 +3,9 @@ using System.IO;
 
 public static class DbConstants
 {
+    /// <summary>
+    /// Filename for SQLite Database
+    /// </summary>
     public const string DatabaseFilename = "StatusChecker.db";
 
     public const SQLite.SQLiteOpenFlags Flags =
