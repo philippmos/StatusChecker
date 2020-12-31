@@ -85,7 +85,7 @@ namespace StatusChecker.ViewModels.Gadgets
 
                     if(gadgetStatus.temperature_status == "undefined")
                     {
-                        viewModel.TemperatureC = "Temperatur nicht verfügbar";
+                        viewModel.TemperatureC = "Status nicht verfügbar";
                     }
 
 
