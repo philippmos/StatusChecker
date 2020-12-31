@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
@@ -58,6 +59,35 @@ namespace StatusChecker.Views
                 _viewModel.DarkModeEnabled = true;
             }
 
+            #region GadgetSortingSetting
+            // TODO: Fix this static stuff...
+            var allEnumTypes = new List<GadgetSortingTypes>
+            {
+                GadgetSortingTypes.ByCreationAsc,
+                GadgetSortingTypes.ByCreationDesc,
+                GadgetSortingTypes.ByNameAsc,
+                GadgetSortingTypes.ByNameDesc,
+                GadgetSortingTypes.ByLocationAsc,
+                GadgetSortingTypes.ByLocationDesc,
+                GadgetSortingTypes.ByTemperatureAsc,
+                GadgetSortingTypes.ByTemperatureAsc
+            };
+
+
+            var gadgetSortingOptions = (allEnumTypes.Select(enumType => GetGadgetSortingTypeName(enumType))).ToList();
+
+            _pckGadgetSortingType.ItemsSource = gadgetSortingOptions;
+
+
+            var currentGadgetSorting = await _settingService.GetSettingValueAsync(SettingKeys.GadgetSortingType);
+
+            int.TryParse(currentGadgetSorting, out int gadgetSortingId);
+            _pckGadgetSortingType.SelectedIndex = gadgetSortingId - 1;
+            #endregion
+
+
+
+            #region WebRequestTimeoutSetting
             var timeoutSettingOptions = new List<string>();
 
             for(int i = 1; i < 20; i++)
@@ -72,7 +102,7 @@ namespace StatusChecker.Views
 
             int.TryParse(requestTimeoutInSeconds, out int requestTimeout);
             _pckTimeoutSetting.SelectedIndex = requestTimeout - 1;
-            
+            #endregion
 
             BindingContext = _viewModel;
         }
@@ -87,11 +117,17 @@ namespace StatusChecker.Views
         /// <param name="e"></param>
         private void Save_Clicked(object sender, System.EventArgs e)
         {
+            var selectedIndex = _pckGadgetSortingType.SelectedIndex;
+
             _settingService.UpdateSettingsValues(new Dictionary<SettingKeys, string>()
             {
                 {
                     SettingKeys.StatusRequestUrl,
                     _viewModel.StatusRequestUrl
+                },
+                {
+                    SettingKeys.GadgetSortingType,
+                    (selectedIndex + 1).ToString()
                 },
                 {
                     SettingKeys.PermissionTrackErrors,
@@ -152,6 +188,45 @@ namespace StatusChecker.Views
             }
 
             DependencyService.Get<IThemeHelper>().SetAppTheme(themeRequested);
+        }
+
+        /// <summary>
+        /// Static assignment of Sorting-Names
+        /// </summary>
+        /// <param name="gadgetSortingType"></param>
+        /// <returns></returns>
+        private string GetGadgetSortingTypeName(GadgetSortingTypes gadgetSortingType)
+        {
+            string ascText = "(aufsteigend)";
+            string descText = "(absteigend)";
+
+            switch (gadgetSortingType)
+            {
+                case GadgetSortingTypes.ByCreationDesc:
+                    return "Erstelldatum " + descText;
+
+                case GadgetSortingTypes.ByNameAsc:
+                    return "Name " + ascText;
+
+                case GadgetSortingTypes.ByNameDesc:
+                    return "Name " + descText;
+
+                case GadgetSortingTypes.ByLocationAsc:
+                    return "Standort " + ascText;
+
+                case GadgetSortingTypes.ByLocationDesc:
+                    return "Standort " + descText;
+
+                case GadgetSortingTypes.ByTemperatureAsc:
+                    return "Temperatur " + ascText;
+
+                case GadgetSortingTypes.ByTemperatureDesc:
+                    return "Temperatur " + descText;
+
+                case GadgetSortingTypes.ByCreationAsc:
+                default:
+                    return "Erstelldatum " + ascText;
+            }
         }
         #endregion
     }

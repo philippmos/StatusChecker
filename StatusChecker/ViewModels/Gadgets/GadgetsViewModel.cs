@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -49,6 +50,12 @@ namespace StatusChecker.ViewModels.Gadgets
             {
                 Gadgets.Clear();
                 var gadgets = await _gadgetDataStore.GetAllAsync(true);
+
+                if (gadgets == null || gadgets.Count() == 0) return;
+
+
+                var unsortedGadgetList = new List<GadgetViewModel>();                
+
                 foreach (var gadget in gadgets)
                 {
                     GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
@@ -89,8 +96,13 @@ namespace StatusChecker.ViewModels.Gadgets
                     }
 
 
-                    Gadgets.Add(viewModel);
+                    unsortedGadgetList.Add(viewModel);
                 }
+
+                List<GadgetViewModel> sortedGadgetList = await GadgetHelper.SortGadgetListBySettingAsync(unsortedGadgetList);
+
+                sortedGadgetList.ForEach(Gadgets.Add);
+
             }
             catch (Exception ex)
             {

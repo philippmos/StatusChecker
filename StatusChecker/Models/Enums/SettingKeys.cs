@@ -6,6 +6,7 @@
         PermissionTrackErrors = 2,
         NotifyWhenStatusNotRespond = 3,
         RequestTimeoutInSeconds = 4,
-        DarkModeEnabled = 5
+        DarkModeEnabled = 5,
+        GadgetSortingType = 6
     }
 }

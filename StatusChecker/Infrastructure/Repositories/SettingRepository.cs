@@ -91,6 +91,13 @@ namespace StatusChecker.Infrastructure.Repositories
                 Key = SettingKeys.DarkModeEnabled.ToString(),
                 Value = "0"
             });
+
+            await _database.InsertAsync(new Setting
+            {
+                Id = (int)SettingKeys.GadgetSortingType,
+                Key = SettingKeys.GadgetSortingType.ToString(),
+                Value = "1"
+            });
         }
         #endregion
 

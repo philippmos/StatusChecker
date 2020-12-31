@@ -26,6 +26,16 @@
                    TextColor="{DynamicResource FormTextColor}"
                    Margin="0,0,0,20"/>
 
+
+            <Label Text="Sortierung Geräteübersicht" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Picker x:Name="_pckGadgetSortingType"
+                    Title="Select"
+                    HeightRequest="50"
+                    BackgroundColor="{DynamicResource FormBackgroundColor}"
+                    TextColor="{DynamicResource FormTextColor}"
+                    Margin="0,0,0,20">
+		    </Picker>
+
             
             <Label Text="Error Logging aktiv" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Switch IsToggled="{Binding PermissionTrackErrors}" x:Name="_swtPermissionTrackErrors" Margin="0,0,0,20" />
