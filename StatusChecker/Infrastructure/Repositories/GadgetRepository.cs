@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
 
+using Xamarin.Forms;
+
 using StatusChecker.Models.Database;
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 
@@ -12,6 +14,8 @@ namespace StatusChecker.Infrastructure.Repositories
     public class GadgetRepository : IGadgetRepository
     {
         #region Fields
+        private readonly IGadgetStatusRequestRepository _gadgetStatusRequestRepository;
+
         private static readonly Lazy<SQLiteAsyncConnection> _lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
             return new SQLiteAsyncConnection(DbConstants.DatabasePath, DbConstants.Flags);
@@ -27,6 +31,8 @@ namespace StatusChecker.Infrastructure.Repositories
         public GadgetRepository()
         {
             InitializeAsync().SafeFireAndForget(false);
+
+            _gadgetStatusRequestRepository = DependencyService.Get<IGadgetStatusRequestRepository>();
         }
         #endregion
 
@@ -72,6 +78,8 @@ namespace StatusChecker.Infrastructure.Repositories
 
         public Task<int> DeleteAsync(Gadget item)
         {
+            _gadgetStatusRequestRepository.DeleteAllForGadgetAsync(item.Id);
+
             return _database.DeleteAsync(item);
         }
         #endregion
