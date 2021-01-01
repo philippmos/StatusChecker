@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using StatusChecker.Models;
 using StatusChecker.Models.Database;
@@ -32,5 +33,12 @@ namespace StatusChecker.Services.Interfaces
         /// </summary>
         /// <param name="gadgetViewModelList"></param>
         void SaveGadgetStatusRequests(List<GadgetViewModel> gadgetViewModelList);
+
+        /// <summary>
+        /// Calcualtes the Average Temperature for all available StatusRequests
+        /// </summary>
+        /// <param name="gadgetId"></param>
+        /// <returns></returns>
+        Task<double> GetStatusRequestAverageTemperatureAsync(int gadgetId);
     }
 }
