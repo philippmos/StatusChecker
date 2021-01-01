@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -9,19 +11,20 @@ using StatusChecker.Services.Interfaces;
 using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.Models;
 
+
 namespace StatusChecker.Services
 {
     public class GadgetStatusRequestService : IGadgetStatusRequestService
     {
         #region Fields
-        private readonly IRepository<GadgetStatusRequest> _gadgetStatusRequestRepository;
+        private readonly IGadgetStatusRequestRepository _gadgetStatusRequestRepository;
         #endregion
 
 
         #region Construction
         public GadgetStatusRequestService()
         {
-            _gadgetStatusRequestRepository = DependencyService.Get<IRepository<GadgetStatusRequest>>();
+            _gadgetStatusRequestRepository = DependencyService.Get<IGadgetStatusRequestRepository>();
         }
         #endregion
 
@@ -68,6 +71,32 @@ namespace StatusChecker.Services
             {
                 SaveGadgetStatusRequest(gadgetViewModel);
             }
+        }
+
+        public async Task<GadgetAnalyticsViewModel> GetGadgetAnalyticsViewModelForGadgetAsync(int gadgetId)
+        {
+            double averageTemperature = await GetStatusRequestAverageTemperatureAsync(gadgetId);
+
+            return new GadgetAnalyticsViewModel
+            {
+                AverageTemperature = averageTemperature,
+                AverageTemperatureC = $"{ Math.Round(averageTemperature, 2) } °C"
+            };
+        }
+
+        public async Task<double> GetStatusRequestAverageTemperatureAsync(int gadgetId)
+        {
+            if (gadgetId == 0) return default;
+
+            var allValidStatusRequests = await _gadgetStatusRequestRepository.GetAllValidStatusRequestsForGadgetIdAsync(gadgetId);
+
+            if (allValidStatusRequests.Count() == 0) return default;
+
+
+            var statusRequestTemperatures = allValidStatusRequests.Select(x => x.Temperature).ToList();
+
+
+            return statusRequestTemperatures.Average();
         }
         #endregion
 

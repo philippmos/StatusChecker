@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -86,7 +86,7 @@ namespace StatusChecker.ViewModels.Gadgets
                         StatusIndicatorColor = statusIndicatorColor.ToString(),
                         TemperatureStatus = gadgetStatus.temperature_status,
                         Temperature = gadgetStatus.temperature,
-                        TemperatureC = $"{gadgetStatus.temperature} °C",
+                        TemperatureC = $"{ gadgetStatus.temperature } °C",
                         Voltage = gadgetStatus.voltage,
                         VoltageV = $"{ gadgetStatus.voltage } V"
                     };
