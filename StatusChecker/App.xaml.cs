@@ -28,11 +28,14 @@ namespace StatusChecker
 
             #region DependencyService
             DependencyService.Register<GadgetDataStore>();
+            DependencyService.Register<SettingDataStore>();
 
             DependencyService.Register<WebRequestService>();
+            DependencyService.Register<GadgetStatusRequestService>();
             DependencyService.Register<SettingService>();
 
             DependencyService.Register<GadgetRepository>();
+            DependencyService.Register<GadgetStatusRequestRepository>();
             DependencyService.Register<SettingRepository>();
             #endregion
 
