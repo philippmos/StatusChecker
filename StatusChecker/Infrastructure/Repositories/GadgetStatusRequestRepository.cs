@@ -73,7 +73,7 @@ namespace StatusChecker.Infrastructure.Repositories
 
         public Task<int> DeleteAsync(GadgetStatusRequest item)
         {
-            throw new NotImplementedException();
+            return _database.DeleteAsync(item);
         }
         #endregion
 
@@ -106,6 +106,21 @@ namespace StatusChecker.Infrastructure.Repositories
                 { "max", new KeyValuePair<double, DateTime> ( maxElement.Temperature, maxElement.RequestDateTime ) },
                 { "min", new KeyValuePair<double, DateTime> ( minElement.Temperature, minElement.RequestDateTime ) },
             };
+        }
+
+        public async Task<int> DeleteAllForGadgetAsync(int gadgetId)
+        {
+            List<GadgetStatusRequest> allElements = await _database.Table<GadgetStatusRequest>()
+                                                            .Where(x => (x.GadgetId == gadgetId))
+                                                            .ToListAsync();
+
+            foreach(GadgetStatusRequest element in allElements)
+            {
+                await DeleteAsync(element);
+            }
+
+
+            return 1;            
         }
         #endregion
         #endregion

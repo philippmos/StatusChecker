@@ -21,5 +21,12 @@ namespace StatusChecker.Infrastructure.Repositories.Interfaces
         /// <param name="gadgetId"></param>
         /// <returns></returns>
         Task<Dictionary<string, KeyValuePair<double, DateTime>>> GetExtremepointsAsync(int gadgetId);
+
+        /// <summary>
+        /// Removes all Elements for specific Gadget
+        /// </summary>
+        /// <param name="gadgetId"></param>
+        /// <returns></returns>
+        Task<int> DeleteAllForGadgetAsync(int gadgetId);
     }
 }
