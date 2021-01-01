@@ -77,17 +77,13 @@ namespace StatusChecker.Services
         {
             double averageTemperature = await GetStatusRequestAverageTemperatureAsync(gadgetId);
 
-            KeyValuePair<double, DateTime> temperatureMaxAndDate = new KeyValuePair<double, DateTime>
-            ( 1.00, DateTime.Now );
-
-            KeyValuePair<double, DateTime> temperatureMinAndDate = new KeyValuePair<double, DateTime>
-            ( 2.00, DateTime.Now );
+            Dictionary<string, KeyValuePair<double, DateTime>> gadgetExtremepoints = await _gadgetStatusRequestRepository.GetExtremepointsAsync(gadgetId);
 
             return new GadgetAnalyticsViewModel
             {
                 TemperatureAvg = $"{ GadgetHelper.RoundTemperature(averageTemperature) } °C",
-                TemperatureMaxAndDate = FormatDateWithTimeHighValues(temperatureMaxAndDate),
-                TemperatureMinAndDate = FormatDateWithTimeHighValues(temperatureMinAndDate)
+                TemperatureMaxAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["max"]),
+                TemperatureMinAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["min"])
             };
         }
 
@@ -106,6 +102,7 @@ namespace StatusChecker.Services
             return statusRequestTemperatures.Average();
         }
         #endregion
+
 
         #region Helper Methods
         /// <summary>
