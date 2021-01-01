@@ -10,6 +10,7 @@ using StatusChecker.Models;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Models.Enums;
 using StatusChecker.Helper;
+using StatusChecker.Models.Database;
 
 namespace StatusChecker.Services
 {
@@ -29,9 +30,9 @@ namespace StatusChecker.Services
 
 
         #region Interface Methods
-        public async Task<GadgetStatus> GetStatusAsync(string ipAddress)
+        public async Task<GadgetStatus> GetStatusAsync(Gadget gadget)
         {
-            GadgetStatus gadgetStatus = SerializeWebResponse<GadgetStatus>(await ManageWebRequestAndReturnResponse(ipAddress));
+            GadgetStatus gadgetStatus = SerializeWebResponse<GadgetStatus>(await ManageWebRequestAndReturnResponse(gadget.IpAddress));
 
             return gadgetStatus ?? null;
         }

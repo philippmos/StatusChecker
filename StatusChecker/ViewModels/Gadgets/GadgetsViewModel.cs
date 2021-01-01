@@ -56,9 +56,9 @@ namespace StatusChecker.ViewModels.Gadgets
 
                 var unsortedGadgetList = new List<GadgetViewModel>();                
 
-                foreach (var gadget in gadgets)
+                foreach (Gadget gadget in gadgets)
                 {
-                    GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget.IpAddress);
+                    GadgetStatus gadgetStatus = await _webRequestService.GetStatusAsync(gadget);
 
                     var statusIndicatorColor = GadgetHelper.GetStatusIndicatorColor(gadgetStatus);
 
@@ -101,6 +101,8 @@ namespace StatusChecker.ViewModels.Gadgets
                 }
 
                 List<GadgetViewModel> sortedGadgetList = await GadgetHelper.SortGadgetListBySettingAsync(unsortedGadgetList);
+
+
 
                 sortedGadgetList.ForEach(Gadgets.Add);
 
