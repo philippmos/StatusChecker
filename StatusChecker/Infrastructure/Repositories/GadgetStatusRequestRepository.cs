@@ -89,23 +89,37 @@ namespace StatusChecker.Infrastructure.Repositories
 
         public async Task<Dictionary<string, KeyValuePair<double, DateTime>>> GetExtremepointsAsync(int gadgetId)
         {
-            GadgetStatusRequest minElement = await _database
-                                                    .Table<GadgetStatusRequest>()
-                                                    .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
-                                                    .OrderByDescending(y => y.Temperature)
-                                                    .FirstOrDefaultAsync();
+            var resultDictionary = new Dictionary<string, KeyValuePair<double, DateTime>>();
 
-            GadgetStatusRequest maxElement = await _database
+            GadgetStatusRequest minElement = await _database
                                                     .Table<GadgetStatusRequest>()
                                                     .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
                                                     .OrderBy(y => y.Temperature)
                                                     .FirstOrDefaultAsync();
 
-            return new Dictionary<string, KeyValuePair<double, DateTime>>
+            if(minElement != null)
             {
-                { "max", new KeyValuePair<double, DateTime> ( maxElement.Temperature, maxElement.RequestDateTime ) },
-                { "min", new KeyValuePair<double, DateTime> ( minElement.Temperature, minElement.RequestDateTime ) },
-            };
+                resultDictionary.Add(
+                    "min", new KeyValuePair<double, DateTime>(minElement.Temperature, minElement.RequestDateTime)
+                );
+            }
+
+            GadgetStatusRequest maxElement = await _database
+                                                    .Table<GadgetStatusRequest>()
+                                                    .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
+                                                    .OrderByDescending(y => y.Temperature)
+                                                    .FirstOrDefaultAsync();
+
+            if (maxElement != null)
+            {
+                resultDictionary.Add(
+                    "max", new KeyValuePair<double, DateTime>(maxElement.Temperature, maxElement.RequestDateTime)
+                );
+            }
+
+
+
+            return resultDictionary;
         }
 
         public async Task<int> DeleteAllForGadgetAsync(int gadgetId)

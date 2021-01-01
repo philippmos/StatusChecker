@@ -79,12 +79,31 @@ namespace StatusChecker.Services
 
             Dictionary<string, KeyValuePair<double, DateTime>> gadgetExtremepoints = await _gadgetStatusRequestRepository.GetExtremepointsAsync(gadgetId);
 
-            return new GadgetAnalyticsViewModel
+            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel
             {
-                TemperatureAvg = $"{ GadgetHelper.RoundTemperature(averageTemperature) } °C",
-                TemperatureMaxAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["max"]),
-                TemperatureMinAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["min"])
+                TemperatureAvg = "Nicht verfügbar",
+                TemperatureMaxAndDate = "Nicht verfügbar",
+                TemperatureMinAndDate = "Nicht verfügbar"
             };
+
+
+            if(averageTemperature > 0.00)
+            {
+                gadgetAnalyticsViewModel.TemperatureAvg = $"{ GadgetHelper.RoundTemperature(averageTemperature) } °C";
+            }
+
+            if (gadgetExtremepoints.ContainsKey("max"))
+            {
+                gadgetAnalyticsViewModel.TemperatureMaxAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["max"]);
+            }
+            
+            if (gadgetExtremepoints.ContainsKey("min"))
+            {
+                gadgetAnalyticsViewModel.TemperatureMinAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["min"]);
+            }
+
+
+            return gadgetAnalyticsViewModel;
         }
 
         public async Task<double> GetStatusRequestAverageTemperatureAsync(int gadgetId)
@@ -112,6 +131,7 @@ namespace StatusChecker.Services
         /// <returns></returns>
         private string FormatDateWithTimeHighValues(KeyValuePair<double, DateTime> heighValuePair)
         {
+            if (heighValuePair.Key == null) return "Nicht verfügbar";
             string formattedDateTime = heighValuePair.Value.ToString("dd.MM.yyyy HH:mm");
 
             return $"{ GadgetHelper.RoundTemperature(heighValuePair.Key) } °C [{ formattedDateTime }]";
