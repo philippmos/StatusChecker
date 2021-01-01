@@ -20,6 +20,11 @@ namespace StatusChecker.Views.GadgetPages
         {
             InitializeComponent();
 
+            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel();
+            
+
+            viewModel.GadgetAnalytics = gadgetAnalyticsViewModel;
+
             BindingContext = this.viewModel = viewModel;
         }
 

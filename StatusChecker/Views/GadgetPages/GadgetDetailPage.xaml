@@ -74,7 +74,7 @@
         
             <StackLayout Orientation="Horizontal">
                 <Label Text="Durchschnittstemperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
-                <Label Text="" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding GadgetAnalytics.AverageTemperatureC}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
         </StackLayout>
