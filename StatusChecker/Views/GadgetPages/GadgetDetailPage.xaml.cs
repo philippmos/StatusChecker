@@ -11,7 +11,6 @@ namespace StatusChecker.Views.GadgetPages
     {
         #region Fields
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
-        private readonly IGadgetStatusRequestService _gadgetStatusRequestService = DependencyService.Get<IGadgetStatusRequestService>();
 
         private readonly GadgetDetailViewModel viewModel;
         #endregion
@@ -50,7 +49,10 @@ namespace StatusChecker.Views.GadgetPages
         /// <param name="e"></param>
         private async void RemoveGadget_Clicked(object sender, System.EventArgs e)
         {
-            bool deleteRequestApproval = await DisplayAlert($"\"{ viewModel.Gadget.Name }\" löschen?", "Das Element unwiderruflich löschen?", "Ja, löschen", "Nein");
+            bool deleteRequestApproval = await DisplayAlert($"\"{ viewModel.Gadget.Name }\" löschen?",
+                                                "Das Element unwiderruflich löschen? Warnung: Die gesamte Statushistorie wird ebenfalls unwiderruflich gelöscht!",
+                                                "Ja, löschen",
+                                                "Nein");
 
             if(deleteRequestApproval)
             {

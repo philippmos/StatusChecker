@@ -10,7 +10,7 @@ using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.Models;
-
+using StatusChecker.Helper;
 
 namespace StatusChecker.Services
 {
@@ -77,10 +77,13 @@ namespace StatusChecker.Services
         {
             double averageTemperature = await GetStatusRequestAverageTemperatureAsync(gadgetId);
 
+            Dictionary<string, KeyValuePair<double, DateTime>> gadgetExtremepoints = await _gadgetStatusRequestRepository.GetExtremepointsAsync(gadgetId);
+
             return new GadgetAnalyticsViewModel
             {
-                AverageTemperature = averageTemperature,
-                AverageTemperatureC = $"{ Math.Round(averageTemperature, 2) } °C"
+                TemperatureAvg = $"{ GadgetHelper.RoundTemperature(averageTemperature) } °C",
+                TemperatureMaxAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["max"]),
+                TemperatureMinAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["min"])
             };
         }
 
@@ -100,7 +103,21 @@ namespace StatusChecker.Services
         }
         #endregion
 
+
         #region Helper Methods
+        /// <summary>
+        /// Formats the KVP to the correct Output
+        /// </summary>
+        /// <param name="heighValuePair"></param>
+        /// <returns></returns>
+        private string FormatDateWithTimeHighValues(KeyValuePair<double, DateTime> heighValuePair)
+        {
+            string formattedDateTime = heighValuePair.Value.ToString("dd.MM.yyyy HH:mm");
+
+            return $"{ GadgetHelper.RoundTemperature(heighValuePair.Key) } °C [{ formattedDateTime }]";
+        }
+
+
         // TODO: Implement and use AutoMapper
         private GadgetStatusRequest MapGadgetViewModelToGadgetStatusRequest(GadgetViewModel gadgetViewModel)
         {
