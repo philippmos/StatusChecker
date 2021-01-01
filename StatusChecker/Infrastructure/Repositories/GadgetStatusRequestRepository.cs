@@ -73,7 +73,7 @@ namespace StatusChecker.Infrastructure.Repositories
 
         public Task<int> DeleteAsync(GadgetStatusRequest item)
         {
-            throw new NotImplementedException();
+            return _database.DeleteAsync(item);
         }
         #endregion
 
@@ -85,6 +85,42 @@ namespace StatusChecker.Infrastructure.Repositories
                                 .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
                                 .ToListAsync();
 
+        }
+
+        public async Task<Dictionary<string, KeyValuePair<double, DateTime>>> GetExtremepointsAsync(int gadgetId)
+        {
+            GadgetStatusRequest minElement = await _database
+                                                    .Table<GadgetStatusRequest>()
+                                                    .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
+                                                    .OrderByDescending(y => y.Temperature)
+                                                    .FirstOrDefaultAsync();
+
+            GadgetStatusRequest maxElement = await _database
+                                                    .Table<GadgetStatusRequest>()
+                                                    .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
+                                                    .OrderBy(y => y.Temperature)
+                                                    .FirstOrDefaultAsync();
+
+            return new Dictionary<string, KeyValuePair<double, DateTime>>
+            {
+                { "max", new KeyValuePair<double, DateTime> ( maxElement.Temperature, maxElement.RequestDateTime ) },
+                { "min", new KeyValuePair<double, DateTime> ( minElement.Temperature, minElement.RequestDateTime ) },
+            };
+        }
+
+        public async Task<int> DeleteAllForGadgetAsync(int gadgetId)
+        {
+            List<GadgetStatusRequest> allElements = await _database.Table<GadgetStatusRequest>()
+                                                            .Where(x => (x.GadgetId == gadgetId))
+                                                            .ToListAsync();
+
+            foreach(GadgetStatusRequest element in allElements)
+            {
+                await DeleteAsync(element);
+            }
+
+
+            return 1;            
         }
         #endregion
         #endregion

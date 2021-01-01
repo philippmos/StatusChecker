@@ -2,7 +2,8 @@
 {
     public class GadgetAnalyticsViewModel : BaseViewModel
     {
-        public double AverageTemperature { get; set; }
-        public string AverageTemperatureC { get; set; }
+        public string TemperatureAvg { get; set; }
+        public string TemperatureMaxAndDate { get; set; }        
+        public string TemperatureMinAndDate { get; set; }
     }
 }
