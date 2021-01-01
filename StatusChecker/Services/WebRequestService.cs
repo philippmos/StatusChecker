@@ -37,6 +37,8 @@ namespace StatusChecker.Services
         {
             GadgetStatus gadgetStatus = SerializeWebResponse<GadgetStatus>(await ManageWebRequestAndReturnResponse(gadget.IpAddress));
 
+            _gadgetStatusRequestService.SaveGadgetStatusRequest(gadget, gadgetStatus);
+
             return gadgetStatus ?? null;
         }
         #endregion
