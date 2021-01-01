@@ -73,6 +73,17 @@ namespace StatusChecker.Services
             }
         }
 
+        public async Task<GadgetAnalyticsViewModel> GetGadgetAnalyticsViewModelForGadgetAsync(int gadgetId)
+        {
+            double averageTemperature = await GetStatusRequestAverageTemperatureAsync(gadgetId);
+
+            return new GadgetAnalyticsViewModel
+            {
+                AverageTemperature = averageTemperature,
+                AverageTemperatureC = $"{ averageTemperature } °C"
+            };
+        }
+
         public async Task<double> GetStatusRequestAverageTemperatureAsync(int gadgetId)
         {
             if (gadgetId == 0) return default;

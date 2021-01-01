@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.DataStore.Interfaces;
+using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Views.GadgetPages
 {
@@ -10,6 +11,7 @@ namespace StatusChecker.Views.GadgetPages
     {
         #region Fields
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
+        private readonly IGadgetStatusRequestService _gadgetStatusRequestService = DependencyService.Get<IGadgetStatusRequestService>();
 
         private readonly GadgetDetailViewModel viewModel;
         #endregion
@@ -19,11 +21,6 @@ namespace StatusChecker.Views.GadgetPages
         public GadgetDetailPage(GadgetDetailViewModel viewModel)
         {
             InitializeComponent();
-
-            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel();
-            
-
-            viewModel.GadgetAnalytics = gadgetAnalyticsViewModel;
 
             BindingContext = this.viewModel = viewModel;
         }
@@ -40,6 +37,28 @@ namespace StatusChecker.Views.GadgetPages
 
             viewModel = new GadgetDetailViewModel(gadget);
             BindingContext = viewModel;
+        }
+        #endregion
+
+        #region View Handler
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            double averageTemperatureForGadget = await _gadgetStatusRequestService
+                                    .GetStatusRequestAverageTemperatureAsync(viewModel.Gadget.Id);
+
+            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel {
+                AverageTemperature = averageTemperatureForGadget,
+                AverageTemperatureC = $"{ averageTemperatureForGadget } °C"
+            };
+
+
+            viewModel.GadgetAnalytics = gadgetAnalyticsViewModel;
+
+            BindingContext = viewModel;
+
         }
         #endregion
 

@@ -35,6 +35,13 @@ namespace StatusChecker.Services.Interfaces
         void SaveGadgetStatusRequests(List<GadgetViewModel> gadgetViewModelList);
 
         /// <summary>
+        /// Returns a GadgetAnalyticsViewModel
+        /// </summary>
+        /// <param name="gadgetId"></param>
+        /// <returns></returns>
+        Task<GadgetAnalyticsViewModel> GetGadgetAnalyticsViewModelForGadgetAsync(int gadgetId);
+
+        /// <summary>
         /// Calcualtes the Average Temperature for all available StatusRequests
         /// </summary>
         /// <param name="gadgetId"></param>
