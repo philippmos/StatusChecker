@@ -46,7 +46,7 @@
         
             <StackLayout Orientation="Horizontal">
                 <Label Text="Volt:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
-                <Label Text="{Binding Gadget.Voltage}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.VoltageV}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
         

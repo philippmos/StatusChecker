@@ -13,6 +13,7 @@
         public string TemperatureStatus { get; set; }
         public double Temperature { get; set; }
         public string TemperatureC { get; set; }
-        public string Voltage { get; set; }
+        public double Voltage { get; set; }
+        public string VoltageV { get; set; }
     }
 }

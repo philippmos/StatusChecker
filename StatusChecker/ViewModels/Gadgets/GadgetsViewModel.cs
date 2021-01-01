@@ -87,7 +87,8 @@ namespace StatusChecker.ViewModels.Gadgets
                         TemperatureStatus = gadgetStatus.temperature_status,
                         Temperature = gadgetStatus.temperature,
                         TemperatureC = $"{gadgetStatus.temperature} °C",
-                        Voltage = $"{ gadgetStatus.voltage } V"
+                        Voltage = gadgetStatus.voltage,
+                        VoltageV = $"{ gadgetStatus.voltage } V"
                     };
 
                     if(gadgetStatus.temperature_status == "undefined")
