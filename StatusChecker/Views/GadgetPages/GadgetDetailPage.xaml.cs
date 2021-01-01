@@ -40,28 +40,6 @@ namespace StatusChecker.Views.GadgetPages
         }
         #endregion
 
-        #region View Handler
-
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            double averageTemperatureForGadget = await _gadgetStatusRequestService
-                                    .GetStatusRequestAverageTemperatureAsync(viewModel.Gadget.Id);
-
-            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel {
-                AverageTemperature = averageTemperatureForGadget,
-                AverageTemperatureC = $"{ averageTemperatureForGadget } °C"
-            };
-
-
-            viewModel.GadgetAnalytics = gadgetAnalyticsViewModel;
-
-            BindingContext = viewModel;
-
-        }
-        #endregion
-
 
         #region View Events
         /// <summary>
