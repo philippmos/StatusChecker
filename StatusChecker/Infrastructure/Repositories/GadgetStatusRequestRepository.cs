@@ -76,7 +76,16 @@ namespace StatusChecker.Infrastructure.Repositories
             throw new NotImplementedException();
         }
         #endregion
+
+
         #region IGadgetStatusRepository
+        public Task<List<GadgetStatusRequest>> GetAllValidStatusRequestsForGadgetIdAsync(int gadgetId)
+        {
+            return _database.Table<GadgetStatusRequest>()
+                                .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
+                                .ToListAsync();
+
+        }
         #endregion
         #endregion
     }
