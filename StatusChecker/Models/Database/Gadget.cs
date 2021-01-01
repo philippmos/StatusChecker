@@ -1,6 +1,6 @@
 ﻿namespace StatusChecker.Models.Database
 {
-    public class Gadget : BaseModel
+    public class Gadget : DbBaseModel
     {
         public string Name { get; set; }
         public string Location { get; set; }
