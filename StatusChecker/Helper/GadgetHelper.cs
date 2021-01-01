@@ -15,6 +15,15 @@ namespace StatusChecker.Helper
 {
     public static class GadgetHelper
     {
+        /// <summary>
+        /// Round the Temperature Value with 2 decimalplaces
+        /// </summary>
+        /// <param name="temperature"></param>
+        /// <returns></returns>
+        public static double RoundTemperature(double temperature)
+        {
+            return Math.Round(temperature, 2);
+        }
 
         /// <summary>
         /// Returns the StatusIndicationColor for the current GadgetStatus

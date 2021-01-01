@@ -11,7 +11,6 @@ namespace StatusChecker.Views.GadgetPages
     {
         #region Fields
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
-        private readonly IGadgetStatusRequestService _gadgetStatusRequestService = DependencyService.Get<IGadgetStatusRequestService>();
 
         private readonly GadgetDetailViewModel viewModel;
         #endregion

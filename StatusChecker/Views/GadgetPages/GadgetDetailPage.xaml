@@ -71,14 +71,24 @@
             <StackLayout Margin="0,25,0,0">
                 <Label Text="Analytics" FontSize="Title" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
-        
+
             <StackLayout Orientation="Horizontal">
                 <Label Text="Durchschnittstemperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
-                <Label Text="{Binding GadgetAnalytics.AverageTemperatureC}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding GadgetAnalytics.TemperatureAvg}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Temperatur Max.:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding GadgetAnalytics.TemperatureMaxAndDate}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Temperatur Min.:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding GadgetAnalytics.TemperatureMinAndDate}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
         </StackLayout>
 
     </ScrollView>
-    
+
 </ContentPage>
