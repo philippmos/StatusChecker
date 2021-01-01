@@ -94,7 +94,7 @@ namespace StatusChecker.Infrastructure.Repositories
             GadgetStatusRequest minElement = await _database
                                                     .Table<GadgetStatusRequest>()
                                                     .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
-                                                    .OrderByDescending(y => y.Temperature)
+                                                    .OrderBy(y => y.Temperature)
                                                     .FirstOrDefaultAsync();
 
             if(minElement != null)
@@ -107,7 +107,7 @@ namespace StatusChecker.Infrastructure.Repositories
             GadgetStatusRequest maxElement = await _database
                                                     .Table<GadgetStatusRequest>()
                                                     .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
-                                                    .OrderBy(y => y.Temperature)
+                                                    .OrderByDescending(y => y.Temperature)
                                                     .FirstOrDefaultAsync();
 
             if (maxElement != null)
