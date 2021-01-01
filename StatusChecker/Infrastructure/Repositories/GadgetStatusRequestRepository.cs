@@ -89,11 +89,20 @@ namespace StatusChecker.Infrastructure.Repositories
 
         public async Task<Dictionary<string, KeyValuePair<double, DateTime>>> GetExtremepointsAsync(int gadgetId)
         {
+            var resultDictionary = new Dictionary<string, KeyValuePair<double, DateTime>>();
+
             GadgetStatusRequest minElement = await _database
                                                     .Table<GadgetStatusRequest>()
                                                     .Where(x => (x.GadgetId == gadgetId) && (x.IsStatusRequestValid == true))
                                                     .OrderByDescending(y => y.Temperature)
                                                     .FirstOrDefaultAsync();
+
+            if(minElement != null)
+            {
+                resultDictionary.Add(
+                    "min", new KeyValuePair<double, DateTime>(minElement.Temperature, minElement.RequestDateTime)
+                );
+            }
 
             GadgetStatusRequest maxElement = await _database
                                                     .Table<GadgetStatusRequest>()
@@ -101,11 +110,16 @@ namespace StatusChecker.Infrastructure.Repositories
                                                     .OrderBy(y => y.Temperature)
                                                     .FirstOrDefaultAsync();
 
-            return new Dictionary<string, KeyValuePair<double, DateTime>>
+            if (maxElement != null)
             {
-                { "max", new KeyValuePair<double, DateTime> ( maxElement.Temperature, maxElement.RequestDateTime ) },
-                { "min", new KeyValuePair<double, DateTime> ( minElement.Temperature, minElement.RequestDateTime ) },
-            };
+                resultDictionary.Add(
+                    "max", new KeyValuePair<double, DateTime>(maxElement.Temperature, maxElement.RequestDateTime)
+                );
+            }
+
+
+
+            return resultDictionary;
         }
 
         public async Task<int> DeleteAllForGadgetAsync(int gadgetId)
