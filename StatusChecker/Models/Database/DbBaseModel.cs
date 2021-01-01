@@ -2,7 +2,7 @@
 
 namespace StatusChecker.Models.Database
 {
-    public class BaseModel
+    public class DbBaseModel
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

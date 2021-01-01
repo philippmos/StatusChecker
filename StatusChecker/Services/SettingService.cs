@@ -1,10 +1,11 @@
-﻿using Xamarin.Forms;
-
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using Xamarin.Forms;
+
 using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
-using System.Collections.Generic;
 using StatusChecker.Models.Enums;
 using StatusChecker.Helper;
 
