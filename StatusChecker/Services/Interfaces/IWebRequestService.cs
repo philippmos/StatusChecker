@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using StatusChecker.Models;
+using StatusChecker.Models.Database;
 
 namespace StatusChecker.Services.Interfaces
 {
@@ -8,8 +9,8 @@ namespace StatusChecker.Services.Interfaces
         /// <summary>
         /// Get the GadgetStatus Model from WebRequest
         /// </summary>
-        /// <param name="ipAddress"></param>
+        /// <param name="gadget"></param>
         /// <returns></returns>
-        Task<GadgetStatus> GetStatusAsync(string ipAddress);
+        Task<GadgetStatus> GetStatusAsync(Gadget gadget);
     }
 }
