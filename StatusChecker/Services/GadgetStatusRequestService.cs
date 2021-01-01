@@ -45,7 +45,7 @@ namespace StatusChecker.Services
             GadgetStatusRequest gadgetStatusRequest = new GadgetStatusRequest
             {
                 GadgetId = gadget.Id,
-                RequestDateTime = new DateTime(),
+                RequestDateTime = DateTime.Now,
 
                 Temperature = 00.00,
                 Voltage = 00.00,
