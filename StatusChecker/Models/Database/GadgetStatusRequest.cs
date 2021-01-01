@@ -6,8 +6,8 @@ namespace StatusChecker.Models.Database
     {
         public int GadgetId { get; set; }
         public DateTime RequestDateTime { get; set; }
+        public bool IsStatusRequestValid { get; set; }
         public double Temperature { get; set; }
-        public bool Overtemperature { get; set; }
         public double Voltage { get; set; }
     }
 }
