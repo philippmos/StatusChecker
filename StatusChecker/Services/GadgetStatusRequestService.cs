@@ -80,7 +80,7 @@ namespace StatusChecker.Services
             return new GadgetAnalyticsViewModel
             {
                 AverageTemperature = averageTemperature,
-                AverageTemperatureC = $"{ averageTemperature } °C"
+                AverageTemperatureC = $"{ Math.Round(averageTemperature, 2) } °C"
             };
         }
 
