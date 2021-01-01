@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+
 using StatusChecker.Models;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.Models.Enums;
@@ -18,6 +19,7 @@ namespace StatusChecker.Services
     {
         #region Fields
         private readonly ISettingService _settingService;
+        private readonly IGadgetStatusRequestService _gadgetStatusRequestService;
         #endregion
 
 
@@ -25,6 +27,7 @@ namespace StatusChecker.Services
         public WebRequestService()
         {
             _settingService = DependencyService.Get<ISettingService>();
+            _gadgetStatusRequestService = DependencyService.Get<IGadgetStatusRequestService>();
         }
         #endregion
 

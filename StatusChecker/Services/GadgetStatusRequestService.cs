@@ -7,6 +7,7 @@ using StatusChecker.Infrastructure.Repositories.Interfaces;
 using StatusChecker.Models.Database;
 using StatusChecker.Services.Interfaces;
 using StatusChecker.ViewModels.Gadgets;
+using StatusChecker.Models;
 
 namespace StatusChecker.Services
 {
@@ -26,23 +27,52 @@ namespace StatusChecker.Services
 
 
         #region Interface Methods
-        public async void SaveGadgetStatusRequestAsync(GadgetViewModel gadgetViewModel)
+        public async void SaveGadgetStatusRequest(GadgetStatusRequest gadgetStatusRequest)
+        {
+            await _gadgetStatusRequestRepository.SaveAsync(gadgetStatusRequest);
+        }
+
+
+        public void SaveGadgetStatusRequest(GadgetViewModel gadgetViewModel)
         {
             GadgetStatusRequest gadgetStatusRequest = MapGadgetViewModelToGadgetStatusRequest(gadgetViewModel);
 
-            await _gadgetStatusRequestRepository.SaveAsync(gadgetStatusRequest);
+            SaveGadgetStatusRequest(gadgetStatusRequest);
+        }
+
+        public void SaveGadgetStatusRequest(Gadget gadget, GadgetStatus gadgetStatus)
+        {
+            GadgetStatusRequest gadgetStatusRequest = new GadgetStatusRequest
+            {
+                GadgetId = gadget.Id,
+                RequestDateTime = new DateTime(),
+
+                Temperature = 00.00,
+                Voltage = 00.00,
+                IsStatusRequestValid = false
+            };
+
+            if (gadgetStatus != null && gadgetStatus.temperature > 0.00)
+            {
+                gadgetStatusRequest.Temperature = gadgetStatus.temperature;
+                gadgetStatusRequest.Voltage = gadgetStatus.voltage;
+                gadgetStatusRequest.IsStatusRequestValid = true;
+            }
+
+            SaveGadgetStatusRequest(gadgetStatusRequest);
         }
 
         public void SaveGadgetStatusRequests(List<GadgetViewModel> gadgetViewModelList)
         {
             foreach (GadgetViewModel gadgetViewModel in gadgetViewModelList)
             {
-                SaveGadgetStatusRequestAsync(gadgetViewModel);
+                SaveGadgetStatusRequest(gadgetViewModel);
             }
         }
         #endregion
 
         #region Helper Methods
+        // TODO: Implement and use AutoMapper
         private GadgetStatusRequest MapGadgetViewModelToGadgetStatusRequest(GadgetViewModel gadgetViewModel)
         {
             if (gadgetViewModel == null) return null;

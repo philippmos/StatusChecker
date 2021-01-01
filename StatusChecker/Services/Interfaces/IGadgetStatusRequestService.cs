@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+
+using StatusChecker.Models;
+using StatusChecker.Models.Database;
 using StatusChecker.ViewModels.Gadgets;
 
 namespace StatusChecker.Services.Interfaces
@@ -8,8 +11,21 @@ namespace StatusChecker.Services.Interfaces
         /// <summary>
         /// Saves a single GadgetViewModel in Database for GadgetStatusRequest
         /// </summary>
+        /// <param name="gadgetStatusRequest"></param>
+        void SaveGadgetStatusRequest(GadgetStatusRequest gadgetStatusRequest);
+
+        /// <summary>
+        /// Saves a single GadgetViewModel in Database for GadgetStatusRequest
+        /// </summary>
         /// <param name="gadgetViewModel"></param>
-        void SaveGadgetStatusRequestAsync(GadgetViewModel gadgetViewModel);
+        void SaveGadgetStatusRequest(GadgetViewModel gadgetViewModel);
+
+        /// <summary>
+        /// Saves a single GadgetViewModel in Database for GadgetStatusRequest
+        /// </summary>
+        /// <param name="gadget"></param>
+        /// <param name="gadgetStatus"></param>
+        void SaveGadgetStatusRequest(Gadget gadget, GadgetStatus gadgetStatus);
 
         /// <summary>
         /// Saves multiple GadgetViewModels in Database for GadgetStatusRequest
