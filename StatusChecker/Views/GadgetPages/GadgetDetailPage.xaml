@@ -14,6 +14,10 @@
 
         <StackLayout Spacing="20" Padding="15">
 
+            <StackLayout>
+                <Label Text="Gerätedaten" FontSize="Title" TextColor="{DynamicResource TextColor}" />
+            </StackLayout>
+
             <StackLayout Orientation="Horizontal">
                 <Label Text="Gerätename:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.Name}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
@@ -33,6 +37,18 @@
                 <Label Text="IP Adresse:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.IpAddress}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Beschreibung:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding Gadget.Description}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+            </StackLayout>
+
+
+
+
+            <StackLayout Margin="0,25,0,0">
+                <Label Text="Gerätestatus" FontSize="Title" TextColor="{DynamicResource TextColor}" />
+            </StackLayout>
         
             <StackLayout Orientation="Horizontal">
                 <Label Text="Temperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
@@ -48,11 +64,17 @@
                 <Label Text="Volt:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.VoltageV}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
-        
+
+
+
+
+            <StackLayout Margin="0,25,0,0">
+                <Label Text="Analytics" FontSize="Title" TextColor="{DynamicResource TextColor}" />
+            </StackLayout>
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Beschreibung:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
-                <Label Text="{Binding Gadget.Description}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+                <Label Text="Durchschnittstemperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding GadgetAnalytics.AverageTemperatureC}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
         </StackLayout>

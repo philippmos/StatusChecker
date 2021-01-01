@@ -3,6 +3,7 @@
 using Xamarin.Forms;
 
 using StatusChecker.ViewModels.Gadgets;
+using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Views.GadgetPages
 {
@@ -10,6 +11,7 @@ namespace StatusChecker.Views.GadgetPages
     {
         #region Fields
         private readonly GadgetsViewModel viewModel;
+        private readonly IGadgetStatusRequestService _gadgetStatusRequestService = DependencyService.Get<IGadgetStatusRequestService>();
         #endregion
 
 
@@ -28,7 +30,10 @@ namespace StatusChecker.Views.GadgetPages
         {
             var layout = (BindableObject)sender;
             var gadget = (GadgetViewModel)layout.BindingContext;
-            await Navigation.PushAsync(new GadgetDetailPage(new GadgetDetailViewModel(gadget)));
+
+            GadgetAnalyticsViewModel gadgetAnalyticsViewModel = await _gadgetStatusRequestService.GetGadgetAnalyticsViewModelForGadgetAsync(gadget.Id);
+
+            await Navigation.PushAsync(new GadgetDetailPage(new GadgetDetailViewModel(gadget, gadgetAnalyticsViewModel)));
         }
 
         protected override void OnAppearing()

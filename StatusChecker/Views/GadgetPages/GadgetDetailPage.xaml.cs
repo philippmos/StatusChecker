@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.DataStore.Interfaces;
+using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Views.GadgetPages
 {
@@ -10,6 +11,7 @@ namespace StatusChecker.Views.GadgetPages
     {
         #region Fields
         private IDataStore<Gadget> _dataStore => DependencyService.Get<IDataStore<Gadget>>();
+        private readonly IGadgetStatusRequestService _gadgetStatusRequestService = DependencyService.Get<IGadgetStatusRequestService>();
 
         private readonly GadgetDetailViewModel viewModel;
         #endregion
