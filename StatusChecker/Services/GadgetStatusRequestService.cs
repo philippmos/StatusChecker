@@ -79,13 +79,7 @@ namespace StatusChecker.Services
 
             Dictionary<string, KeyValuePair<double, DateTime>> gadgetExtremepoints = await _gadgetStatusRequestRepository.GetExtremepointsAsync(gadgetId);
 
-            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel
-            {
-                AmountOfEntries = "Nicht verfügbar",
-                TemperatureAvg = "Nicht verfügbar",
-                TemperatureMaxAndDate = "Nicht verfügbar",
-                TemperatureMinAndDate = "Nicht verfügbar"
-            };
+            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel();
 
 
             if(averageTemperature > 0.00)
