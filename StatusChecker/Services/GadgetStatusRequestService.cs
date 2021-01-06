@@ -81,6 +81,7 @@ namespace StatusChecker.Services
 
             var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel
             {
+                AmountOfEntries = "Nicht verfügbar",
                 TemperatureAvg = "Nicht verfügbar",
                 TemperatureMaxAndDate = "Nicht verfügbar",
                 TemperatureMinAndDate = "Nicht verfügbar"
@@ -100,6 +101,14 @@ namespace StatusChecker.Services
             if (gadgetExtremepoints.ContainsKey("min"))
             {
                 gadgetAnalyticsViewModel.TemperatureMinAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["min"]);
+            }
+
+
+            int amountOfEntries = await _gadgetStatusRequestRepository.GetAmountOfEntriesForGadget(gadgetId);
+
+            if(amountOfEntries > 0)
+            {
+                gadgetAnalyticsViewModel.AmountOfEntries = amountOfEntries.ToString();
             }
 
 

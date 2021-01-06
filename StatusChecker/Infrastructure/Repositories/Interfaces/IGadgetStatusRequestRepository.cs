@@ -28,5 +28,12 @@ namespace StatusChecker.Infrastructure.Repositories.Interfaces
         /// <param name="gadgetId"></param>
         /// <returns></returns>
         Task<int> DeleteAllForGadgetAsync(int gadgetId);
+
+        /// <summary>
+        /// Returns the amount of available Entries for a given Gadget
+        /// </summary>
+        /// <param name="gadgetId"></param>
+        /// <returns></returns>
+        Task<int> GetAmountOfEntriesForGadget(int gadgetId);
     }
 }

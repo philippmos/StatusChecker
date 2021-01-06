@@ -134,7 +134,14 @@ namespace StatusChecker.Infrastructure.Repositories
             }
 
 
-            return 1;            
+            return 1;
+        }
+
+        public async Task<int> GetAmountOfEntriesForGadget(int gadgetId)
+        {
+            var allValidItems = await GetAllValidStatusRequestsForGadgetIdAsync(gadgetId);
+
+            return allValidItems.Count();
         }
         #endregion
         #endregion
