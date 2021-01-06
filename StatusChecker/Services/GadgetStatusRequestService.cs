@@ -79,12 +79,7 @@ namespace StatusChecker.Services
 
             Dictionary<string, KeyValuePair<double, DateTime>> gadgetExtremepoints = await _gadgetStatusRequestRepository.GetExtremepointsAsync(gadgetId);
 
-            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel
-            {
-                TemperatureAvg = "Nicht verfügbar",
-                TemperatureMaxAndDate = "Nicht verfügbar",
-                TemperatureMinAndDate = "Nicht verfügbar"
-            };
+            var gadgetAnalyticsViewModel = new GadgetAnalyticsViewModel();
 
 
             if(averageTemperature > 0.00)
@@ -100,6 +95,14 @@ namespace StatusChecker.Services
             if (gadgetExtremepoints.ContainsKey("min"))
             {
                 gadgetAnalyticsViewModel.TemperatureMinAndDate = FormatDateWithTimeHighValues(gadgetExtremepoints["min"]);
+            }
+
+
+            int amountOfEntries = await _gadgetStatusRequestRepository.GetAmountOfEntriesForGadget(gadgetId);
+
+            if(amountOfEntries > 0)
+            {
+                gadgetAnalyticsViewModel.AmountOfEntries = amountOfEntries.ToString();
             }
 
 
@@ -131,7 +134,7 @@ namespace StatusChecker.Services
         /// <returns></returns>
         private string FormatDateWithTimeHighValues(KeyValuePair<double, DateTime> heighValuePair)
         {
-            if (heighValuePair.Key == null) return "Nicht verfügbar";
+            if (heighValuePair.Key == 0) return "Nicht verfügbar";
             string formattedDateTime = heighValuePair.Value.ToString("dd.MM.yyyy HH:mm");
 
             return $"{ GadgetHelper.RoundTemperature(heighValuePair.Key) } °C [{ formattedDateTime }]";

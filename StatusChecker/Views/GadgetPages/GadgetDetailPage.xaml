@@ -86,6 +86,11 @@
                 <Label Text="Temperatur Min.:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding GadgetAnalytics.TemperatureMinAndDate}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Anzahl Einträge:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{Binding GadgetAnalytics.AmountOfEntries}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
+            </StackLayout>
         
         </StackLayout>
 
