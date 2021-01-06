@@ -134,7 +134,7 @@ namespace StatusChecker.Services
         /// <returns></returns>
         private string FormatDateWithTimeHighValues(KeyValuePair<double, DateTime> heighValuePair)
         {
-            if (heighValuePair.Key == null) return "Nicht verfügbar";
+            if (heighValuePair.Key == 0) return "Nicht verfügbar";
             string formattedDateTime = heighValuePair.Value.ToString("dd.MM.yyyy HH:mm");
 
             return $"{ GadgetHelper.RoundTemperature(heighValuePair.Key) } °C [{ formattedDateTime }]";
