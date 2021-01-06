@@ -3,20 +3,20 @@ updates:
   - package-ecosystem: "nuget"
     directory: "/StatusChecker"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
       
     reviewers:
       - "philipp-c-moser"
       
-    target-branch: "main"
+    target-branch: "develop"
 
 
   - package-ecosystem: "nuget"
     directory: "/StatusChecker.iOS"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
       
     reviewers:
       - "philipp-c-moser"
       
-    target-branch: "main"
+    target-branch: "develop"
