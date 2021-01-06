@@ -22,14 +22,14 @@ namespace StatusChecker.I18N {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources {
+    internal class AppTranslations {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppResources() {
+        internal AppTranslations() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace StatusChecker.I18N {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StatusChecker.I18N.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StatusChecker.I18N.AppTranslations", typeof(AppTranslations).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,20 +70,20 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string Main_Navigation_Entries_Information {
+            get {
+                return ResourceManager.GetString("Main_Navigation_Entries_Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string Main_Navigation_Entries_Settings {
             get {
                 return ResourceManager.GetString("Main_Navigation_Entries_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Information.
-        /// </summary>
-        internal static string Main_Navigation_Information {
-            get {
-                return ResourceManager.GetString("Main_Navigation_Information", resourceCulture);
             }
         }
     }
