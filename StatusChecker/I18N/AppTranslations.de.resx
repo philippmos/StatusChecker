@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Main_Button_Title_Add" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="Main_Button_Title_Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Main_Button_Title_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Main_Button_Title_Delete" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="Main_Button_Title_Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Main_Button_Title_Save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="Main_Navigation_Button" xml:space="preserve">
+    <value>Menü</value>
+  </data>
   <data name="Main_Navigation_Entries_Gadgets" xml:space="preserve">
     <value>Geräte</value>
   </data>
@@ -125,5 +146,62 @@
   </data>
   <data name="Main_Navigation_Entries_Settings" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="Page_GadgetDetail_Fallback_NotAvailable" xml:space="preserve">
+    <value>Nicht verfügbar</value>
+  </data>
+  <data name="Page_GadgetDetail_H1_GadgetAnalytics" xml:space="preserve">
+    <value>Analytics</value>
+  </data>
+  <data name="Page_GadgetDetail_H1_GadgetData" xml:space="preserve">
+    <value>Gerätedaten</value>
+  </data>
+  <data name="Page_GadgetDetail_H1_GadgetStatus" xml:space="preserve">
+    <value>Gerätestatus</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Analytics_AmountEntries" xml:space="preserve">
+    <value>Anzahl Einträge:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Analytics_AverageTemperature" xml:space="preserve">
+    <value>Durchschnittstemperatur:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Analytics_MaxTemperature" xml:space="preserve">
+    <value>Temperatur Max:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Analytics_MinTemperature" xml:space="preserve">
+    <value>Temperatur Min:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Gadget_Description" xml:space="preserve">
+    <value>Beschreibung:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Gadget_DeviceId" xml:space="preserve">
+    <value>Device ID:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Gadget_IpAddress" xml:space="preserve">
+    <value>IP Adresse:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Gadget_Location" xml:space="preserve">
+    <value>Standort:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Gadget_Name" xml:space="preserve">
+    <value>Gerätename:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Status_Temperature" xml:space="preserve">
+    <value>Temperatur:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Status_TemperatureStatus" xml:space="preserve">
+    <value>Temperaturstatus:</value>
+  </data>
+  <data name="Page_GadgetDetail_Label_Status_Voltage" xml:space="preserve">
+    <value>Volt:</value>
+  </data>
+  <data name="Page_Title_EditGadget" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Page_Title_GadgetOverview" xml:space="preserve">
+    <value>Übersicht</value>
+  </data>
+  <data name="Page_Title_NewGadget" xml:space="preserve">
+    <value>Neues Gerät</value>
   </data>
 </root>
