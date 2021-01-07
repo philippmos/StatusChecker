@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using StatusChecker.I18N;
 using StatusChecker.Models.Database;
 
 namespace StatusChecker.Helper
@@ -16,12 +17,12 @@ namespace StatusChecker.Helper
 
             if (gadget.Name.Length <= 3)
             {
-                invalidFieldsList.Add("Länge des Gerätenamens");
+                invalidFieldsList.Add(AppTranslations.Page_NewGadget_Validation_Alert_GadgetName_Length);
             }
 
             if (string.IsNullOrEmpty(gadget.IpAddress))
             {
-                invalidFieldsList.Add("IP Adresse ist erforderlich");
+                invalidFieldsList.Add(AppTranslations.Page_NewGadget_Validation_Alert_GadgetIpAddress_Required);
             }
 
             return invalidFieldsList;

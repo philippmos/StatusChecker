@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.GadgetPages.GadgetDetailPage"
+             xmlns:resources="clr-namespace:StatusChecker.I18N"
              Title="{Binding Name}"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Bearbeiten" Clicked="EditGadget_Clicked" />
-        <ToolbarItem Text="Löschen" Clicked="RemoveGadget_Clicked" />
+        <ToolbarItem Text="{x:Static resources:AppTranslations.Main_Button_Title_Edit}" Clicked="EditGadget_Clicked" />
+        <ToolbarItem Text="{x:Static resources:AppTranslations.Main_Button_Title_Delete}" Clicked="RemoveGadget_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ScrollView VerticalScrollBarVisibility="Never">
@@ -15,31 +16,31 @@
         <StackLayout Spacing="20" Padding="15">
 
             <StackLayout>
-                <Label Text="Gerätedaten" FontSize="Title" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_H1_GadgetData}" FontSize="Title" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Gerätename:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Name}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.Name}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Standort:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Location}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.Location}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Device ID:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_DeviceId}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.DeviceId}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="IP Adresse:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_IpAddress}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.IpAddress}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Beschreibung:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Description}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.Description}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
@@ -47,21 +48,21 @@
 
 
             <StackLayout Margin="0,25,0,0">
-                <Label Text="Gerätestatus" FontSize="Title" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_H1_GadgetStatus}" FontSize="Title" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Temperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Status_Temperature}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.TemperatureC}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Status Temperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Status_TemperatureStatus}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.TemperatureStatus}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         
             <StackLayout Orientation="Horizontal">
-                <Label Text="Volt:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Status_Voltage}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding Gadget.VoltageV}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
@@ -69,26 +70,26 @@
 
 
             <StackLayout Margin="0,25,0,0">
-                <Label Text="Analytics" FontSize="Title" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_H1_GadgetAnalytics}" FontSize="Title" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Durchschnittstemperatur:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Analytics_AverageTemperature}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding GadgetAnalytics.TemperatureAvg}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Temperatur Max.:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Analytics_MaxTemperature}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding GadgetAnalytics.TemperatureMaxAndDate}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Temperatur Min.:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Analytics_MinTemperature}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding GadgetAnalytics.TemperatureMinAndDate}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Anzahl Einträge:" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+                <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Analytics_AmountEntries}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
                 <Label Text="{Binding GadgetAnalytics.AmountOfEntries}" FontSize="Small" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
         

@@ -10,6 +10,7 @@ using StatusChecker.Models;
 using StatusChecker.Models.Database;
 using StatusChecker.Views.GadgetPages;
 using StatusChecker.Helper;
+using StatusChecker.I18N;
 
 namespace StatusChecker.ViewModels.Gadgets
 {
@@ -20,7 +21,7 @@ namespace StatusChecker.ViewModels.Gadgets
 
         public GadgetsViewModel()
         {
-            Title = "Übersicht";
+            Title = AppTranslations.Page_Title_GadgetOverview;
             Gadgets = new ObservableCollection<GadgetViewModel>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -93,7 +94,7 @@ namespace StatusChecker.ViewModels.Gadgets
 
                     if(gadgetStatus.temperature_status == "undefined")
                     {
-                        viewModel.TemperatureC = "Status nicht verfügbar";
+                        viewModel.TemperatureC = AppTranslations.Page_GadgetDetail_Fallback_NotAvailable;
                     }
 
 

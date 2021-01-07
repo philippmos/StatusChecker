@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 using StatusChecker.Models.Database;
 using StatusChecker.Helper;
+using StatusChecker.I18N;
 
 namespace StatusChecker.Views.GadgetPages
 {
@@ -52,7 +53,7 @@ namespace StatusChecker.Views.GadgetPages
 
             var errorString = string.Join(", ", validationErrorList);
 
-            await DisplayAlert("Bitte überprüfe Deine Eingaben", errorString, "Ok");
+            await DisplayAlert(AppTranslations.Page_NewGadget_Validation_Alert_Title, errorString, AppTranslations.Main_Button_Title_Ok);
         }
 
         /// <summary>
