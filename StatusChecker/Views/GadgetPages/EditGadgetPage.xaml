@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.GadgetPages.EditGadgetPage"
+             xmlns:resources="clr-namespace:StatusChecker.I18N"
              Title="{Binding Name}"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Abbrechen" Clicked="Cancel_Clicked" />
-        <ToolbarItem Text="Speichern" Clicked="Save_Clicked" />
+        <ToolbarItem Text="{x:Static resources:AppTranslations.Main_Button_Title_Cancel}" Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="{x:Static resources:AppTranslations.Main_Button_Title_Save}" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
 
 
@@ -21,7 +22,7 @@
             </StackLayout>
 
 
-            <Label Text="Gerätename" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Name}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Name}" FontSize="Small"
                     Placeholder="z.B. Neues Gerät 1"
                     MaxLength="30"
@@ -29,7 +30,7 @@
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
                     TextColor="{DynamicResource FormTextColor}"/>
 
-            <Label Text="Standort" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Location}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Location}" FontSize="Small"
                     Placeholder="z.B. Rollladen Küche"
                     MaxLength="50"
@@ -37,7 +38,7 @@
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
                     TextColor="{DynamicResource FormTextColor}" />
 
-            <Label Text="IP Adresse oder Hostname" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_IpAddress}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small"
                     Placeholder="0.0.0.0"
                     MaxLength="15"
@@ -46,7 +47,7 @@
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
                     TextColor="{DynamicResource FormTextColor}" />
 
-            <Label Text="Beschreibung" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Description}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Description}" FontSize="Small"
                     Placeholder="Beschreibung des Gerätes"
                     MaxLength="255"

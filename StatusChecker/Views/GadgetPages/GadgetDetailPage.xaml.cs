@@ -3,7 +3,6 @@ using Xamarin.Forms;
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.DataStore.Interfaces;
-using StatusChecker.Services.Interfaces;
 
 namespace StatusChecker.Views.GadgetPages
 {
