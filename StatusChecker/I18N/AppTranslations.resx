@@ -168,6 +168,9 @@
   <data name="Page_GadgetDetail_Delete_Alert_Title_Delete" xml:space="preserve">
     <value>Delete {0}?</value>
   </data>
+  <data name="Page_GadgetDetail_ErrorMessage_StatusTimeout" xml:space="preserve">
+    <value>Status could not be requested</value>
+  </data>
   <data name="Page_GadgetDetail_Fallback_NotAvailable" xml:space="preserve">
     <value>Not available</value>
   </data>
@@ -237,6 +240,9 @@
   <data name="Page_NewGadget_Validation_Alert_Title" xml:space="preserve">
     <value>Please verify your data</value>
   </data>
+  <data name="Page_Settings_Label_StatusRequestUrl" xml:space="preserve">
+    <value>Status Request Url</value>
+  </data>
   <data name="Page_Settings_Setting_SortingType_Option_AscText" xml:space="preserve">
     <value>(ascending)</value>
   </data>
@@ -257,6 +263,27 @@
   </data>
   <data name="Page_Settings_Setting_Timeout_Measurement" xml:space="preserve">
     <value>seconds</value>
+  </data>
+  <data name="Page_Setting_Input_Picker_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Page_Setting_Label_DarkmodeEnabled" xml:space="preserve">
+    <value>Darkmode enabled</value>
+  </data>
+  <data name="Page_Setting_Label_NotifyWhenStatusNotRespond" xml:space="preserve">
+    <value>Notification at Timeouts</value>
+  </data>
+  <data name="Page_Setting_Label_PermissionTrackErrors" xml:space="preserve">
+    <value>Error Logging Active</value>
+  </data>
+  <data name="Page_Setting_Label_SortingType" xml:space="preserve">
+    <value>Gadgetoverview Sorting</value>
+  </data>
+  <data name="Page_Setting_Label_TimeoutSetting" xml:space="preserve">
+    <value>Timeout for Requests in seconds</value>
+  </data>
+  <data name="Page_Setting_Placeholder_StatusRequestUrl" xml:space="preserve">
+    <value>f. e. /status</value>
   </data>
   <data name="Page_Title_AppInfo" xml:space="preserve">
     <value>App Information</value>

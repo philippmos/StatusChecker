@@ -214,6 +214,15 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status could not be requested.
+        /// </summary>
+        internal static string Page_GadgetDetail_ErrorMessage_StatusTimeout {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_ErrorMessage_StatusTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not available.
         /// </summary>
         internal static string Page_GadgetDetail_Fallback_NotAvailable {
@@ -417,6 +426,78 @@ namespace StatusChecker.I18N {
         internal static string Page_NewGadget_Validation_Alert_Title {
             get {
                 return ResourceManager.GetString("Page_NewGadget_Validation_Alert_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        internal static string Page_Setting_Input_Picker_Select {
+            get {
+                return ResourceManager.GetString("Page_Setting_Input_Picker_Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Darkmode enabled.
+        /// </summary>
+        internal static string Page_Setting_Label_DarkmodeEnabled {
+            get {
+                return ResourceManager.GetString("Page_Setting_Label_DarkmodeEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification at Timeouts.
+        /// </summary>
+        internal static string Page_Setting_Label_NotifyWhenStatusNotRespond {
+            get {
+                return ResourceManager.GetString("Page_Setting_Label_NotifyWhenStatusNotRespond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Logging Active.
+        /// </summary>
+        internal static string Page_Setting_Label_PermissionTrackErrors {
+            get {
+                return ResourceManager.GetString("Page_Setting_Label_PermissionTrackErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gadgetoverview Sorting.
+        /// </summary>
+        internal static string Page_Setting_Label_SortingType {
+            get {
+                return ResourceManager.GetString("Page_Setting_Label_SortingType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeout for Requests in seconds.
+        /// </summary>
+        internal static string Page_Setting_Label_TimeoutSetting {
+            get {
+                return ResourceManager.GetString("Page_Setting_Label_TimeoutSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to f. e. /status.
+        /// </summary>
+        internal static string Page_Setting_Placeholder_StatusRequestUrl {
+            get {
+                return ResourceManager.GetString("Page_Setting_Placeholder_StatusRequestUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status Request Url.
+        /// </summary>
+        internal static string Page_Settings_Label_StatusRequestUrl {
+            get {
+                return ResourceManager.GetString("Page_Settings_Label_StatusRequestUrl", resourceCulture);
             }
         }
         
