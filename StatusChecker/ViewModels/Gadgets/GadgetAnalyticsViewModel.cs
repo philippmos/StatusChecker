@@ -1,4 +1,6 @@
-﻿namespace StatusChecker.ViewModels.Gadgets
+﻿using StatusChecker.I18N;
+
+namespace StatusChecker.ViewModels.Gadgets
 {
     public class GadgetAnalyticsViewModel : BaseViewModel
     {
@@ -8,7 +10,7 @@
         public string TemperatureMinAndDate { get; set; }
 
 
-        private readonly string notAvailableInitialInfo = "nicht verfügbar";
+        private readonly string notAvailableInitialInfo = AppTranslations.Page_GadgetDetail_Fallback_NotAvailable;
 
         public GadgetAnalyticsViewModel()
         {

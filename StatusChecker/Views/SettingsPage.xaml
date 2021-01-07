@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
              x:Class="StatusChecker.Views.SettingsPage"
+             xmlns:resources="clr-namespace:StatusChecker.I18N"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Abbrechen" Clicked="Cancel_Clicked" />
-        <ToolbarItem Text="Speichern" Clicked="Save_Clicked" />
+        <ToolbarItem Text="{x:Static resources:AppTranslations.Main_Button_Title_Cancel}" Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="{x:Static resources:AppTranslations.Main_Button_Title_Save}" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
 
 
@@ -17,9 +18,9 @@
 
         <StackLayout Spacing="20" Padding="15">
 
-            <Label Text="Status Request Url" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_Settings_Label_StatusRequestUrl}" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding StatusRequestUrl}" FontSize="Small"
-                   Placeholder="z.B. /status"
+                   Placeholder="{x:Static resources:AppTranslations.Page_Setting_Placeholder_StatusRequestUrl}"
                    MaxLength="255"
                    HeightRequest="50"
                    BackgroundColor="{DynamicResource FormBackgroundColor}"
@@ -27,9 +28,9 @@
                    Margin="0,0,0,20"/>
 
 
-            <Label Text="Sortierung Geräteübersicht" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_Setting_Label_SortingType}" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Picker x:Name="_pckGadgetSortingType"
-                    Title="Select"
+                    Title="{x:Static resources:AppTranslations.Page_Setting_Input_Picker_Select}"
                     HeightRequest="50"
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
                     TextColor="{DynamicResource FormTextColor}"
@@ -37,20 +38,20 @@
 		    </Picker>
 
             
-            <Label Text="Error Logging aktiv" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_Setting_Label_PermissionTrackErrors}" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Switch IsToggled="{Binding PermissionTrackErrors}" x:Name="_swtPermissionTrackErrors" Margin="0,0,0,20" />
 
             
-            <Label Text="Benachrichtigung bei Timeout" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_Setting_Label_NotifyWhenStatusNotRespond}" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Switch IsToggled="{Binding NotifyWhenStatusNotRespond}" x:Name="_swtNotifyWhenStatusNotRespond" Margin="0,0,0,20" />
 
 
-            <Label Text="Darkmode enabled" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_Setting_Label_DarkmodeEnabled}" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Switch IsToggled="{Binding DarkModeEnabled}" x:Name="_swtDarkmodeEnabled" Margin="0,0,0,20" Toggled="_swtDarkmodeEnabled_Toggled" />
 
-            <Label Text="Timeout für Requests in Sekunden" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
+            <Label Text="{x:Static resources:AppTranslations.Page_Setting_Label_TimeoutSetting}" FontSize="Medium" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" />
             <Picker x:Name="_pckTimeoutSetting"
-                    Title="Select"
+                    Title="{x:Static resources:AppTranslations.Page_Setting_Input_Picker_Select}"
                     HeightRequest="50"
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
                     TextColor="{DynamicResource FormTextColor}"

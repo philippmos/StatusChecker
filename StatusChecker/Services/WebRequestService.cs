@@ -12,6 +12,7 @@ using StatusChecker.Services.Interfaces;
 using StatusChecker.Models.Enums;
 using StatusChecker.Helper;
 using StatusChecker.Models.Database;
+using StatusChecker.I18N;
 
 namespace StatusChecker.Services
 {
@@ -138,7 +139,10 @@ namespace StatusChecker.Services
 
             if (notifyWhenStatusNotRespond == "1")
             {
-                await Application.Current.MainPage.DisplayAlert("Status konnte nicht abgefragt werden", $"Adresse: { requestUrl }", "Schade");
+                await Application.Current.MainPage.DisplayAlert(
+                                                        AppTranslations.Page_GadgetDetail_ErrorMessage_StatusTimeout,
+                                                        $"{ requestUrl }",
+                                                        AppTranslations.Main_Button_Title_Ok);
             }
 
             var properties = new Dictionary<string, string> {
