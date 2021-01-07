@@ -151,6 +151,15 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not available.
+        /// </summary>
+        internal static string Page_GadgetDetail_Fallback_NotAvailable {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Fallback_NotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Analytics.
         /// </summary>
         internal static string Page_GadgetDetail_H1_GadgetAnalytics {

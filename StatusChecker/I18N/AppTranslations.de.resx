@@ -147,6 +147,9 @@
   <data name="Main_Navigation_Entries_Settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="Page_GadgetDetail_Fallback_NotAvailable" xml:space="preserve">
+    <value>Nicht verfügbar</value>
+  </data>
   <data name="Page_GadgetDetail_H1_GadgetAnalytics" xml:space="preserve">
     <value>Analytics</value>
   </data>
