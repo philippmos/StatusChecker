@@ -132,6 +132,9 @@
   <data name="Main_Button_Title_Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="Main_Button_Title_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Main_Button_Title_Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -146,6 +149,24 @@
   </data>
   <data name="Main_Navigation_Entries_Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Page_AppInfo_Link_Title_Imprint" xml:space="preserve">
+    <value>Imprint</value>
+  </data>
+  <data name="Page_AppInfo_Link_Title_PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Approve_Message" xml:space="preserve">
+    <value>Delete the Gadget irreversible? Warning: The whole Status-History will be deleted, too!</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Approve_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Approve_Yes" xml:space="preserve">
+    <value>Yes, delete</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Title_Delete" xml:space="preserve">
+    <value>Delete {0}?</value>
   </data>
   <data name="Page_GadgetDetail_Fallback_NotAvailable" xml:space="preserve">
     <value>Not available</value>
@@ -195,13 +216,67 @@
   <data name="Page_GadgetDetail_Label_Status_Voltage" xml:space="preserve">
     <value>Voltage:</value>
   </data>
+  <data name="Page_NewGadget_Placeholder_Description" xml:space="preserve">
+    <value>A Gadget Description</value>
+  </data>
+  <data name="Page_NewGadget_Placeholder_IpAddress" xml:space="preserve">
+    <value>0.0.0.0</value>
+  </data>
+  <data name="Page_NewGadget_Placeholder_Location" xml:space="preserve">
+    <value>f. e. Shutter Kitchen</value>
+  </data>
+  <data name="Page_NewGadget_Placeholder_Name" xml:space="preserve">
+    <value>f. e. New Gadget 01</value>
+  </data>
+  <data name="Page_NewGadget_Validation_Alert_GadgetIpAddress_Required" xml:space="preserve">
+    <value>IP Address is required</value>
+  </data>
+  <data name="Page_NewGadget_Validation_Alert_GadgetName_Length" xml:space="preserve">
+    <value>Gadgetname length</value>
+  </data>
+  <data name="Page_NewGadget_Validation_Alert_Title" xml:space="preserve">
+    <value>Please verify your data</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_AscText" xml:space="preserve">
+    <value>(ascending)</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByCreation" xml:space="preserve">
+    <value>Creationdate</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByTemperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_DescText" xml:space="preserve">
+    <value>(descending)</value>
+  </data>
+  <data name="Page_Settings_Setting_Timeout_Measurement" xml:space="preserve">
+    <value>seconds</value>
+  </data>
+  <data name="Page_Title_AppInfo" xml:space="preserve">
+    <value>App Information</value>
+  </data>
   <data name="Page_Title_EditGadget" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="Page_Title_GadgetOverview" xml:space="preserve">
     <value>Overview</value>
   </data>
+  <data name="Page_Title_Imprint" xml:space="preserve">
+    <value>Imprint</value>
+  </data>
   <data name="Page_Title_NewGadget" xml:space="preserve">
     <value>New Gadget</value>
+  </data>
+  <data name="Page_Title_PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Page_Title_Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

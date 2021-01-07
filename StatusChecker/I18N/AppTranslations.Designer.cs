@@ -106,6 +106,15 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Main_Button_Title_Ok {
+            get {
+                return ResourceManager.GetString("Main_Button_Title_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Main_Button_Title_Save {
@@ -147,6 +156,60 @@ namespace StatusChecker.I18N {
         internal static string Main_Navigation_Entries_Settings {
             get {
                 return ResourceManager.GetString("Main_Navigation_Entries_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imprint.
+        /// </summary>
+        internal static string Page_AppInfo_Link_Title_Imprint {
+            get {
+                return ResourceManager.GetString("Page_AppInfo_Link_Title_Imprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        internal static string Page_AppInfo_Link_Title_PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("Page_AppInfo_Link_Title_PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the Gadget irreversible? Warning: The whole Status-History will be deleted, too!.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Approve_Message {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Approve_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Approve_No {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Approve_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes, delete.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Approve_Yes {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Approve_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete {0}?.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Title_Delete {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Title_Delete", resourceCulture);
             }
         }
         
@@ -295,6 +358,141 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A Gadget Description.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_Description {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.0.0.0.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_IpAddress {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_IpAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to f. e. Shutter Kitchen.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_Location {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to f. e. New Gadget 01.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_Name {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address is required.
+        /// </summary>
+        internal static string Page_NewGadget_Validation_Alert_GadgetIpAddress_Required {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Validation_Alert_GadgetIpAddress_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gadgetname length.
+        /// </summary>
+        internal static string Page_NewGadget_Validation_Alert_GadgetName_Length {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Validation_Alert_GadgetName_Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please verify your data.
+        /// </summary>
+        internal static string Page_NewGadget_Validation_Alert_Title {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Validation_Alert_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (ascending).
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_AscText {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_AscText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creationdate.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByCreation {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByCreation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByLocation {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByName {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByTemperature {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (descending).
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_DescText {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_DescText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seconds.
+        /// </summary>
+        internal static string Page_Settings_Setting_Timeout_Measurement {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_Timeout_Measurement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App Information.
+        /// </summary>
+        internal static string Page_Title_AppInfo {
+            get {
+                return ResourceManager.GetString("Page_Title_AppInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Page_Title_EditGadget {
@@ -313,11 +511,38 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imprint.
+        /// </summary>
+        internal static string Page_Title_Imprint {
+            get {
+                return ResourceManager.GetString("Page_Title_Imprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Gadget.
         /// </summary>
         internal static string Page_Title_NewGadget {
             get {
                 return ResourceManager.GetString("Page_Title_NewGadget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        internal static string Page_Title_PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("Page_Title_PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Page_Title_Settings {
+            get {
+                return ResourceManager.GetString("Page_Title_Settings", resourceCulture);
             }
         }
     }
