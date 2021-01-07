@@ -69,7 +69,7 @@ namespace StatusChecker.Views
                 GadgetSortingTypes.ByNameDesc,
                 GadgetSortingTypes.ByLocationAsc,
                 GadgetSortingTypes.ByLocationDesc,
-                GadgetSortingTypes.ByTemperatureAsc,
+                GadgetSortingTypes.ByTemperatureDesc,
                 GadgetSortingTypes.ByTemperatureAsc
             };
 
