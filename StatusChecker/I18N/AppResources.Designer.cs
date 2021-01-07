@@ -59,5 +59,32 @@ namespace StatusChecker.I18N {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gadgets.
+        /// </summary>
+        internal static string Main_Navigation_Entries_Gadgets {
+            get {
+                return ResourceManager.GetString("Main_Navigation_Entries_Gadgets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Main_Navigation_Entries_Settings {
+            get {
+                return ResourceManager.GetString("Main_Navigation_Entries_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string Main_Navigation_Information {
+            get {
+                return ResourceManager.GetString("Main_Navigation_Information", resourceCulture);
+            }
+        }
     }
 }
