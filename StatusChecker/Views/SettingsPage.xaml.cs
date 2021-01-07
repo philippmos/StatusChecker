@@ -8,6 +8,7 @@ using StatusChecker.Services.Interfaces;
 using StatusChecker.Helper.Interfaces;
 using StatusChecker.Helper;
 using StatusChecker.Models.Enums;
+using StatusChecker.I18N;
 
 namespace StatusChecker.Views
 {
@@ -36,7 +37,7 @@ namespace StatusChecker.Views
         {
             _viewModel = new SettingsViewModel()
             {
-                Title = "Einstellungen"
+                Title = AppTranslations.Page_Title_Settings
             };
 
             var permissionTrackErrors = await _settingService.GetSettingValueAsync(SettingKeys.PermissionTrackErrors);
@@ -92,7 +93,7 @@ namespace StatusChecker.Views
 
             for(int i = 1; i < 20; i++)
             {
-                timeoutSettingOptions.Add($"{i} Sekunden");
+                timeoutSettingOptions.Add($"{i} " + AppTranslations.Page_Settings_Setting_Timeout_Measurement);
             }
 
             _pckTimeoutSetting.ItemsSource = timeoutSettingOptions;
@@ -197,35 +198,35 @@ namespace StatusChecker.Views
         /// <returns></returns>
         private string GetGadgetSortingTypeName(GadgetSortingTypes gadgetSortingType)
         {
-            string ascText = "(aufsteigend)";
-            string descText = "(absteigend)";
+            string ascText = AppTranslations.Page_Settings_Setting_SortingType_Option_AscText;
+            string descText = AppTranslations.Page_Settings_Setting_SortingType_Option_DescText;
 
             switch (gadgetSortingType)
             {
                 case GadgetSortingTypes.ByCreationDesc:
-                    return "Erstelldatum " + descText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByCreation + " " + descText;
 
                 case GadgetSortingTypes.ByNameAsc:
-                    return "Name " + ascText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByName + " " + ascText;
 
                 case GadgetSortingTypes.ByNameDesc:
-                    return "Name " + descText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByName + " " + descText;
 
                 case GadgetSortingTypes.ByLocationAsc:
-                    return "Standort " + ascText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByLocation + " " + ascText;
 
                 case GadgetSortingTypes.ByLocationDesc:
-                    return "Standort " + descText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByLocation + " " + descText;
 
                 case GadgetSortingTypes.ByTemperatureAsc:
-                    return "Temperatur " + ascText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByTemperature + " " + ascText;
 
                 case GadgetSortingTypes.ByTemperatureDesc:
-                    return "Temperatur " + descText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByTemperature + " " + descText;
 
                 case GadgetSortingTypes.ByCreationAsc:
                 default:
-                    return "Erstelldatum " + ascText;
+                    return AppTranslations.Page_Settings_Setting_SortingType_Option_ByCreation + " " + ascText;
             }
         }
         #endregion

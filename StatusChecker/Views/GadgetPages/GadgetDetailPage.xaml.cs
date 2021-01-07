@@ -50,7 +50,7 @@ namespace StatusChecker.Views.GadgetPages
         private async void RemoveGadget_Clicked(object sender, System.EventArgs e)
         {
             bool deleteRequestApproval = await DisplayAlert(
-                                               string.Format(AppTranslations.Page_GadgetDetail_Delete_Alert_Title_Delete, viewModel.Gadget.Name)
+                                               string.Format(AppTranslations.Page_GadgetDetail_Delete_Alert_Title_Delete, viewModel.Gadget.Name),
                                                AppTranslations.Page_GadgetDetail_Delete_Alert_Approve_Message,
                                                AppTranslations.Page_GadgetDetail_Delete_Alert_Approve_Yes,
                                                AppTranslations.Page_GadgetDetail_Delete_Alert_Approve_No);
