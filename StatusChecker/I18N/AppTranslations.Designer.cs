@@ -448,11 +448,29 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imprint.
+        /// </summary>
+        internal static string Page_Title_Imprint {
+            get {
+                return ResourceManager.GetString("Page_Title_Imprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Gadget.
         /// </summary>
         internal static string Page_Title_NewGadget {
             get {
                 return ResourceManager.GetString("Page_Title_NewGadget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        internal static string Page_Title_PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("Page_Title_PrivacyPolicy", resourceCulture);
             }
         }
     }

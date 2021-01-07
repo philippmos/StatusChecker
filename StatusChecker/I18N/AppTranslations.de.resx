@@ -246,7 +246,13 @@
   <data name="Page_Title_GadgetOverview" xml:space="preserve">
     <value>Übersicht</value>
   </data>
+  <data name="Page_Title_Imprint" xml:space="preserve">
+    <value>Impressum</value>
+  </data>
   <data name="Page_Title_NewGadget" xml:space="preserve">
     <value>Neues Gerät</value>
+  </data>
+  <data name="Page_Title_PrivacyPolicy" xml:space="preserve">
+    <value>Datenschutz</value>
   </data>
 </root>
