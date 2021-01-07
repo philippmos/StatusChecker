@@ -132,6 +132,9 @@
   <data name="Main_Button_Title_Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="Main_Button_Title_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Main_Button_Title_Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -152,6 +155,18 @@
   </data>
   <data name="Page_AppInfo_Link_Title_PrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Approve_Message" xml:space="preserve">
+    <value>Delete the Gadget irreversible? Warning: The whole Status-History will be deleted, too!</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Approve_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Approve_Yes" xml:space="preserve">
+    <value>Yes, delete</value>
+  </data>
+  <data name="Page_GadgetDetail_Delete_Alert_Title_Delete" xml:space="preserve">
+    <value>Delete {0}?</value>
   </data>
   <data name="Page_GadgetDetail_Fallback_NotAvailable" xml:space="preserve">
     <value>Not available</value>
@@ -212,6 +227,15 @@
   </data>
   <data name="Page_NewGadget_Placeholder_Name" xml:space="preserve">
     <value>f. e. New Gadget 01</value>
+  </data>
+  <data name="Page_NewGadget_Validation_Alert_GadgetIpAddress_Required" xml:space="preserve">
+    <value>IP Address is required</value>
+  </data>
+  <data name="Page_NewGadget_Validation_Alert_GadgetName_Length" xml:space="preserve">
+    <value>Gadgetname length</value>
+  </data>
+  <data name="Page_NewGadget_Validation_Alert_Title" xml:space="preserve">
+    <value>Please verify your data</value>
   </data>
   <data name="Page_Title_AppInfo" xml:space="preserve">
     <value>App Information</value>

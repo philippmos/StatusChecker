@@ -106,6 +106,15 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Main_Button_Title_Ok {
+            get {
+                return ResourceManager.GetString("Main_Button_Title_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Main_Button_Title_Save {
@@ -165,6 +174,42 @@ namespace StatusChecker.I18N {
         internal static string Page_AppInfo_Link_Title_PrivacyPolicy {
             get {
                 return ResourceManager.GetString("Page_AppInfo_Link_Title_PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the Gadget irreversible? Warning: The whole Status-History will be deleted, too!.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Approve_Message {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Approve_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Approve_No {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Approve_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes, delete.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Approve_Yes {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Approve_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete {0}?.
+        /// </summary>
+        internal static string Page_GadgetDetail_Delete_Alert_Title_Delete {
+            get {
+                return ResourceManager.GetString("Page_GadgetDetail_Delete_Alert_Title_Delete", resourceCulture);
             }
         }
         
@@ -345,6 +390,33 @@ namespace StatusChecker.I18N {
         internal static string Page_NewGadget_Placeholder_Name {
             get {
                 return ResourceManager.GetString("Page_NewGadget_Placeholder_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address is required.
+        /// </summary>
+        internal static string Page_NewGadget_Validation_Alert_GadgetIpAddress_Required {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Validation_Alert_GadgetIpAddress_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gadgetname length.
+        /// </summary>
+        internal static string Page_NewGadget_Validation_Alert_GadgetName_Length {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Validation_Alert_GadgetName_Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please verify your data.
+        /// </summary>
+        internal static string Page_NewGadget_Validation_Alert_Title {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Validation_Alert_Title", resourceCulture);
             }
         }
         
