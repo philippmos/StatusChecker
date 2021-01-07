@@ -147,6 +147,12 @@
   <data name="Main_Navigation_Entries_Settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="Page_AppInfo_Link_Title_Imprint" xml:space="preserve">
+    <value>Impressum</value>
+  </data>
+  <data name="Page_AppInfo_Link_Title_PrivacyPolicy" xml:space="preserve">
+    <value>Datenschutzerklärung</value>
+  </data>
   <data name="Page_GadgetDetail_Fallback_NotAvailable" xml:space="preserve">
     <value>Nicht verfügbar</value>
   </data>
@@ -194,6 +200,21 @@
   </data>
   <data name="Page_GadgetDetail_Label_Status_Voltage" xml:space="preserve">
     <value>Volt:</value>
+  </data>
+  <data name="Page_NewGadget_Placeholder_Description" xml:space="preserve">
+    <value>Eine Gerätebeschreibung</value>
+  </data>
+  <data name="Page_NewGadget_Placeholder_IpAddress" xml:space="preserve">
+    <value>0.0.0.0</value>
+  </data>
+  <data name="Page_NewGadget_Placeholder_Location" xml:space="preserve">
+    <value>z.B. Rollladen Küche</value>
+  </data>
+  <data name="Page_NewGadget_Placeholder_Name" xml:space="preserve">
+    <value>z.B. Neues Gerät 01</value>
+  </data>
+  <data name="Page_Title_AppInfo" xml:space="preserve">
+    <value>App Information</value>
   </data>
   <data name="Page_Title_EditGadget" xml:space="preserve">
     <value>Bearbeiten</value>

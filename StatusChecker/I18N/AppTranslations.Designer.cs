@@ -151,6 +151,24 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imprint.
+        /// </summary>
+        internal static string Page_AppInfo_Link_Title_Imprint {
+            get {
+                return ResourceManager.GetString("Page_AppInfo_Link_Title_Imprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        internal static string Page_AppInfo_Link_Title_PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("Page_AppInfo_Link_Title_PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not available.
         /// </summary>
         internal static string Page_GadgetDetail_Fallback_NotAvailable {
@@ -291,6 +309,51 @@ namespace StatusChecker.I18N {
         internal static string Page_GadgetDetail_Label_Status_Voltage {
             get {
                 return ResourceManager.GetString("Page_GadgetDetail_Label_Status_Voltage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Gadget Description.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_Description {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.0.0.0.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_IpAddress {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_IpAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to f. e. Shutter Kitchen.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_Location {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to f. e. New Gadget 01.
+        /// </summary>
+        internal static string Page_NewGadget_Placeholder_Name {
+            get {
+                return ResourceManager.GetString("Page_NewGadget_Placeholder_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App Information.
+        /// </summary>
+        internal static string Page_Title_AppInfo {
+            get {
+                return ResourceManager.GetString("Page_Title_AppInfo", resourceCulture);
             }
         }
         
