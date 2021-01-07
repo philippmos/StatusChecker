@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using StatusChecker.Models.Database;
 using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.DataStore.Interfaces;
+using StatusChecker.I18N;
 
 namespace StatusChecker.Views.GadgetPages
 {
@@ -48,10 +49,11 @@ namespace StatusChecker.Views.GadgetPages
         /// <param name="e"></param>
         private async void RemoveGadget_Clicked(object sender, System.EventArgs e)
         {
-            bool deleteRequestApproval = await DisplayAlert($"\"{ viewModel.Gadget.Name }\" löschen?",
-                                                "Das Element unwiderruflich löschen? Warnung: Die gesamte Statushistorie wird ebenfalls unwiderruflich gelöscht!",
-                                                "Ja, löschen",
-                                                "Nein");
+            bool deleteRequestApproval = await DisplayAlert(
+                                               string.Format(AppTranslations.Page_GadgetDetail_Delete_Alert_Title_Delete, viewModel.Gadget.Name)
+                                               AppTranslations.Page_GadgetDetail_Delete_Alert_Approve_Message,
+                                               AppTranslations.Page_GadgetDetail_Delete_Alert_Approve_Yes,
+                                               AppTranslations.Page_GadgetDetail_Delete_Alert_Approve_No);
 
             if(deleteRequestApproval)
             {

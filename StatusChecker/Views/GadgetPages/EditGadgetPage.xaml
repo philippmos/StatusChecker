@@ -21,10 +21,9 @@
                 <Label Text="{Binding Gadget.Id}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             </StackLayout>
 
-
             <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Name}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Name}" FontSize="Small"
-                    Placeholder="z.B. Neues Gerät 1"
+                    Placeholder="{x:Static resources:AppTranslations.Page_NewGadget_Placeholder_Name}"
                     MaxLength="30"
                     HeightRequest="50"
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
@@ -32,7 +31,7 @@
 
             <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Location}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Location}" FontSize="Small"
-                    Placeholder="z.B. Rollladen Küche"
+                    Placeholder="{x:Static resources:AppTranslations.Page_NewGadget_Placeholder_Location}"
                     MaxLength="50"
                     HeightRequest="50"
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
@@ -40,7 +39,7 @@
 
             <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_IpAddress}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.IpAddress}" FontSize="Small"
-                    Placeholder="0.0.0.0"
+                    Placeholder="{x:Static resources:AppTranslations.Page_NewGadget_Placeholder_IpAddress}"
                     MaxLength="15"
                     HeightRequest="50"
                     Keyboard="Url"
@@ -49,11 +48,12 @@
 
             <Label Text="{x:Static resources:AppTranslations.Page_GadgetDetail_Label_Gadget_Description}" FontSize="Medium" TextColor="{DynamicResource TextColor}" />
             <Entry Text="{Binding Gadget.Description}" FontSize="Small"
-                    Placeholder="Beschreibung des Gerätes"
+                    Placeholder="{x:Static resources:AppTranslations.Page_NewGadget_Placeholder_Description}"
                     MaxLength="255"
                     HeightRequest="50"
                     BackgroundColor="{DynamicResource FormBackgroundColor}"
                     TextColor="{DynamicResource FormTextColor}"/>
+
         </StackLayout>
 
     </ScrollView>
