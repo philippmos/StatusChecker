@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="App Informationen"
+             Title="{x:Static resources:AppTranslations.Page_Title_AppInfo}"
              x:Class="StatusChecker.Views.LegalPages.AppInfoPage"
+             xmlns:resources="clr-namespace:StatusChecker.I18N"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ScrollView VerticalScrollBarVisibility="Never">
@@ -21,8 +22,8 @@
                          VerticalOptions="EndAndExpand"
                          Padding="0,0,0,30">
                 
-                <Button Text="Impressum" Margin="0,0,10,0" x:Name="_btnImprint" Clicked="_btnImprint_Clicked"/>
-                <Button Text="Datenschutz" Margin="10,0,0,0" x:Name="_btnPrivacyPolicy" Clicked="_btnPrivacyPolicy_Clicked" />
+                <Button Text="{x:Static resources:AppTranslations.Page_AppInfo_Link_Title_Imprint}" Margin="0,0,10,0" x:Name="_btnImprint" Clicked="_btnImprint_Clicked"/>
+                <Button Text="{x:Static resources:AppTranslations.Page_AppInfo_Link_Title_PrivacyPolicy}" Margin="10,0,0,0" x:Name="_btnPrivacyPolicy" Clicked="_btnPrivacyPolicy_Clicked" />
 
             </StackLayout>
 

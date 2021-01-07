@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 
 using StatusChecker.Helper;
+using StatusChecker.I18N;
 
 namespace StatusChecker.Views.LegalPages
 {
@@ -24,7 +25,7 @@ namespace StatusChecker.Views.LegalPages
         /// <param name="e"></param>
         async void _btnImprint_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new ImprintPage { Title = "Impressum" });
+            await Navigation.PushAsync(new ImprintPage { Title = AppTranslations.Page_Title_Imprint });
         }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace StatusChecker.Views.LegalPages
         /// <param name="e"></param>
         async void _btnPrivacyPolicy_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new PrivacyPolicyPage { Title = "Datenschutz" });
+            await Navigation.PushAsync(new PrivacyPolicyPage { Title = AppTranslations.Page_Title_PrivacyPolicy });
         }
         #endregion
     }

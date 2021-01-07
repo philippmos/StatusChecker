@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusChecker.Views.MenuPage"
-             Title="Menü"
+             xmlns:resources="clr-namespace:StatusChecker.I18N"
+             Title="{x:Static resources:AppTranslations.Main_Navigation_Button}"
              BackgroundColor="{DynamicResource MenueBackgroundColor}">
              
     <StackLayout VerticalOptions="FillAndExpand">

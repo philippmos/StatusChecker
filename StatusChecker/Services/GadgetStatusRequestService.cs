@@ -11,6 +11,7 @@ using StatusChecker.Services.Interfaces;
 using StatusChecker.ViewModels.Gadgets;
 using StatusChecker.Models;
 using StatusChecker.Helper;
+using StatusChecker.I18N;
 
 namespace StatusChecker.Services
 {
@@ -134,7 +135,7 @@ namespace StatusChecker.Services
         /// <returns></returns>
         private string FormatDateWithTimeHighValues(KeyValuePair<double, DateTime> heighValuePair)
         {
-            if (heighValuePair.Key == 0) return "Nicht verfügbar";
+            if (heighValuePair.Key == 0) return AppTranslations.Page_GadgetDetail_Fallback_NotAvailable;
             string formattedDateTime = heighValuePair.Value.ToString("dd.MM.yyyy HH:mm");
 
             return $"{ GadgetHelper.RoundTemperature(heighValuePair.Key) } °C [{ formattedDateTime }]";

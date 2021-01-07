@@ -4,10 +4,11 @@
              x:Class="StatusChecker.Views.GadgetPages.GadgetsPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage"
+             xmlns:resources="clr-namespace:StatusChecker.I18N"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Hinzufügen" Clicked="AddItem_Clicked" />
+        <ToolbarItem Text="{x:Static resources:AppTranslations.Main_Button_Title_Add}" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
 
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}" Margin="0,10,0,0">
