@@ -237,6 +237,27 @@
   <data name="Page_NewGadget_Validation_Alert_Title" xml:space="preserve">
     <value>Please verify your data</value>
   </data>
+  <data name="Page_Settings_Setting_SortingType_Option_AscText" xml:space="preserve">
+    <value>(ascending)</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByCreation" xml:space="preserve">
+    <value>Creationdate</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_ByTemperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Page_Settings_Setting_SortingType_Option_DescText" xml:space="preserve">
+    <value>(descending)</value>
+  </data>
+  <data name="Page_Settings_Setting_Timeout_Measurement" xml:space="preserve">
+    <value>seconds</value>
+  </data>
   <data name="Page_Title_AppInfo" xml:space="preserve">
     <value>App Information</value>
   </data>
@@ -254,5 +275,8 @@
   </data>
   <data name="Page_Title_PrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="Page_Title_Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

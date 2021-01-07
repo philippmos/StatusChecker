@@ -421,6 +421,69 @@ namespace StatusChecker.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (ascending).
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_AscText {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_AscText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creationdate.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByCreation {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByCreation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByLocation {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByName {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_ByTemperature {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_ByTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (descending).
+        /// </summary>
+        internal static string Page_Settings_Setting_SortingType_Option_DescText {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_SortingType_Option_DescText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seconds.
+        /// </summary>
+        internal static string Page_Settings_Setting_Timeout_Measurement {
+            get {
+                return ResourceManager.GetString("Page_Settings_Setting_Timeout_Measurement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App Information.
         /// </summary>
         internal static string Page_Title_AppInfo {
@@ -471,6 +534,15 @@ namespace StatusChecker.I18N {
         internal static string Page_Title_PrivacyPolicy {
             get {
                 return ResourceManager.GetString("Page_Title_PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Page_Title_Settings {
+            get {
+                return ResourceManager.GetString("Page_Title_Settings", resourceCulture);
             }
         }
     }
