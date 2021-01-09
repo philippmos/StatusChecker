@@ -23,7 +23,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>StatusChecker</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(CFBundleIdentifier)</string>
+	<string>de.philippmoserprvt.statuschecker</string>
 	<key>CFBundleVersion</key>
 	<string>$(AppVersionNumber)</string>
 	<key>UILaunchStoryboardName</key>
