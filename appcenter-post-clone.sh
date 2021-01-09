@@ -11,13 +11,12 @@ if [ -e "$PLIST_FILE" ]
 then
     echo "Updating configuration in Info.plist"
     sed -i '' 's/$(CFBundleIdentifier)/'$PLIST_CFBUNDLEIDENTIFIER'/' $PLIST_FILE
-    echo "$PLIST_CFBUNDLEIDENTIFIER"
 
     if [ -e "$APPVERSION_FILE" ]
     then
         read -r appVersionNumber<$APPVERSION_FILE
-        echo "$appVersionNumber"
 
+        echo "Updating App VersionNumber ["$appVersionNumber"]"
         sed -i '' 's/$(AppVersionNumber)/'$appVersionNumber'/' $PLIST_FILE
     fi
 
