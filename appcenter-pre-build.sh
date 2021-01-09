@@ -3,6 +3,7 @@
 
 # Variables
 APPSETTINGS_FILE=$APPCENTER_SOURCE_DIRECTORY/StatusChecker/appsettings.json
+PLIST_FILE=$APPCENTER_SOURCE_DIRECTORY/StatusChecker.iOS/Info.plist
 # ./Variables
 
 
@@ -25,3 +26,13 @@ then
 
 fi
 # ./Replacing appsettings.json
+
+
+# Replacing Info.plist
+if [ -e "$PLIST_FILE" ]
+then
+    echo "Updating configuration in Info.plist"
+    sed -i '' 's/$(CFBundleIdentifier)/'$PLIST_CFBUNDLEIDENTIFIER'/' $PLIST_FILE
+
+fi
+# ./Replacing Info.plist
