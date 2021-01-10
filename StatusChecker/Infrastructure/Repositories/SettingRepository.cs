@@ -89,7 +89,7 @@ namespace StatusChecker.Infrastructure.Repositories
             {
                 Id = (int)SettingKeys.DarkModeEnabled,
                 Key = SettingKeys.DarkModeEnabled.ToString(),
-                Value = "0"
+                Value = "1"
             });
 
             await _database.InsertAsync(new Setting
