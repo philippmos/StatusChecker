@@ -137,7 +137,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515+946-sha.94acebbb4-azdo.6439792" />
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.6.1</Version>
     </PackageReference>
